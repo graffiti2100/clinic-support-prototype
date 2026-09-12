@@ -90,7 +90,7 @@ async function notificationAction(kind){
       if(!me()){setup('waiting');pushMessage='已開啟展示工作站，可在小視窗接單。';}
       pipWindow=await documentPictureInPicture.requestWindow({width:350,height:430});
       pipWindow.document.title='支援工作站';
-      const style=pipWindow.document.createElement('style');style.textContent='body{font-family:system-ui,sans-serif;background:#f5f7f5;color:#263e39;margin:18px}button{padding:12px;border:0;border-radius:8px;background:#17665b;color:white;margin:5px;cursor:pointer}button:disabled{opacity:.4}h2{font-size:20px}p{line-height:1.5}.pip-room{background:white;padding:10px;border-radius:10px;margin:10px 0}';pipWindow.document.head.append(style);
+      const style=pipWindow.document.createElement('style');style.textContent='body{font-family:system-ui,sans-serif;background:#f5f7f5;color:#263e39;margin:18px}button{padding:12px;border:0;border-radius:8px;background:#17665b;color:white;margin:5px;cursor:pointer}button:disabled{opacity:.4}h2{font-size:20px}p{line-height:1.5}.pip-room{background:white;padding:12px;border-radius:10px;margin:10px 0;display:flex;align-items:center;justify-content:space-between;gap:8px}.pip-wait{display:block;margin-top:5px;font-variant-numeric:tabular-nums}.pip-status{border:2px solid;border-radius:10px;padding:12px;margin:12px 0}.pip-status small{display:block;margin-bottom:4px}.pip-status strong{font-size:20px}.pip-status.available{background:#dcfce7;color:#14532d;border-color:#15803d}.pip-status.busy{background:#ffedd5;color:#7c2d12;border-color:#c2410c}.pip-status.covering{background:#dbeafe;color:#1e3a8a;border-color:#2563eb}';pipWindow.document.head.append(style);
       pipWindow.addEventListener('pagehide',()=>{pipWindow=null;updateNotificationControls();});syncPip();render();
     }catch{pushMessage='無法開啟置頂視窗，請使用支援此功能的電腦瀏覽器。';render();}return;
   }
@@ -125,7 +125,7 @@ async function notificationAction(kind){
 function syncPip(){
   if(!pipWindow||pipWindow.closed)return;
   const n=me();if(!n){pipWindow.close();return;}
-  pipWindow.document.body.innerHTML=`<h2>支援工作站</h2><p>${esc(n.name)} · ${line(n)}<br>${personStatus(n)}</p>${n.room?button('結束承接','finish'):button(n.status==='BUSY'?'切回可接單':'切換忙碌',n.status==='BUSY'?'available':'busy')} ${state.rooms.filter(r=>r.status==='REQUESTING').map(r=>`<div class="pip-room">${r.id}診等待 ${button('接單',`accept:${r.id}`,'',n.status!=='AVAILABLE')}</div>`).join('')||'<p>目前無等待需求</p>'}`;
+  pipWindow.document.body.innerHTML=`<h2>支援工作站</h2><p>${esc(n.name)} · ${line(n)}</p><div class="pip-status ${n.status.toLowerCase()}" role="status"><small>個人狀態</small><strong>${n.status==='COVERING'?`承接中｜${roomName(n.room)}`:n.status==='BUSY'?'忙碌中｜無法支援':'可接單'}</strong></div>${n.room?button('結束承接','finish'):button(n.status==='BUSY'?'切回可接單':'切換忙碌',n.status==='BUSY'?'available':'busy')} ${state.rooms.filter(r=>r.status==='REQUESTING').sort((a,b)=>a.requestedAt-b.requestedAt).map(r=>`<div class="pip-room"><div><strong>${r.id}診</strong><span class="pip-wait">已等待 <span data-wait-room="${r.id}">${waitText(r)}</span></span></div>${button('接單',`accept:${r.id}`,'',n.status!=='AVAILABLE')}</div>`).join('')||'<p>目前無等待需求</p>'}`;
   pipWindow.document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>act(b.dataset.action));
 }
 async function checkPushStatus(){
@@ -160,6 +160,13 @@ const line=n=>n.line==='PRIMARY'?'1線':'2線';
 const me=()=>state.nurses.find(n=>n.id===state.me);
 const roomName=id=>`${id}診`;
 const personStatus=n=>n.status==='COVERING'?`已承接｜${roomName(n.room)}`:n.status==='BUSY'?'其他業務 · 無法支援':'可接單';
+const waitSeconds=r=>Math.max(0,Math.floor((Date.now()-r.requestedAt)/1000));
+const waitText=r=>{const seconds=waitSeconds(r);return `${String(Math.floor(seconds/60)).padStart(2,'0')}:${String(seconds%60).padStart(2,'0')}`;};
+function updateWaitingTimes(){
+  for(const doc of [document,...(pipWindow&&!pipWindow.closed?[pipWindow.document]:[])]){
+    doc.querySelectorAll('[data-wait-room]').forEach(el=>{const r=state.rooms.find(r=>r.id===Number(el.dataset.waitRoom));if(r?.status==='REQUESTING')el.textContent=waitText(r);});
+  }
+}
 const noAvailablePrimary=()=>state.rooms.some(r=>r.status==='REQUESTING')&&!state.nurses.some(n=>n.logged&&n.line==='PRIMARY'&&n.status==='AVAILABLE');
 const shortageCard=doctor=>`<div class="alert shortage-alert" role="status"><strong>⚠️ 目前無可用1線</strong>${doctor?'有診間等待支援，目前1線皆無法支援。':'有診間等待支援，您可以主動承接。'}</div>`;
 function notify(text){clearTimeout(toast);$('#message').textContent=text;$('#message').hidden=false;toast=setTimeout(()=>$('#message').hidden=true,5000);}
@@ -172,6 +179,7 @@ function setup(key){
   if(key==='busy')me().status='BUSY';
   if(key==='shortage'){state.me='N003';state.nurses[0].status='BUSY';Object.assign(state.nurses[1],{status:'COVERING',room:2});Object.assign(state.rooms[1],{status:'COVERED',nurse:'N002'});}
   if(key==='multiple'){Object.assign(state.rooms[1],{status:'REQUESTING',wait:162});}
+  const now=Date.now();state.rooms.forEach(room=>{room.requestedAt=now-room.wait*1000;});
   if(key==='offline')state.online=false;
   if(['home','login','register'].includes(key)){state.nurses.forEach(n=>n.logged=false);state.me=null;}
   resetNotifications(key);
@@ -200,15 +208,15 @@ function rosterPage(){
 function myStatus(){const self=me();return `<section class="my-status"><h2>我的狀態</h2><div class="panel"><div class="person"><div class="avatar">${esc(self.name[0])}</div><div><strong>${esc(self.name)}</strong> <span class="tag">${esc(self.profession)}</span> <span class="tag">${line(self)}</span><p class="${self.status.toLowerCase()}">${personStatus(self)}</p></div></div>${self.room?`<div class="assignment"><div><strong>${self.room}診 · 已承接</strong><p>包含準備、移動與服務時間</p></div>${button('結束承接','finish')}</div>`:`<div class="switch">${button('可接單','available',self.status==='AVAILABLE'?'selected':'outline',self.status!=='BUSY')}${button('其他業務 / 忙碌','busy',self.status==='BUSY'?'selected busy':'outline',self.status!=='AVAILABLE')}</div>`}</div></section>`;}
 function nursePage(){
   if(!me())return loginPage(false);
-  const self=me(),waiting=state.rooms.filter(r=>r.status==='REQUESTING').sort((a,b)=>b.wait-a.wait);
+  const self=me(),waiting=state.rooms.filter(r=>r.status==='REQUESTING').sort((a,b)=>a.requestedAt-b.requestedAt);
   const shortage=noAvailablePrimary()&&self.line==='SECONDARY';
   return `<h1 class="visually-hidden">護理工作站</h1>
     ${shortage?shortageCard(false):''}
     ${myStatus()}
     ${!state.online?'<div class="alert"><strong>連線中斷 · 正在重新同步</strong>目前為最後同步狀態，恢復連線後才能操作。<p></p><button data-action="reconnect">恢復連線（展示）</button></div>':''}
-    <div class="layout"><div class="left"><section class="waiting-rooms"><h2>待處理診間 <span class="tag">${waiting.length}</span></h2>${waiting.length?waiting.map(r=>`<article class="call"><div class="room">${r.id}診</div><div><div class="waiting">等待支援人員</div><div class="timer">${String(Math.floor(r.wait/60)).padStart(2,'0')}:${String(r.wait%60).padStart(2,'0')}</div></div>${button(shortage?'我來支援 →':'接單 →',`accept:${r.id}`,'',self.status!=='AVAILABLE')}</article>`).join(''):'<div class="panel empty"><span>✓</span><h3>目前沒有等待中的診間</h3><p>新的需求會自動出現在這裡</p></div>'}</section></div>${rosterPage()}</div>`;
+    <div class="layout"><div class="left"><section class="waiting-rooms"><h2>待處理診間 <span class="tag">${waiting.length}</span></h2>${waiting.length?waiting.map(r=>`<article class="call"><div class="room">${r.id}診</div><div><div class="waiting">等待支援人員</div><div class="timer" data-wait-room="${r.id}">${waitText(r)}</div></div>${button(shortage?'我來支援 →':'接單 →',`accept:${r.id}`,'',self.status!=='AVAILABLE')}</article>`).join(''):'<div class="panel empty"><span>✓</span><h3>目前沒有等待中的診間</h3><p>新的需求會自動出現在這裡</p></div>'}</section></div>${rosterPage()}</div>`;
 }
-function doctorPage(){const r=state.rooms.find(r=>r.id===doctorRoom),assigned=state.nurses.find(n=>n.id===r.nurse);return heading(`${r.id}診`,'需要支援時，按一下即可通知工作站。','DOCTOR · 固定診間')+`<div class="layout doctor-layout"><div class="panel doctor ${r.status.toLowerCase()}"><span class="tag">${r.id}診</span><div class="symbol">${r.status==='IDLE'?'＋':r.status==='REQUESTING'?'◷':'✓'}</div><h2>${r.status==='IDLE'?'無需求':r.status==='REQUESTING'?'等待支援人員':'已有人承接'}</h2>${r.status==='IDLE'?'<p>工作站已準備接收您的呼叫</p>'+button('呼叫支援人員','request'):r.status==='REQUESTING'?`<div class="timer">${String(Math.floor(r.wait/60)).padStart(2,'0')}:${String(r.wait%60).padStart(2,'0')}</div><p>需求已送出，承接後將即時通知您</p>`+button('取消呼叫','cancel','outline'):`<p class="accepted">${esc(assigned?.name)}（${esc(assigned?.profession)}）已接單</p><p>通常由承接人員結束。若需由醫師代為結束，請先確認任務已完成。</p>`+button('結束承接','doctor-finish','outline')}</div>${rosterPage()}</div>`;}
+function doctorPage(){const r=state.rooms.find(r=>r.id===doctorRoom),assigned=state.nurses.find(n=>n.id===r.nurse);return heading(`${r.id}診`,'需要支援時，按一下即可通知工作站。','DOCTOR · 固定診間')+`<div class="layout doctor-layout"><div class="panel doctor ${r.status.toLowerCase()}"><span class="tag">${r.id}診</span><div class="symbol">${r.status==='IDLE'?'＋':r.status==='REQUESTING'?'◷':'✓'}</div><h2>${r.status==='IDLE'?'無需求':r.status==='REQUESTING'?'等待支援人員':'已有人承接'}</h2>${r.status==='IDLE'?'<p>工作站已準備接收您的呼叫</p>'+button('呼叫支援人員','request'):r.status==='REQUESTING'?`<div class="timer" data-wait-room="${r.id}">${waitText(r)}</div><p>需求已送出，承接後將即時通知您</p>`+button('取消呼叫','cancel','outline'):`<p class="accepted">${esc(assigned?.name)}（${esc(assigned?.profession)}）已接單</p><p>通常由承接人員結束。若需由醫師代為結束，請先確認任務已完成。</p>`+button('結束承接','doctor-finish','outline')}</div>${rosterPage()}</div>`;}
 function loginPage(register){return heading(register?'帳號註冊':'跟診支援登入',register?'註冊職編、姓名與職類；線別於每次登入時選擇。':'選擇本次班別的線別並填寫職編。','WELCOME BACK')+`<section class="panel login"><h2>${register?'註冊職編與姓名':'支援人員身分識別'}</h2><form id="identity">${register?'':`<label>本次線別<select name="line"><option value="PRIMARY" ${lastLine==='PRIMARY'?'selected':''}>1線</option><option value="SECONDARY" ${lastLine==='SECONDARY'?'selected':''}>2線</option></select></label>`}<label>職編<input name="id" value="${register?'':esc(lastId)}" required maxlength="40" pattern="[a-zA-Z0-9_-]{1,40}" placeholder="請填寫職編"></label>${register?'<label>姓名<input name="name" required maxlength="60" placeholder="請填寫姓名"></label><label>職類<select name="profession" required><option>護理師</option><option>醫檢師</option><option>行政人員</option></select></label>':''}<button type="submit">${register?'註冊':'登入工作站'}</button></form><button class="outline" data-action="${register?'show-login':'show-register'}">${register?'返回登入':'尚未註冊？註冊職編與姓名'}</button><p class="muted">預填上次職編與線別，仍需按登入；登入後自動帶入註冊職類。</p><p class="muted">展示職編：N001、N002（護理師）、N003（醫檢師）、N004（行政人員）；皆可依班別選1線或2線</p></section>`;}
 function analyticsPage(){return heading('人力配置分析','今日 · 範例數據，非實際統計','STAFFING INSIGHTS')+`<p class="muted">1線主責班段 · 占用包含準備、移動與實際服務</p><div class="metrics">${[['今日跟診占用總時間','2時 40分'],['BUSY 總時間','2時 00分'],['AVAILABLE 總時間','1時 45分'],['等待中位數','1分 12秒'],['最大等待','3分 24秒'],['1線不足總時間','18分 30秒']].map(([l,v])=>`<article class="panel metric"><span>${l}</span><strong>${v}</strong></article>`).join('')}</div><section class="panel graph"><h2>各時段人力分布</h2><div class="legend">承接占用（深綠） · 其他業務（灰褐） · 可接單（淺綠）</div>${['08:00–09:00','09:00–10:00','10:00–11:00'].map((h,i)=>`<p class="muted">${h}</p><div class="proportions"><span style="width:${30+i*12}%"></span><span style="width:${40-i*8}%"></span><span style="width:${30-i*4}%"></span></div>`).join('')}</section><div class="layout"><section class="panel graph"><h2>各診間總占用</h2><div class="bars">${[['1診','35分',40],['2診','1時15分',90],['3診','1時30分',110]].map(([r,d,h])=>`<div class="bar"><div style="--h:${h}px"></div>${r}<p>${d}</p></div>`).join('')}</div></section><section class="panel graph"><h2>1線不足時段</h2><p>09:12–09:20 <span class="tag">8分</span></p><p>10:05–10:15:30 <span class="tag">10分30秒</span></p><p class="muted">有診間等待且1線全不可用的聯合時間。</p></section></div>`;}
 function render(){
@@ -251,7 +259,7 @@ function act(action){
     };
     dialog.showModal();return;
   }
-  if(kind==='request'){Object.assign(r,{status:'REQUESTING',wait:0,nurse:null,requestId:++notificationDemo.sequence});notify(`${r.id}診已發出呼叫，可切到護理工作站接單`);}
+  if(kind==='request'){Object.assign(r,{status:'REQUESTING',wait:0,requestedAt:Date.now(),nurse:null,requestId:++notificationDemo.sequence});notify(`${r.id}診已發出呼叫，可切到護理工作站接單`);}
   if(kind==='cancel')Object.assign(r,{status:'IDLE',wait:0,nurse:null});
   if(kind==='accept'){
     if(selected==='conflict'){Object.assign(r,{status:'COVERED',nurse:'N002'});Object.assign(state.nurses[1],{status:'COVERING',room:r.id});notify('此診間已由其他護理師接手');}
@@ -266,6 +274,8 @@ function act(action){
 $('#scenario').innerHTML=scenarios.map(s=>`<option value="${s[0]}">${s[1]}</option>`).join('');
 $('#scenario').onchange=e=>setup(e.target.value);$('#view').onchange=e=>{if(e.target.value==='home'){returnHome();$('#view').value=view;return;}view=e.target.value;render();};$('#device').onchange=e=>{device=e.target.value;render();};$('#reset').onclick=()=>setup(selected);
 setup(selected);
+setInterval(updateWaitingTimes,1000);
+document.addEventListener('visibilitychange',updateWaitingTimes);
 preparePush();
 
 document.getElementById('preview-help').hidden=true;
