@@ -1,106 +1,112 @@
 <!doctype html>
 <html lang="zh-Hant">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>診間支援 · 情境展示原型</title><style>:root{font-family:"Segoe UI","Microsoft JhengHei",sans-serif;color:#263e39;background:#e8ecea;font-synthesis:none;--green:#17665b;--muted:#697b75;--border:#dce5df}
-.notification-settings,.notification-lab{margin-bottom:20px}.notification-options{display:flex;gap:15px;flex-wrap:wrap}.notification-options label{flex:1;min-width:130px}.demo-actions{display:flex;gap:10px;flex-wrap:wrap}.demo-actions button{font-size:13px}#pip-supported{display:inline;width:auto;min-height:0}.notification-environment{border:1px solid #cbd7ce;border-radius:15px;padding:22px;margin:20px 0;min-height:220px}.background-demo{background:#dce4eb;border:8px solid #687b89;min-height:360px}.notification-cards{display:grid;gap:12px}.notification-card{display:block;text-align:left;background:white;color:#263e39;border:1px solid #b7cbc1;box-shadow:0 4px 14px #203f3720;width:100%}.notification-card small,.notification-card strong,.notification-card span{display:block;margin-bottom:7px}.notification-card small{color:#697b75}.notification-card.exception{border-color:#c88c45;background:#fff6e8}.mini-station{border:2px solid #17665b;background:#fff;border-radius:12px;padding:18px;margin:0 0 20px auto;max-width:330px;box-shadow:0 8px 20px #203f3730}.mini-station button{font-size:12px;padding:8px}.mini-station p{margin:10px 0}.phone .demo-actions button{width:100%}.phone .notification-environment{padding:12px}.phone .notification-options{display:block}
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#17665b"><link rel="apple-touch-icon" href="icon-192.png"><title>診間支援 · 情境展示原型</title><style>:root{font-family:"Segoe UI","Microsoft JhengHei",sans-serif;color:#263e39;background:#e8ecea;font-synthesis:none;--green:#17665b;--muted:#697b75;--border:#dce5df}
 .home-menu{max-width:720px;margin:0 auto;display:grid;gap:18px}.room-entries{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.entry{min-height:76px;font-size:19px}.page-footer{border-top:1px solid var(--border);margin-top:32px;padding-top:24px;text-align:center}.page-footer button{width:100%;max-width:400px}.phone .room-entries{grid-template-columns:1fr}@media(max-width:700px){.room-entries{grid-template-columns:1fr}}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}.workbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;background:#fff;border-bottom:1px solid #dce5df}.workmetrics{display:flex;align-items:center;gap:32px}.workmetric{display:flex;flex-direction:column;gap:4px;min-width:72px}.workmetric strong{font-size:27px;line-height:1.1;color:#17665b;font-variant-numeric:tabular-nums}.workmetric strong small{font-size:11px;font-weight:400;margin-left:4px}.workmetric>span{font-size:12px;white-space:nowrap;color:#52685d}.workmetric.primary-count>span{font-weight:700;color:#17665b}.workmetric.none-available strong,.workmetric.none-available>span{color:#a65d23}.worktools{display:flex;align-items:center;gap:16px}.worktools button{font-size:12px;padding:8px 12px;min-height:40px}.workbar+.page,.phone .workbar+.page{padding-top:18px}.phone .workbar{padding:12px 14px;gap:10px}.phone .workmetrics{gap:16px;flex:1}.phone .workmetric{min-width:0;flex:1}.phone .workmetric strong{font-size:25px}.phone .workmetric>span{font-size:11px}.phone .worktools{flex-direction:column;gap:5px;flex-shrink:0}.phone .worktools .connection{font-size:10px}.phone .worktools button{min-height:36px;padding:6px 10px}@media(max-width:700px){.workbar{padding:12px 14px;gap:10px}.workmetrics{gap:16px;flex:1}.workmetric{min-width:0;flex:1}.workmetric strong{font-size:25px}.workmetric>span{font-size:11px}.worktools{flex-direction:column;gap:5px;flex-shrink:0}.worktools .connection{font-size:10px}.worktools button{min-height:36px;padding:6px 10px}}
 .my-status{margin-bottom:24px}.my-status .panel{padding-top:5px}.my-status .switch{max-width:540px}.assignment{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid #dce5df;padding-top:18px}.assignment strong{font-size:23px;color:#17665b}.assignment p{margin:7px 0 0;font-size:12px;color:#697b75}.assignment button{min-width:155px}.doctor-layout{align-items:start}.doctor-layout .doctor{margin:0;width:100%;max-width:none}.doctor-layout .personnel{min-width:0}.phone .assignment{align-items:stretch;flex-direction:column}.phone .assignment button{width:100%;min-height:54px}.phone .doctor-layout .doctor{margin-bottom:24px}dialog{max-width:440px;width:calc(100% - 32px);padding:26px;border:1px solid #cbd7ce;border-radius:15px;color:#263e39;background:white;box-shadow:0 20px 60px #0003}dialog::backdrop{background:#19372e88}dialog p{font-size:14px}dialog form{display:flex;gap:10px;flex-wrap:wrap}dialog form button{flex:1;min-width:140px}#finish-person{font-weight:650;color:#17665b}@media(max-width:700px){.assignment{flex-direction:column;align-items:stretch}.assignment button{width:100%}.doctor-layout .doctor{margin-bottom:24px}}
 *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,select{cursor:pointer}button{min-height:46px;border:1px solid transparent;border-radius:9px;background:var(--green);color:#fff;padding:12px 20px;font-weight:600}button:hover:not(:disabled){filter:brightness(.92)}button:disabled{opacity:.42;cursor:default}button.outline{background:#fff;color:#36584c;border-color:#cad7cf}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #d59b42;outline-offset:3px}a{color:var(--green)}h1,h2,h3,p{margin-top:0}p{line-height:1.7}h1{font-size:30px;margin-bottom:10px}h2{font-size:18px;margin-bottom:18px}h3{font-size:16px}.studio{display:flex;justify-content:space-between;align-items:center;padding:22px 32px;background:#203f37;color:white}.studio strong{font-size:18px}.studio small{display:block;color:#b8cdc4;font-size:12px;margin-top:7px}.studio a{font-size:12px;color:#c1d8cc}.controls{display:flex;flex-wrap:wrap;gap:14px;align-items:end;padding:20px 32px;background:#fff;border-bottom:1px solid var(--border)}label{display:block;font-size:12px;font-weight:600}input,select{display:block;width:100%;border:1px solid #cbd7ce;border-radius:8px;background:#fff;color:#304a3c;padding:11px 12px;min-height:45px;margin-top:8px}.controls label:first-child{min-width:260px}.controls label{min-width:150px}.controls button{margin-left:auto}.context{max-width:1250px;margin:20px auto;padding:0 24px;display:flex;gap:15px;flex-wrap:wrap;align-items:center;font-size:13px}.context span{color:#5f7168}.context strong{color:#2e594b}#stage{padding:0 24px 30px;overflow-x:auto}#screen{max-width:1200px;margin:auto;background:#f5f7f5;min-height:650px;border:1px solid #d0d9d3;border-radius:15px;overflow:hidden;box-shadow:0 12px 30px #203f3710}#screen.phone{width:390px;max-width:100%;min-height:740px}.top{padding:22px 28px;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid var(--border);gap:15px}.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px}.mark{display:grid;place-items:center;border-radius:11px;width:38px;height:38px;background:var(--green);color:#fff;font-size:28px;font-weight:400}.brand small{display:block;font-size:8px;letter-spacing:1.6px;color:#708579;margin-top:4px}.connection{color:var(--green);font-size:11px}.offline{color:#a45a20}.page{padding:32px}.heading{display:flex;justify-content:space-between;gap:18px;align-items:start;margin-bottom:26px}.eyebrow{font-size:10px;letter-spacing:1.6px;color:var(--green);margin-bottom:12px;font-weight:650}.subtitle,.muted{color:var(--muted);font-size:13px}.subtitle{margin:0}.heading button{font-size:12px;white-space:nowrap}.summary{display:flex;gap:25px;align-items:center;background:#eaf0eb;padding:16px 20px;border-radius:11px;margin-bottom:24px;font-size:13px}.summary strong{font-size:23px;color:var(--green);margin-right:5px}.summary span:last-child{margin-left:auto}.tag{display:inline-block;padding:3px 7px;border-radius:5px;background:#eaf0ea;color:#57705d;font-size:11px}.alert{padding:17px 20px;border:1px solid #e8bc84;border-radius:11px;background:#fff1de;color:#97531e;margin-bottom:24px;font-size:13px}.alert strong{display:block;margin-bottom:7px;font-size:15px}.layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,1fr);gap:24px}.left>section{margin-bottom:24px}.panel{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px}.call{display:flex;align-items:center;gap:22px;border:1px solid #e6bf8d;border-left:4px solid #c67a31;border-radius:12px;background:#fffaf1;padding:22px 18px;margin-bottom:12px}.room{font-size:28px;font-weight:700}.waiting{color:#9d622b;font-size:12px}.timer{font-size:28px;font-variant-numeric:tabular-nums;letter-spacing:1px;font-weight:650;margin-top:5px}.call button{margin-left:auto;background:#a95c25;white-space:nowrap}.empty{text-align:center;padding:35px 16px;color:var(--muted)}.empty span{font-size:27px;color:#57916a}.empty h3{font-weight:500;margin:16px 0 8px}.empty p{font-size:12px;margin:0}.person{display:flex;align-items:center;gap:12px;padding:16px 0}.person+.person{border-top:1px solid #edf1ec}.avatar{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#e5eee8;color:#4b775c}.person strong{font-size:14px}.person p{margin:6px 0 0;font-size:12px}.available{color:#40865a}.busy{color:#8b795f}.covering{color:#386578}.roster{margin-bottom:15px}.roster h3{font-size:12px;color:var(--muted);padding-bottom:16px;border-bottom:1px solid var(--border);margin:0}.roster>p{margin-top:18px;margin-bottom:0}.switch{display:flex;gap:10px}.switch button{flex:1;padding:12px 8px;font-size:13px}.switch button.selected:disabled{opacity:1}.switch .selected.busy{background:#87745d;color:white}.mine{display:flex;justify-content:space-between;align-items:center;background:#edf5f1;border-color:#b4d2c2;gap:14px}.mine h3{font-size:25px;margin:12px 0}.mine p{margin:0;font-size:12px;color:var(--muted)}.login{max-width:400px;margin:25px auto;padding:28px}.login form label{margin-bottom:20px}.login button{width:100%;margin-bottom:14px}.login .muted{font-size:12px;margin-bottom:8px}.doctor{max-width:610px;margin:35px auto;text-align:center;padding:35px}.doctor .symbol{font-size:52px;color:var(--green);margin:30px 0 22px}.doctor h2{font-size:28px}.doctor .timer{font-size:58px;color:#a76023;margin:16px}.doctor p{color:var(--muted);font-size:14px}.doctor button{display:block;width:100%;font-size:20px;min-height:60px;margin-top:27px}.doctor .accepted{font-size:21px;color:var(--green)}.doctor.requesting{background:#fffcf6;border-color:#e6c49c}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}.metric span{font-size:12px;color:var(--muted)}.metric strong{display:block;font-size:26px;margin-top:16px}.graph{margin-bottom:20px}.bars{display:flex;gap:18px;align-items:end;height:155px;padding-top:15px}.bar{flex:1;text-align:center;font-size:12px;color:var(--muted)}.bar>div{height:var(--h);min-height:2px;background:#4b8974;border-radius:4px 4px 0 0;margin-bottom:9px}.legend{font-size:12px;color:var(--muted)}.proportions{display:flex;height:25px;overflow:hidden;border-radius:5px;margin:18px 0}.proportions span:nth-child(1){background:#237a68;width:42%}.proportions span:nth-child(2){background:#b2a28c;width:31%}.proportions span:nth-child(3){background:#d7e7d5;width:27%}.studio-footer{text-align:center;font-size:12px;color:#6b7c72;padding:0 20px 24px}#message{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);max-width:calc(100% - 30px);padding:15px 22px;border-radius:9px;background:#283e35;color:white;box-shadow:0 5px 20px #0002;font-size:14px;z-index:5}.phone .page{padding:25px 17px}.phone .top{padding:20px 16px}.phone h1{font-size:25px}.phone .heading{gap:10px}.phone .heading button{padding:9px;font-size:11px}.phone .summary{flex-wrap:wrap;gap:12px;padding:14px}.phone .summary span:last-child{width:100%;margin:0}.phone .layout{display:block}.phone .call{flex-wrap:wrap;gap:15px}.phone .call>div:nth-child(2){margin-left:auto;text-align:right}.phone .call button{width:100%;min-height:55px;font-size:17px}.phone .metrics{grid-template-columns:repeat(2,1fr)}.phone .metric{padding:15px}.phone .metric strong{font-size:22px}.phone .doctor{padding:28px 20px}.phone .login{padding:24px}.phone .doctor .timer{font-size:48px}
 @media(max-width:700px){.studio{padding:18px}.studio a{display:none}.controls{padding:16px;gap:12px}.controls label,.controls label:first-child{min-width:0;flex:1 1 140px}.controls label:first-child{flex-basis:100%}.controls button{margin:0;flex:1}.context{padding:0 16px}#stage{padding:0 10px 20px}.page{padding:24px 17px}.layout{display:block}.summary{flex-wrap:wrap;gap:12px}.summary span:last-child{width:100%;margin:0}.call{flex-wrap:wrap}.call button{width:100%}.metrics{grid-template-columns:repeat(2,1fr)}.heading{gap:10px}.heading h1{font-size:25px}.heading button{padding:9px;font-size:11px}.top{padding:20px 16px}}
+
+.experience{max-width:640px;margin:0 auto 22px}.experience button{width:100%;margin-bottom:12px}.experience p{line-height:1.8}.experience h2{font-size:21px}
 </style></head>
 <body>
 <header class="studio"><div><strong>診間支援 · 展示原型</strong><small>獨立模擬資料，操作不會更動實際工作站</small></div></header>
-<section class="controls" aria-label="展示控制"><label>展示情境<select id="scenario" disabled><option>00 · 共同入口</option></select></label><label>觀看頁面<select id="view" disabled><option value="home">首頁</option><option value="notifications">通知與置頂視窗</option><option value="nurse">護理工作站</option><option value="doctor">醫師端 · 所選診間</option><option value="login">跟診支援登入</option><option value="register">職編註冊</option><option value="analytics">人力分析</option></select></label><label>版面<select id="device" disabled><option value="desktop">電腦 · 寬版</option><option value="phone">手機 · 390px</option></select></label><button disabled id="reset" class="outline">重設此情境</button></section>
+<section class="controls" aria-label="展示控制"><label>展示情境<select id="scenario" disabled><option>00 · 共同入口</option></select></label><label>觀看頁面<select id="view" disabled><option value="home">首頁</option><option value="notifications">實際體驗</option><option value="nurse">護理工作站</option><option value="doctor">醫師端 · 所選診間</option><option value="login">跟診支援登入</option><option value="register">職編註冊</option><option value="analytics">人力分析</option></select></label><label>版面<select id="device" disabled><option value="desktop">電腦 · 寬版</option><option value="phone">手機 · 390px</option></select></label><button disabled id="reset" class="outline">重設此情境</button></section>
 <div class="context"><strong id="scene-title"></strong><span id="scene-description"></span></div>
 <div id="preview-help" class="alert" style="margin:18px 24px"><strong>目前為靜態預覽</strong>若情境無法切換，代表此附件預覽器未執行互動程式。請下載這份 HTML，再以支援 JavaScript 的瀏覽器開啟。若手機仍只能預覽檔案，需要改用正式網頁網址。</div><div id="stage"><div id="screen"><div class="top"><div class="brand">診間支援</div></div><div class="page"><h1>首頁</h1><nav class="home-menu"><section class="panel"><h2>醫師診間</h2><div class="room-entries"><button disabled>醫師診間 1</button><button disabled>醫師診間 2</button><button disabled>醫師診間 3</button></div></section><button disabled class="entry">跟診支援登入</button><button disabled class="entry outline">人力分析紀錄</button></nav></div></div></div>
 <div id="message" role="status" hidden></div>
 <dialog id="finish-confirm" aria-labelledby="finish-title"><h2 id="finish-title">確認人員已結束任務？</h2><p id="finish-person"></p><p>通常由承接人員自行結束。請再次確認該人員已完成此診間任務，才由醫師代為解除承接。</p><p class="muted">確認後，診間恢復無需求，人員恢復可接單。</p><form method="dialog"><button value="cancel" class="outline" autofocus>返回，不結束</button><button value="confirm">確認已結束任務</button></form></dialog>
 <dialog id="home-confirm" aria-labelledby="home-title"><h2 id="home-title">返回首頁將登出工作站，確定繼續？</h2><p id="home-warning"></p><form method="dialog"><button value="cancel" class="outline" autofocus>取消，留在此頁</button><button value="confirm">登出並返回首頁</button></form></dialog>
 <footer class="studio-footer">這是視覺與互動展示；日期、人員與分析數據均為範例。可直接點擊画面中的呼叫、承接、結束等按鈕。</footer>
-<script>// All notifications and windows in this file are page-local simulations.
-let notificationDemo;
-function resetNotifications(key){
-  notificationDemo={platform:key==='notify-android'?'android':key==='notify-ios'?'ios':'desktop',permission:key==='notify-ios'?'default':'granted',installed:false,pip:false,pipSupported:true,background:false,multi:false,sequence:0,sent:new Set(),items:[]};
-  state.rooms.forEach(r=>{if(r.status==='REQUESTING')r.requestId=++notificationDemo.sequence;});
+<script>const PUSH_API='https://push-production-1078.up.railway.app';
+let notificationDemo={sequence:0},pipWindow=null,pushBusy=false,pushMessage='',pushConfig=null,swReady=null;
+let pushToken='';try{pushToken=localStorage.getItem('clinic-push-device')||'';}catch{}
+const standalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+const iosDevice=()=>/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+const pushSupported=()=>isSecureContext&&'serviceWorker'in navigator&&'PushManager'in window&&'Notification'in window;
+const pipSupported=()=>isSecureContext&&'documentPictureInPicture'in window;
+const experienceSupported=()=>pushSupported()||pipSupported()||iosDevice();
+function resetNotifications(){notificationDemo={sequence:0};if(pipWindow)pipWindow.close();}
+function collectNotifications(){syncPip();}
+function storePushToken(token){pushToken=token;try{if(token)localStorage.setItem('clinic-push-device',token);else{localStorage.removeItem('clinic-push-device');localStorage.removeItem('clinic-push-job');}}catch{}}
+async function pushRequest(path,method='GET',body,token=pushToken){
+  const response=await fetch(PUSH_API+path,{method,headers:{...(body?{'Content-Type':'application/json'}:{}),...(token?{Authorization:`Bearer ${token}`}:{})},...(body?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(12000)});
+  const result=await response.json();
+  if(!response.ok){if(response.status===401)storePushToken('');throw Error(result.error||'通知服務暫時無法連線');}return result;
 }
-function collectNotifications(){
-  const d=notificationDemo,n=me();
-  if(!n||!n.logged){d.pip=false;return;}
-  if(!state.online||d.permission!=='granted'||(d.platform==='ios'&&!d.installed))return;
-  const available=state.nurses.filter(p=>p.logged&&p.status==='AVAILABLE');
-  for(const r of state.rooms.filter(r=>r.status==='REQUESTING')){
-    const exception=!available.length&&n.status==='BUSY';
-    const normal=n.status==='AVAILABLE'&&(n.line==='PRIMARY'||!available.some(p=>p.line==='PRIMARY'));
-    const key=`${r.requestId}:${n.id}`;
-    if((normal||exception)&&!d.sent.has(key)){
-      d.sent.add(key);d.items.unshift({room:r.id,requestId:r.requestId,person:n.id,exception,test:false});
-    }
-  }
+async function preparePush(){
+  if(!pushSupported()||location.protocol==='file:')return;
+  try{await navigator.serviceWorker.register('./sw.js',{scope:'./'});swReady=await navigator.serviceWorker.ready;pushConfig=await pushRequest('/config');}
+  catch{pushMessage='通知服務暫時無法連線，請重新整理後再試。';}
+  if(view==='notifications')render();
 }
 function notificationPage(){
-  const d=notificationDemo,n=me();
-  const platform={desktop:'電腦',android:'Android',ios:'iPhone'}[d.platform];
-  const label={default:'尚未授權',granted:'已允許',denied:'已拒絕',unsupported:'此裝置不支援'}[d.permission];
-  const items=d.items.filter(item=>n&&item.person===n.id);
-  return heading('通知與置頂視窗','這裡模擬系統通知及背景畫面，不會發送真正的 Web Push。','INTERACTIVE DEMO')+`
-  <section class="panel notification-settings"><h2>通知設定 <span class="tag">${platform} · 模擬</span></h2>
-  <p>${n?`${esc(n.name)} · ${line(n)} · ${personStatus(n)}`:'尚未登入：不會接收新的需求通知。'}</p>
-  <div class="notification-options"><label>展示裝置<select id="notify-platform">${[['desktop','電腦'],['android','Android'],['ios','iPhone']].map(([v,t])=>`<option value="${v}" ${d.platform===v?'selected':''}>${t}</option>`).join('')}</select></label><label>模擬通知權限<select id="notify-permission">${[['default','尚未授權'],['granted','已允許'],['denied','已拒絕'],['unsupported','不支援']].map(([v,t])=>`<option value="${v}" ${d.permission===v?'selected':''}>${t}</option>`).join('')}</select></label></div>
-  <p class="muted">狀態：${label}。正式版依功能支援顯示選項；此選單用來比較不同裝置的效果。</p>
-  ${d.platform==='ios'?`<div class="alert"><strong>iPhone 啟用步驟（iOS 16.4 以上）</strong>先從瀏覽器選單「加入主畫面」，再從主畫面開啟並允許通知。<p>${d.installed?'已模擬從主畫面開啟':'目前模擬一般瀏覽器分頁'}</p><button data-action="demo-install">${d.installed?'改為尚未加入主畫面':'模擬已加入主畫面並開啟'}</button></div>`:''}
-  ${d.permission==='denied'?'<p class="alert">通知已拒絕，請至瀏覽器或系統設定重新允許。此展示可由上方選單改為「已允許」。</p>':d.permission==='unsupported'?'<p class="alert">此環境無法顯示系統通知，請保留工作站畫面或改用支援的瀏覽器。</p>':''}
-  <div class="demo-actions"><button data-action="demo-enable" ${!n||['denied','unsupported'].includes(d.permission)||d.platform==='ios'&&!d.installed?'disabled':''}>啟用通知（模擬）</button><button class="outline" data-action="demo-test" ${!n||d.permission!=='granted'||d.platform==='ios'&&!d.installed?'disabled':''}>測試通知</button><button class="outline" data-action="demo-background">${d.background?'返回前景展示':'模擬切到其他工作／鎖屏'}</button><button class="outline" data-action="demo-multi">${d.multi?'關閉':'展示'}同一人兩台裝置收通知</button></div>
-  ${d.platform==='desktop'?`<p><label><input type="checkbox" id="pip-supported" ${d.pipSupported?'checked':''}> 模擬瀏覽器支援置頂視窗</label></p>${d.pipSupported?`<button data-action="demo-pip" ${!n?'disabled':''}>${d.pip?'關閉':'開啟'}置頂小視窗（模擬）</button>`:'<p class="muted">此瀏覽器不支援置頂小視窗，仍可使用系統通知。</p>'}`:''}</section>
-  <section class="panel notification-lab"><h2>需求通知測試</h2><p class="muted">1線可接單優先；無可用1線時提醒可接單2線。全無可用人力時，BUSY 每筆需求提醒一次；承接中不提醒。</p><div class="demo-actions"><button data-action="demo-request">模擬新增需求</button><button class="outline" data-action="demo-allbusy">模擬所有未承接人員 BUSY</button><button class="outline" data-action="demo-check">再次檢查（不重複提醒）</button><button class="outline" data-action="demo-taken">模擬最新需求被承接</button><button class="outline" data-action="demo-cancel">模擬最新需求取消</button></div></section>
-  <section class="notification-environment ${d.background?'background-demo':''}"><p class="muted">${d.background?(d.platform==='desktop'?'正在處理其他電腦工作 · 模擬背景':'手機鎖定畫面 · 模擬背景'):'通知中心 · 模擬'}${d.multi?' · 電腦與手機各顯示一份':''}</p>
-  ${d.pip&&d.platform==='desktop'&&d.pipSupported&&n?`<aside class="mini-station"><strong>置頂支援工作站 · 模擬</strong><p>${esc(n.name)} · ${personStatus(n)}</p>${n.room?button('結束承接','finish'):button(n.status==='BUSY'?'切回可接單':'切換忙碌',n.status==='BUSY'?'available':'busy','outline')} ${state.rooms.filter(r=>r.status==='REQUESTING').map(r=>`<p>${r.id}診等待 ${button('接單',`accept:${r.id}`,'',n.status!=='AVAILABLE')}</p>`).join('')||'<p>目前無等待診間</p>'}</aside>`:''}
-  <div class="notification-cards" aria-live="polite">${items.length?items.map((item,index)=>(d.multi?['電腦','手機']:[platform]).map(target=>`<button class="notification-card ${item.exception?'exception':''}" data-action="demo-open:${index}"><small>${target} · 診間支援 · 模擬通知</small><strong>${item.test?'測試通知':`${item.room}診等待支援${item.exception?'，目前無可用人力':''}`}</strong><span>${item.test?'點擊返回工作站':item.exception?'若可暫停手邊業務，請切換為「可接單」後承接。':'點擊查看最新需求狀態'}</span></button>`).join('')).join(''):'<p>目前沒有通知。可使用上方按鈕模擬需求；登出或不符合通知條件時不會新增。</p>'}</div></section>
-  <button class="outline" data-action="demo-station">返回工作站</button>`;
+  const denied=pushSupported()&&Notification.permission==='denied',iosSetup=iosDevice()&&!standalone();
+  return heading('實際體驗','真的收到通知，真的開啟置頂小視窗。','TRY IT')+`
+  <section class="panel experience"><h2>通知到這台裝置</h2>
+  ${iosSetup?'<p>iPhone 請先從瀏覽器選單選「加入主畫面」，再從主畫面開啟此網站。</p>':!pushSupported()?'<p>目前瀏覽器不支援推播通知，請改用支援的瀏覽器開啟線上網站。</p>':denied?'<p>通知已被封鎖，請在瀏覽器或系統設定允許本站通知，再回到這裡。</p>':`<p>${pushToken?'已啟用。按下測試後，請切到其他程式或將手機鎖屏。':'按下啟用並允許通知，即可測試。無需填寫裝置資料。'}</p>${!pushConfig||!swReady?'<p class="muted">尚未連上通知服務。</p>':`<button data-action="real-${pushToken?'test':'enable'}" ${pushBusy?'disabled':''}>${pushBusy?'處理中…':pushToken?'15秒後發送測試通知':'啟用通知'}</button>`}`}
+  <p id="push-status" class="muted" role="status">${esc(pushMessage)}</p>
+  ${pushToken?'<button class="outline" data-action="real-disable">停止通知並取消待發測試</button>':''}
+  <p class="muted">只發送您按下的測試，不會通知其他人。每次間隔至少30秒，體驗訂閱24小時後到期。</p></section>
+  ${pipSupported()?`<section class="panel experience"><h2>置頂支援工作站</h2><p>開啟後，切到其他程式仍可看到支援狀態與接單按鈕。診間資料仍是展示資料。</p>${me()?`<button data-action="real-pip">${pipWindow&&!pipWindow.closed?'關閉置頂視窗':'開啟置頂視窗'}</button>`:'<button data-action="real-login">先登入支援工作站</button>'}</section>`:''}
+  <button class="outline" data-action="real-back">${me()?'返回工作站':'返回首頁'}</button>`;
 }
-function bindNotificationControls(){
-  const p=$('#notify-platform'),permission=$('#notify-permission'),pip=$('#pip-supported');
-  if(p)p.onchange=()=>{notificationDemo.platform=p.value;notificationDemo.pip=false;render();};
-  if(permission)permission.onchange=()=>{notificationDemo.permission=permission.value;render();};
-  if(pip)pip.onchange=()=>{notificationDemo.pipSupported=pip.checked;notificationDemo.pip=false;render();};
+function bindNotificationControls(){}
+async function stopPush(){
+  if(pipWindow)pipWindow.close();
+  if(!pushToken)return;
+  await pushRequest('/subscription','DELETE');storePushToken('');pushMessage='通知已停止，尚未送出的測試已取消。';
+  const subscription=await swReady?.pushManager.getSubscription();if(subscription)await subscription.unsubscribe();
 }
-function notificationAction(kind,id){
-  const d=notificationDemo,n=me();
-  if(kind==='demo-settings'){view='notifications';render();return;}
-  if(kind==='demo-install')d.installed=!d.installed;
-  if(kind==='demo-enable')d.permission='granted';
-  if(kind==='demo-test'&&n)d.items.unshift({test:true,person:n.id});
-  if(kind==='demo-background')d.background=!d.background;
-  if(kind==='demo-multi')d.multi=!d.multi;
-  if(kind==='demo-pip')d.pip=!d.pip;
-  if(kind==='demo-station')view=n?'nurse':'login';
-  if(kind==='demo-request'){
-    const r=state.rooms.find(r=>r.status==='IDLE');
-    if(r)Object.assign(r,{status:'REQUESTING',wait:0,requestId:++d.sequence,nurse:null});
-    else notify('目前沒有空閒診間，請先取消或結束一筆需求');
+async function notificationAction(kind){
+  if(kind==='real-settings'){view='notifications';render();preparePush();return;}
+  if(kind==='real-login'){view='login';render();return;}
+  if(kind==='real-back'){if(me()){view='nurse';render();}else{try{await stopPush();returnHome();}catch(e){pushMessage=e.message;render();}}return;}
+  if(kind==='real-pip'){
+    try{
+      if(pipWindow&&!pipWindow.closed){pipWindow.close();return;}
+      pipWindow=await documentPictureInPicture.requestWindow({width:350,height:430});
+      pipWindow.document.title='支援工作站';
+      const style=pipWindow.document.createElement('style');style.textContent='body{font-family:system-ui,sans-serif;background:#f5f7f5;color:#263e39;margin:18px}button{padding:12px;border:0;border-radius:8px;background:#17665b;color:white;margin:5px;cursor:pointer}button:disabled{opacity:.4}h2{font-size:20px}p{line-height:1.5}.pip-room{background:white;padding:10px;border-radius:10px;margin:10px 0}';pipWindow.document.head.append(style);
+      pipWindow.addEventListener('pagehide',()=>{pipWindow=null;if(view==='notifications')render();});syncPip();render();
+    }catch{pushMessage='無法開啟置頂視窗，請使用支援此功能的電腦瀏覽器。';render();}return;
   }
-  if(kind==='demo-allbusy')state.nurses.filter(p=>p.logged&&p.status!=='COVERING').forEach(p=>p.status='BUSY');
-  if(['demo-taken','demo-cancel'].includes(kind)){
-    const r=state.rooms.filter(r=>r.status==='REQUESTING').sort((a,b)=>b.requestId-a.requestId)[0];
-    if(r&&kind==='demo-cancel')Object.assign(r,{status:'IDLE',nurse:null,wait:0});
-    if(r&&kind==='demo-taken'){
-      const other=state.nurses.find(p=>p.logged&&p.id!==state.me&&p.status!=='COVERING');
-      if(other){Object.assign(r,{status:'COVERED',nurse:other.id});Object.assign(other,{status:'COVERING',room:r.id});}
-      else notify('沒有可模擬承接的其他登入人員');
+  if(pushBusy)return;pushBusy=true;
+  try{
+    if(kind==='real-enable'){
+      const permission=await Notification.requestPermission();
+      if(permission!=='granted')throw Error('尚未允許通知。');
+      const key=Uint8Array.from(atob(pushConfig.publicKey.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));
+      let subscription=await swReady.pushManager.getSubscription();
+      if(subscription){const old=new Uint8Array(subscription.options.applicationServerKey||[]);if(old.length!==key.length||old.some((v,i)=>v!==key[i])){await subscription.unsubscribe();subscription=null;}}
+      subscription||=await swReady.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:key});
+      const result=await pushRequest('/subscriptions','POST',{subscription:subscription.toJSON()});storePushToken(result.token);pushMessage='已啟用，現在可以安排測試。';
     }
-  }
-  if(kind==='demo-open'){
-    const item=d.items.filter(item=>n&&item.person===n.id)[Number(id)];
-    view=n?'nurse':'login';d.background=false;
-    if(item&&!item.test){const r=state.rooms.find(r=>r.id===item.room);notify(r.requestId!==item.requestId?'這筆需求已結束，請查看目前狀態':r.status==='COVERED'?'此需求已有人承接':r.status==='IDLE'?'此需求已取消或結束':'需求仍在等待，請確認目前狀態後承接');}
-  }
-  render();
+    if(kind==='real-test'){
+      const result=await pushRequest('/test','POST',{id:crypto.randomUUID()});
+      try{localStorage.setItem('clinic-push-job',result.id);}catch{}
+      pushMessage='已安排！15秒後由伺服器發送，現在可以鎖屏或切換程式。';
+    }
+    if(kind==='real-disable')await stopPush();
+  }catch(e){pushMessage=e.message||'操作未完成，請稍後再試。';}
+  finally{pushBusy=false;render();}
 }
+function syncPip(){
+  if(!pipWindow||pipWindow.closed)return;
+  const n=me();if(!n){pipWindow.close();return;}
+  pipWindow.document.body.innerHTML=`<h2>支援工作站</h2><p>${esc(n.name)} · ${line(n)}<br>${personStatus(n)}</p>${n.room?button('結束承接','finish'):button(n.status==='BUSY'?'切回可接單':'切換忙碌',n.status==='BUSY'?'available':'busy')} ${state.rooms.filter(r=>r.status==='REQUESTING').map(r=>`<div class="pip-room">${r.id}診等待 ${button('接單',`accept:${r.id}`,'',n.status!=='AVAILABLE')}</div>`).join('')||'<p>目前無等待需求</p>'}`;
+  pipWindow.document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>act(b.dataset.action));
+}
+async function checkPushStatus(){
+  let id;try{id=localStorage.getItem('clinic-push-job');}catch{}
+  if(!id||!pushToken)return;
+  try{const result=await pushRequest('/test/'+id);pushMessage=({pending:'測試已排程，請稍候。',sending:'正在發送測試。',sent:'推播服務已接受通知；請查看這台裝置的通知中心。',failed:'推播發送失敗，請停止通知後重新啟用。',unknown:'發送結果不明，請先查看通知中心再決定是否重試。',expired:'這次測試已逾時，請重新安排。'})[result.status];if(view==='notifications')render();}catch{}
+}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkPushStatus();});
+window.addEventListener('focus',checkPushStatus);
+if('serviceWorker'in navigator)navigator.serviceWorker.addEventListener('message',e=>{if(e.data?.type==='push-open'){view='notifications';render();checkPushStatus();}});
 
 const scenarios=[
-  ['notify-desktop','13 · 電腦通知與置頂','展示通知授權、背景提醒與置頂工作站。','notifications'],
-  ['notify-android','14 · Android 通知','模擬手機背景通知與點擊後回到工作站。','notifications'],
-  ['notify-ios','15 · iPhone 通知引導','先模擬加入主畫面，再啟用與測試通知。','notifications'],
-  ['notify-busy','16 · 全員 BUSY 例外通知','所有登入人員忙其他業務，每筆需求對同一人只提醒一次。','notifications'],
   ['home','00 · 共同入口','由首頁進入各診間、支援登入與分析；返回首頁可確認登出。','home'],
   ['idle','01 · 平時：無需求','無待處理診間；登入的1線與2線皆可支援。','nurse'],
   ['waiting','02 · 診間正在等待','3診等待 01:24；可接單者可承接，醫師可取消。','nurse'],
@@ -135,14 +141,13 @@ function setup(key){
   if(key==='multiple'){Object.assign(state.rooms[1],{status:'REQUESTING',wait:162});}
   if(key==='offline')state.online=false;
   if(['home','login','register'].includes(key)){state.nurses.forEach(n=>n.logged=false);state.me=null;}
-  if(key==='notify-busy'){state.nurses.forEach(n=>n.status='BUSY');r.status='REQUESTING';r.wait=84;}
   resetNotifications(key);
   view=scenarios.find(s=>s[0]===key)[3];$('#view').value=view;$('#scenario').value=key;$('#message').hidden=true;render();
 }
 function button(text,action,extra='',disabled=false){return `<button data-action="${action}" class="${extra}" ${disabled||!state.online?'disabled':''}>${text}</button>`;}
-function homePage(){return heading('首頁','請選擇要使用的功能。','WELCOME')+`<nav class="home-menu" aria-label="共同入口"><section class="panel"><h2>醫師診間</h2><div class="room-entries">${[1,2,3].map(id=>`<button data-action="open-doctor:${id}">醫師診間 ${id}</button>`).join('')}</div></section><button class="entry" data-action="open-support">跟診支援登入</button><button class="entry outline" data-action="open-analytics">人力分析紀錄</button></nav>`;}
+function homePage(){return heading('首頁','請選擇要使用的功能。','WELCOME')+`<nav class="home-menu" aria-label="共同入口"><section class="panel"><h2>醫師診間</h2><div class="room-entries">${[1,2,3].map(id=>`<button data-action="open-doctor:${id}">醫師診間 ${id}</button>`).join('')}</div></section><button class="entry" data-action="open-support">跟診支援登入</button><button class="entry outline" data-action="open-analytics">人力分析紀錄</button>${experienceSupported()?'<button class="entry outline" data-action="real-settings">通知與置頂視窗體驗</button>':''}</nav>`;}
 function returnHome(){
-  const leave=()=>{const self=me();if(self){lastId=self.id;lastLine=self.line;self.logged=false;state.me=null;}view='home';render();};
+  const leave=async()=>{try{await stopPush();}catch(e){notify('尚未停止待發通知：'+e.message);return;}const self=me();if(self){lastId=self.id;lastLine=self.line;self.logged=false;state.me=null;}view='home';render();};
   if(!me()){leave();return;}
   const dialog=$('#home-confirm');
   $('#home-warning').textContent=me().room?'登出不會結束目前承接，請先完成任務並結束承接。':'確認後，您將從已登入的人員狀態中移除；再次使用需手動登入。';
@@ -167,7 +172,7 @@ function nursePage(){
   return `<h1 class="visually-hidden">護理工作站</h1>
     ${shortage?shortageCard(false):''}
     ${myStatus()}
-    <p><button class="outline" data-action="demo-settings">通知設定與置頂視窗展示</button></p>
+    ${experienceSupported()?'<p><button class="outline" data-action="real-settings">通知與置頂視窗體驗</button></p>':''}
     ${!state.online?'<div class="alert"><strong>連線中斷 · 正在重新同步</strong>目前為最後同步狀態，恢復連線後才能操作。<p></p><button data-action="reconnect">恢復連線（展示）</button></div>':''}
     <div class="layout"><div class="left"><section class="waiting-rooms"><h2>待處理診間 <span class="tag">${waiting.length}</span></h2>${waiting.length?waiting.map(r=>`<article class="call"><div class="room">${r.id}診</div><div><div class="waiting">等待支援人員</div><div class="timer">${String(Math.floor(r.wait/60)).padStart(2,'0')}:${String(r.wait%60).padStart(2,'0')}</div></div>${button(shortage?'我來支援 →':'接單 →',`accept:${r.id}`,'',self.status!=='AVAILABLE')}</article>`).join(''):'<div class="panel empty"><span>✓</span><h3>目前沒有等待中的診間</h3><p>新的需求會自動出現在這裡</p></div>'}</section></div>${rosterPage()}</div>`;
 }
@@ -197,7 +202,7 @@ function render(){
 }
 function act(action){
   const [kind,id]=action.split(':');const self=me(),r=state.rooms.find(r=>r.id===Number(id))||state.rooms.find(r=>r.id===doctorRoom);
-  if(kind.startsWith('demo-')){notificationAction(kind,id);return;}
+  if(kind.startsWith('real-')){notificationAction(kind,id);return;}
   if(kind==='home'){returnHome();return;}
   if(kind==='open-doctor'){doctorRoom=Number(id);view='doctor';}
   if(kind==='open-support')view=me()?'nurse':'login';
@@ -222,12 +227,15 @@ function act(action){
   }
   if(kind==='finish'){Object.assign(state.rooms.find(r=>r.id===self.room),{status:'IDLE',nurse:null,wait:0});Object.assign(self,{status:'AVAILABLE',room:null});}
   if(kind==='busy')self.status='BUSY';if(kind==='available')self.status='AVAILABLE';
+  if(kind==='logout'&&pushToken){stopPush().then(()=>act('logout')).catch(e=>notify('尚未停止待發通知：'+e.message));return;}
   if(kind==='logout'){lastId=self.id;lastLine=self.line;self.logged=false;state.me=null;view='login';}
   if(kind==='show-register')view='register';if(kind==='show-login')view='login';render();
 }
 $('#scenario').innerHTML=scenarios.map(s=>`<option value="${s[0]}">${s[1]}</option>`).join('');
 $('#scenario').onchange=e=>setup(e.target.value);$('#view').onchange=e=>{if(e.target.value==='home'){returnHome();$('#view').value=view;return;}view=e.target.value;render();};$('#device').onchange=e=>{device=e.target.value;render();};$('#reset').onclick=()=>setup(selected);
 setup(selected);
+if(new URLSearchParams(location.search).has('experience')){view='notifications';render();}
+preparePush();
 
 document.getElementById('preview-help').hidden=true;
 document.querySelectorAll('.controls select,.controls button').forEach(element=>element.disabled=false);
