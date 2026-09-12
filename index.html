@@ -27,6 +27,17 @@ const iosDevice=()=>/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.pla
 const pushSupported=()=>isSecureContext&&'serviceWorker'in navigator&&'PushManager'in window&&'Notification'in window;
 const pipSupported=()=>isSecureContext&&'documentPictureInPicture'in window;
 const experienceSupported=()=>pushSupported()||pipSupported()||iosDevice();
+function waitForPushStep(promise,ms=20000){let timer;return Promise.race([promise,new Promise((_,reject)=>{timer=setTimeout(()=>reject(new DOMException('等待逾時','TimeoutError')),ms);})]).finally(()=>clearTimeout(timer));}
+function enablePushError(error,stage){
+  const code=/^[A-Za-z]+Error$/.test(error.name||'')?error.name:'Error';
+  if(error.status)return `${stage}：${error.message}。可再次按「啟用通知」。`;
+  if(stage==='通知權限')return '通知尚未允許。請查看 Chrome 的通知權限提示；若已封鎖，請到網站設定允許通知。';
+  if(stage==='建立推播訂閱'){
+    if(code==='NotAllowedError'||/permission denied/i.test(error.message||''))return '建立訂閱遭瀏覽器拒絕。請使用一般瀏覽模式，確認 Android 的 Chrome 通知權限及本站通知權限皆已允許。';
+    return `建立推播訂閱失敗（${code}）。可能無法連上瀏覽器推播服務；可切換 Wi-Fi／行動網路後再按「啟用通知」。`;
+  }
+  return `登記通知裝置失敗（${code}）。訂閱尚未完成登記，請確認網路後再按「啟用通知」；會沿用已建立的瀏覽器訂閱。`;
+}
 function resetNotifications(){notificationDemo={sequence:0};if(pipWindow)pipWindow.close();}
 function collectNotifications(){syncPip();}
 function storePushToken(token){pushToken=token;if(!token){cooldownUntil=0;pushJobStatus='';pollUntil=0;}try{if(token)localStorage.setItem('clinic-push-device',token);else{localStorage.removeItem('clinic-push-device');localStorage.removeItem('clinic-push-job');localStorage.removeItem('clinic-push-cooldown');}}catch{}}
@@ -76,15 +87,20 @@ async function notificationAction(kind){
       pipWindow.addEventListener('pagehide',()=>{pipWindow=null;updateNotificationControls();});syncPip();render();
     }catch{pushMessage='無法開啟置頂視窗，請使用支援此功能的電腦瀏覽器。';render();}return;
   }
-  if(pushBusy||(kind==='real-test'&&Date.now()<cooldownUntil))return;pushBusy=true;pushMessage=kind==='real-enable'?'請在瀏覽器詢問時選擇允許…':kind==='real-test'?'正在安排測試…':'正在停止通知…';updateNotificationControls();
+  if(pushBusy||(kind==='real-test'&&Date.now()<cooldownUntil))return;pushBusy=true;let enableStage='通知權限';pushMessage=kind==='real-enable'?'請在瀏覽器詢問時選擇允許…':kind==='real-test'?'正在安排測試…':'正在停止通知…';
   try{
+    if(kind!=='real-enable')updateNotificationControls();
     if(kind==='real-enable'){
-      const permission=await Notification.requestPermission();
+      const permissionRequest=Notification.permission==='granted'?Promise.resolve('granted'):Notification.requestPermission();
+      updateNotificationControls();
+      const permission=await waitForPushStep(permissionRequest,30000);
       if(permission!=='granted')throw Error('尚未允許通知。');
+      enableStage='建立推播訂閱';pushMessage='通知權限已允許，正在建立此瀏覽器的推播訂閱…';updateNotificationControls();
       const key=Uint8Array.from(atob(pushConfig.publicKey.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));
-      let subscription=await swReady.pushManager.getSubscription();
-      if(subscription){const old=new Uint8Array(subscription.options.applicationServerKey||[]);if(old.length!==key.length||old.some((v,i)=>v!==key[i])){await subscription.unsubscribe();subscription=null;}}
-      subscription||=await swReady.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:key});
+      let subscription=await waitForPushStep(swReady.pushManager.getSubscription());
+      if(subscription){const old=new Uint8Array(subscription.options.applicationServerKey||[]);if(old.length!==key.length||old.some((v,i)=>v!==key[i])){await waitForPushStep(subscription.unsubscribe());subscription=null;}}
+      subscription||=await waitForPushStep(swReady.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:key}));
+      enableStage='登記通知裝置';pushMessage='瀏覽器訂閱已建立，正在登記到通知伺服器…';updateNotificationControls();
       const result=await pushRequest('/subscriptions','POST',{subscription:subscription.toJSON()});storePushToken(result.token);pushMessage='已啟用，現在可以安排測試。';
     }
     if(kind==='real-test'){
@@ -94,7 +110,7 @@ async function notificationAction(kind){
       pushMessage='已安排，約4秒後發送；現在可以切換程式或鎖屏。';
     }
     if(kind==='real-disable')await stopPush();
-  }catch(e){pushMessage=e.status?e.message:e.name==='NotAllowedError'?'瀏覽器未允許推播，請檢查通知權限並使用一般瀏覽模式。':'操作未完成或連線中斷，正在確認結果，請勿重複操作。';if(kind==='real-test'){pollUntil=Date.now()+60000;checkPushStatus();}}
+  }catch(e){pushMessage=kind==='real-enable'?enablePushError(e,enableStage):e.status?e.message:kind==='real-test'?'尚未確認測試是否排程成功，正在查詢，請先不要重複操作。':'停止通知未完成，請確認網路後再試。';if(kind==='real-test'){pollUntil=Date.now()+60000;checkPushStatus();}}
   finally{pushBusy=false;updateNotificationControls();}
 }
 function syncPip(){
