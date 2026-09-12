@@ -49,7 +49,7 @@ function notificationPage(){
   ${pushToken?'<button class="outline" data-action="real-disable">停止通知並取消待發測試</button>':''}
   <p class="muted">只發送您按下的測試，不會通知其他人。每次間隔至少30秒，體驗訂閱24小時後到期。</p></section>
   ${pipSupported()?`<section class="panel experience"><h2>置頂支援工作站</h2><p>開啟後，切到其他程式仍可看到支援狀態與接單按鈕。診間資料仍是展示資料。</p>${me()?`<button data-action="real-pip">${pipWindow&&!pipWindow.closed?'關閉置頂視窗':'開啟置頂視窗'}</button>`:'<button data-action="real-login">先登入支援工作站</button>'}</section>`:''}
-  <button class="outline" data-action="real-back">${me()?'返回工作站':'返回首頁'}</button>`;
+  ${me()?'<button class="outline" data-action="real-back">返回工作站</button>':''}`;
 }
 function bindNotificationControls(){}
 async function stopPush(){
