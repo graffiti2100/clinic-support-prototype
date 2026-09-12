@@ -91,6 +91,7 @@ async function notificationAction(kind){
       pipWindow=await documentPictureInPicture.requestWindow({width:350,height:430});
       pipWindow.document.title='支援工作站';
       const style=pipWindow.document.createElement('style');style.textContent='body{font-family:system-ui,sans-serif;background:#f5f7f5;color:#263e39;margin:18px}button{padding:12px;border:0;border-radius:8px;background:#17665b;color:white;margin:5px;cursor:pointer}button:disabled{opacity:.4}h2{font-size:20px}p{line-height:1.5}.pip-room{background:white;padding:12px;border-radius:10px;margin:10px 0;display:flex;align-items:center;justify-content:space-between;gap:8px}.pip-wait{display:block;margin-top:5px;font-variant-numeric:tabular-nums}.pip-status{border:2px solid;border-radius:10px;padding:12px;margin:12px 0}.pip-status small{display:block;margin-bottom:4px}.pip-status strong{font-size:20px}.pip-status.available{background:#dcfce7;color:#14532d;border-color:#15803d}.pip-status.busy{background:#ffedd5;color:#7c2d12;border-color:#c2410c}.pip-status.covering{background:#dbeafe;color:#1e3a8a;border-color:#2563eb}';pipWindow.document.head.append(style);
+      style.textContent+='.pip-alert{padding:12px;border:2px solid #b45309;border-radius:10px;background:#fef3c7;color:#78350f;margin:12px 0;line-height:1.5}.pip-alert strong{display:block;font-size:18px}.pip-alert.all-busy{background:#fee2e2;border-color:#b91c1c;color:#7f1d1d}';
       pipWindow.addEventListener('pagehide',()=>{pipWindow=null;updateNotificationControls();});syncPip();render();
     }catch{pushMessage='無法開啟置頂視窗，請使用支援此功能的電腦瀏覽器。';render();}return;
   }
@@ -126,6 +127,10 @@ function syncPip(){
   if(!pipWindow||pipWindow.closed)return;
   const n=me();if(!n){pipWindow.close();return;}
   pipWindow.document.body.innerHTML=`<h2>支援工作站</h2><p>${esc(n.name)} · ${line(n)}</p><div class="pip-status ${n.status.toLowerCase()}" role="status"><small>個人狀態</small><strong>${n.status==='COVERING'?`承接中｜${roomName(n.room)}`:n.status==='BUSY'?'忙碌中｜無法支援':'可接單'}</strong></div>${n.room?button('結束承接','finish'):button(n.status==='BUSY'?'切回可接單':'切換忙碌',n.status==='BUSY'?'available':'busy')} ${state.rooms.filter(r=>r.status==='REQUESTING').sort((a,b)=>a.requestedAt-b.requestedAt).map(r=>`<div class="pip-room"><div><strong>${r.id}診</strong><span class="pip-wait">已等待 <span data-wait-room="${r.id}">${waitText(r)}</span></span></div>${button('接單',`accept:${r.id}`,'',n.status!=='AVAILABLE')}</div>`).join('')||'<p>目前無等待需求</p>'}`;
+  const active=state.nurses.filter(person=>person.logged);
+  const allBusy=state.rooms.some(r=>r.status==='REQUESTING')&&active.length>0&&active.every(person=>person.status==='BUSY');
+  const alert=allBusy?'<aside class="pip-alert all-busy" role="status"><strong>全員忙碌</strong>請評估是否可暫停其他業務支援。</aside>':n.line==='SECONDARY'&&noAvailablePrimary()?'<aside class="pip-alert shortage" role="status"><strong>目前無可用1線</strong>有診間等待支援，您可以主動承接。</aside>':'';
+  pipWindow.document.querySelector('.pip-status').insertAdjacentHTML('beforebegin',alert);
   pipWindow.document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>act(b.dataset.action));
 }
 async function checkPushStatus(){
@@ -145,6 +150,7 @@ const scenarios=[
   ['waiting','02 · 診間正在等待','3診等待 01:24；可接單者可承接，醫師可取消。','nurse'],
   ['covered','03 · 人員已承接','我的狀態包含承接診間與結束按鈕；醫師可確認後代為結束。','nurse'],
   ['busy','04 · 其他業務忙碌','自己為 BUSY；要先切回可接單才能承接診間。','nurse'],
+  ['all-busy','04A · 全員忙碌','1、2線皆忙於其他業務；開啟置頂視窗查看例外提醒，切回可接單後解除。','nurse'],
   ['shortage','05 · 1線全不可用','護理端在我的狀態上方提示；醫師端在診間支援頂欄下方提示。','nurse'],
   ['multiple','06 · 多診同時等待','兩診依等待時間排序；一人只能承接一診。','nurse'],
   ['conflict','07 · 接單被別人搶先','按接單，模擬另一位護理師已先承接的回應。','nurse'],
@@ -174,9 +180,10 @@ function setup(key){
   doctorRoom=3;
   selected=key;state={online:true,me:'N001',rooms:[1,2,3].map(id=>({id,status:'IDLE',wait:0,nurse:null})),nurses:[{id:'N001',name:'王怡文',profession:'護理師',line:'PRIMARY',status:'AVAILABLE',room:null,logged:true},{id:'N002',name:'林佳穎',profession:'護理師',line:'PRIMARY',status:'AVAILABLE',room:null,logged:true},{id:'N003',name:'陳志明',profession:'醫檢師',line:'SECONDARY',status:'AVAILABLE',room:null,logged:true},{id:'N004',name:'李雅婷',profession:'行政人員',line:'SECONDARY',status:'AVAILABLE',room:null,logged:true}]};
   const r=state.rooms[2];
-  if(['waiting','busy','shortage','multiple','conflict','offline'].includes(key)){r.status='REQUESTING';r.wait=84;}
+  if(['waiting','busy','all-busy','shortage','multiple','conflict','offline'].includes(key)){r.status='REQUESTING';r.wait=84;}
   if(['covered','doctor-finish'].includes(key)){r.status='COVERED';r.nurse='N001';Object.assign(me(),{status:'COVERING',room:3});}
   if(key==='busy')me().status='BUSY';
+  if(key==='all-busy')state.nurses.forEach(n=>n.status='BUSY');
   if(key==='shortage'){state.me='N003';state.nurses[0].status='BUSY';Object.assign(state.nurses[1],{status:'COVERING',room:2});Object.assign(state.rooms[1],{status:'COVERED',nurse:'N002'});}
   if(key==='multiple'){Object.assign(state.rooms[1],{status:'REQUESTING',wait:162});}
   const now=Date.now();state.rooms.forEach(room=>{room.requestedAt=now-room.wait*1000;});
