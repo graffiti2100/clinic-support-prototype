@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>診間支援 · 情境展示原型</title><style>:root{font-family:"Segoe UI","Microsoft JhengHei",sans-serif;color:#263e39;background:#e8ecea;font-synthesis:none;--green:#17665b;--muted:#697b75;--border:#dce5df}
+.notification-settings,.notification-lab{margin-bottom:20px}.notification-options{display:flex;gap:15px;flex-wrap:wrap}.notification-options label{flex:1;min-width:130px}.demo-actions{display:flex;gap:10px;flex-wrap:wrap}.demo-actions button{font-size:13px}#pip-supported{display:inline;width:auto;min-height:0}.notification-environment{border:1px solid #cbd7ce;border-radius:15px;padding:22px;margin:20px 0;min-height:220px}.background-demo{background:#dce4eb;border:8px solid #687b89;min-height:360px}.notification-cards{display:grid;gap:12px}.notification-card{display:block;text-align:left;background:white;color:#263e39;border:1px solid #b7cbc1;box-shadow:0 4px 14px #203f3720;width:100%}.notification-card small,.notification-card strong,.notification-card span{display:block;margin-bottom:7px}.notification-card small{color:#697b75}.notification-card.exception{border-color:#c88c45;background:#fff6e8}.mini-station{border:2px solid #17665b;background:#fff;border-radius:12px;padding:18px;margin:0 0 20px auto;max-width:330px;box-shadow:0 8px 20px #203f3730}.mini-station button{font-size:12px;padding:8px}.mini-station p{margin:10px 0}.phone .demo-actions button{width:100%}.phone .notification-environment{padding:12px}.phone .notification-options{display:block}
 .home-menu{max-width:720px;margin:0 auto;display:grid;gap:18px}.room-entries{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.entry{min-height:76px;font-size:19px}.page-footer{border-top:1px solid var(--border);margin-top:32px;padding-top:24px;text-align:center}.page-footer button{width:100%;max-width:400px}.phone .room-entries{grid-template-columns:1fr}@media(max-width:700px){.room-entries{grid-template-columns:1fr}}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}.workbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;background:#fff;border-bottom:1px solid #dce5df}.workmetrics{display:flex;align-items:center;gap:32px}.workmetric{display:flex;flex-direction:column;gap:4px;min-width:72px}.workmetric strong{font-size:27px;line-height:1.1;color:#17665b;font-variant-numeric:tabular-nums}.workmetric strong small{font-size:11px;font-weight:400;margin-left:4px}.workmetric>span{font-size:12px;white-space:nowrap;color:#52685d}.workmetric.primary-count>span{font-weight:700;color:#17665b}.workmetric.none-available strong,.workmetric.none-available>span{color:#a65d23}.worktools{display:flex;align-items:center;gap:16px}.worktools button{font-size:12px;padding:8px 12px;min-height:40px}.workbar+.page,.phone .workbar+.page{padding-top:18px}.phone .workbar{padding:12px 14px;gap:10px}.phone .workmetrics{gap:16px;flex:1}.phone .workmetric{min-width:0;flex:1}.phone .workmetric strong{font-size:25px}.phone .workmetric>span{font-size:11px}.phone .worktools{flex-direction:column;gap:5px;flex-shrink:0}.phone .worktools .connection{font-size:10px}.phone .worktools button{min-height:36px;padding:6px 10px}@media(max-width:700px){.workbar{padding:12px 14px;gap:10px}.workmetrics{gap:16px;flex:1}.workmetric{min-width:0;flex:1}.workmetric strong{font-size:25px}.workmetric>span{font-size:11px}.worktools{flex-direction:column;gap:5px;flex-shrink:0}.worktools .connection{font-size:10px}.worktools button{min-height:36px;padding:6px 10px}}
 .my-status{margin-bottom:24px}.my-status .panel{padding-top:5px}.my-status .switch{max-width:540px}.assignment{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid #dce5df;padding-top:18px}.assignment strong{font-size:23px;color:#17665b}.assignment p{margin:7px 0 0;font-size:12px;color:#697b75}.assignment button{min-width:155px}.doctor-layout{align-items:start}.doctor-layout .doctor{margin:0;width:100%;max-width:none}.doctor-layout .personnel{min-width:0}.phone .assignment{align-items:stretch;flex-direction:column}.phone .assignment button{width:100%;min-height:54px}.phone .doctor-layout .doctor{margin-bottom:24px}dialog{max-width:440px;width:calc(100% - 32px);padding:26px;border:1px solid #cbd7ce;border-radius:15px;color:#263e39;background:white;box-shadow:0 20px 60px #0003}dialog::backdrop{background:#19372e88}dialog p{font-size:14px}dialog form{display:flex;gap:10px;flex-wrap:wrap}dialog form button{flex:1;min-width:140px}#finish-person{font-weight:650;color:#17665b}@media(max-width:700px){.assignment{flex-direction:column;align-items:stretch}.assignment button{width:100%}.doctor-layout .doctor{margin-bottom:24px}}
@@ -9,14 +10,97 @@
 </style></head>
 <body>
 <header class="studio"><div><strong>診間支援 · 展示原型</strong><small>獨立模擬資料，操作不會更動實際工作站</small></div></header>
-<section class="controls" aria-label="展示控制"><label>展示情境<select id="scenario" disabled><option>00 · 共同入口</option></select></label><label>觀看頁面<select id="view" disabled><option value="home">首頁</option><option value="nurse">護理工作站</option><option value="doctor">醫師端 · 所選診間</option><option value="login">跟診支援登入</option><option value="register">職編註冊</option><option value="analytics">人力分析</option></select></label><label>版面<select id="device" disabled><option value="desktop">電腦 · 寬版</option><option value="phone">手機 · 390px</option></select></label><button disabled id="reset" class="outline">重設此情境</button></section>
+<section class="controls" aria-label="展示控制"><label>展示情境<select id="scenario" disabled><option>00 · 共同入口</option></select></label><label>觀看頁面<select id="view" disabled><option value="home">首頁</option><option value="notifications">通知與置頂視窗</option><option value="nurse">護理工作站</option><option value="doctor">醫師端 · 所選診間</option><option value="login">跟診支援登入</option><option value="register">職編註冊</option><option value="analytics">人力分析</option></select></label><label>版面<select id="device" disabled><option value="desktop">電腦 · 寬版</option><option value="phone">手機 · 390px</option></select></label><button disabled id="reset" class="outline">重設此情境</button></section>
 <div class="context"><strong id="scene-title"></strong><span id="scene-description"></span></div>
 <div id="preview-help" class="alert" style="margin:18px 24px"><strong>目前為靜態預覽</strong>若情境無法切換，代表此附件預覽器未執行互動程式。請下載這份 HTML，再以支援 JavaScript 的瀏覽器開啟。若手機仍只能預覽檔案，需要改用正式網頁網址。</div><div id="stage"><div id="screen"><div class="top"><div class="brand">診間支援</div></div><div class="page"><h1>首頁</h1><nav class="home-menu"><section class="panel"><h2>醫師診間</h2><div class="room-entries"><button disabled>醫師診間 1</button><button disabled>醫師診間 2</button><button disabled>醫師診間 3</button></div></section><button disabled class="entry">跟診支援登入</button><button disabled class="entry outline">人力分析紀錄</button></nav></div></div></div>
 <div id="message" role="status" hidden></div>
 <dialog id="finish-confirm" aria-labelledby="finish-title"><h2 id="finish-title">確認人員已結束任務？</h2><p id="finish-person"></p><p>通常由承接人員自行結束。請再次確認該人員已完成此診間任務，才由醫師代為解除承接。</p><p class="muted">確認後，診間恢復無需求，人員恢復可接單。</p><form method="dialog"><button value="cancel" class="outline" autofocus>返回，不結束</button><button value="confirm">確認已結束任務</button></form></dialog>
 <dialog id="home-confirm" aria-labelledby="home-title"><h2 id="home-title">返回首頁將登出工作站，確定繼續？</h2><p id="home-warning"></p><form method="dialog"><button value="cancel" class="outline" autofocus>取消，留在此頁</button><button value="confirm">登出並返回首頁</button></form></dialog>
 <footer class="studio-footer">這是視覺與互動展示；日期、人員與分析數據均為範例。可直接點擊画面中的呼叫、承接、結束等按鈕。</footer>
-<script>const scenarios=[
+<script>// All notifications and windows in this file are page-local simulations.
+let notificationDemo;
+function resetNotifications(key){
+  notificationDemo={platform:key==='notify-android'?'android':key==='notify-ios'?'ios':'desktop',permission:key==='notify-ios'?'default':'granted',installed:false,pip:false,pipSupported:true,background:false,multi:false,sequence:0,sent:new Set(),items:[]};
+  state.rooms.forEach(r=>{if(r.status==='REQUESTING')r.requestId=++notificationDemo.sequence;});
+}
+function collectNotifications(){
+  const d=notificationDemo,n=me();
+  if(!n||!n.logged){d.pip=false;return;}
+  if(!state.online||d.permission!=='granted'||(d.platform==='ios'&&!d.installed))return;
+  const available=state.nurses.filter(p=>p.logged&&p.status==='AVAILABLE');
+  for(const r of state.rooms.filter(r=>r.status==='REQUESTING')){
+    const exception=!available.length&&n.status==='BUSY';
+    const normal=n.status==='AVAILABLE'&&(n.line==='PRIMARY'||!available.some(p=>p.line==='PRIMARY'));
+    const key=`${r.requestId}:${n.id}`;
+    if((normal||exception)&&!d.sent.has(key)){
+      d.sent.add(key);d.items.unshift({room:r.id,requestId:r.requestId,person:n.id,exception,test:false});
+    }
+  }
+}
+function notificationPage(){
+  const d=notificationDemo,n=me();
+  const platform={desktop:'電腦',android:'Android',ios:'iPhone'}[d.platform];
+  const label={default:'尚未授權',granted:'已允許',denied:'已拒絕',unsupported:'此裝置不支援'}[d.permission];
+  const items=d.items.filter(item=>n&&item.person===n.id);
+  return heading('通知與置頂視窗','這裡模擬系統通知及背景畫面，不會發送真正的 Web Push。','INTERACTIVE DEMO')+`
+  <section class="panel notification-settings"><h2>通知設定 <span class="tag">${platform} · 模擬</span></h2>
+  <p>${n?`${esc(n.name)} · ${line(n)} · ${personStatus(n)}`:'尚未登入：不會接收新的需求通知。'}</p>
+  <div class="notification-options"><label>展示裝置<select id="notify-platform">${[['desktop','電腦'],['android','Android'],['ios','iPhone']].map(([v,t])=>`<option value="${v}" ${d.platform===v?'selected':''}>${t}</option>`).join('')}</select></label><label>模擬通知權限<select id="notify-permission">${[['default','尚未授權'],['granted','已允許'],['denied','已拒絕'],['unsupported','不支援']].map(([v,t])=>`<option value="${v}" ${d.permission===v?'selected':''}>${t}</option>`).join('')}</select></label></div>
+  <p class="muted">狀態：${label}。正式版依功能支援顯示選項；此選單用來比較不同裝置的效果。</p>
+  ${d.platform==='ios'?`<div class="alert"><strong>iPhone 啟用步驟（iOS 16.4 以上）</strong>先從瀏覽器選單「加入主畫面」，再從主畫面開啟並允許通知。<p>${d.installed?'已模擬從主畫面開啟':'目前模擬一般瀏覽器分頁'}</p><button data-action="demo-install">${d.installed?'改為尚未加入主畫面':'模擬已加入主畫面並開啟'}</button></div>`:''}
+  ${d.permission==='denied'?'<p class="alert">通知已拒絕，請至瀏覽器或系統設定重新允許。此展示可由上方選單改為「已允許」。</p>':d.permission==='unsupported'?'<p class="alert">此環境無法顯示系統通知，請保留工作站畫面或改用支援的瀏覽器。</p>':''}
+  <div class="demo-actions"><button data-action="demo-enable" ${!n||['denied','unsupported'].includes(d.permission)||d.platform==='ios'&&!d.installed?'disabled':''}>啟用通知（模擬）</button><button class="outline" data-action="demo-test" ${!n||d.permission!=='granted'||d.platform==='ios'&&!d.installed?'disabled':''}>測試通知</button><button class="outline" data-action="demo-background">${d.background?'返回前景展示':'模擬切到其他工作／鎖屏'}</button><button class="outline" data-action="demo-multi">${d.multi?'關閉':'展示'}同一人兩台裝置收通知</button></div>
+  ${d.platform==='desktop'?`<p><label><input type="checkbox" id="pip-supported" ${d.pipSupported?'checked':''}> 模擬瀏覽器支援置頂視窗</label></p>${d.pipSupported?`<button data-action="demo-pip" ${!n?'disabled':''}>${d.pip?'關閉':'開啟'}置頂小視窗（模擬）</button>`:'<p class="muted">此瀏覽器不支援置頂小視窗，仍可使用系統通知。</p>'}`:''}</section>
+  <section class="panel notification-lab"><h2>需求通知測試</h2><p class="muted">1線可接單優先；無可用1線時提醒可接單2線。全無可用人力時，BUSY 每筆需求提醒一次；承接中不提醒。</p><div class="demo-actions"><button data-action="demo-request">模擬新增需求</button><button class="outline" data-action="demo-allbusy">模擬所有未承接人員 BUSY</button><button class="outline" data-action="demo-check">再次檢查（不重複提醒）</button><button class="outline" data-action="demo-taken">模擬最新需求被承接</button><button class="outline" data-action="demo-cancel">模擬最新需求取消</button></div></section>
+  <section class="notification-environment ${d.background?'background-demo':''}"><p class="muted">${d.background?(d.platform==='desktop'?'正在處理其他電腦工作 · 模擬背景':'手機鎖定畫面 · 模擬背景'):'通知中心 · 模擬'}${d.multi?' · 電腦與手機各顯示一份':''}</p>
+  ${d.pip&&d.platform==='desktop'&&d.pipSupported&&n?`<aside class="mini-station"><strong>置頂支援工作站 · 模擬</strong><p>${esc(n.name)} · ${personStatus(n)}</p>${n.room?button('結束承接','finish'):button(n.status==='BUSY'?'切回可接單':'切換忙碌',n.status==='BUSY'?'available':'busy','outline')} ${state.rooms.filter(r=>r.status==='REQUESTING').map(r=>`<p>${r.id}診等待 ${button('接單',`accept:${r.id}`,'',n.status!=='AVAILABLE')}</p>`).join('')||'<p>目前無等待診間</p>'}</aside>`:''}
+  <div class="notification-cards" aria-live="polite">${items.length?items.map((item,index)=>(d.multi?['電腦','手機']:[platform]).map(target=>`<button class="notification-card ${item.exception?'exception':''}" data-action="demo-open:${index}"><small>${target} · 診間支援 · 模擬通知</small><strong>${item.test?'測試通知':`${item.room}診等待支援${item.exception?'，目前無可用人力':''}`}</strong><span>${item.test?'點擊返回工作站':item.exception?'若可暫停手邊業務，請切換為「可接單」後承接。':'點擊查看最新需求狀態'}</span></button>`).join('')).join(''):'<p>目前沒有通知。可使用上方按鈕模擬需求；登出或不符合通知條件時不會新增。</p>'}</div></section>
+  <button class="outline" data-action="demo-station">返回工作站</button>`;
+}
+function bindNotificationControls(){
+  const p=$('#notify-platform'),permission=$('#notify-permission'),pip=$('#pip-supported');
+  if(p)p.onchange=()=>{notificationDemo.platform=p.value;notificationDemo.pip=false;render();};
+  if(permission)permission.onchange=()=>{notificationDemo.permission=permission.value;render();};
+  if(pip)pip.onchange=()=>{notificationDemo.pipSupported=pip.checked;notificationDemo.pip=false;render();};
+}
+function notificationAction(kind,id){
+  const d=notificationDemo,n=me();
+  if(kind==='demo-settings'){view='notifications';render();return;}
+  if(kind==='demo-install')d.installed=!d.installed;
+  if(kind==='demo-enable')d.permission='granted';
+  if(kind==='demo-test'&&n)d.items.unshift({test:true,person:n.id});
+  if(kind==='demo-background')d.background=!d.background;
+  if(kind==='demo-multi')d.multi=!d.multi;
+  if(kind==='demo-pip')d.pip=!d.pip;
+  if(kind==='demo-station')view=n?'nurse':'login';
+  if(kind==='demo-request'){
+    const r=state.rooms.find(r=>r.status==='IDLE');
+    if(r)Object.assign(r,{status:'REQUESTING',wait:0,requestId:++d.sequence,nurse:null});
+    else notify('目前沒有空閒診間，請先取消或結束一筆需求');
+  }
+  if(kind==='demo-allbusy')state.nurses.filter(p=>p.logged&&p.status!=='COVERING').forEach(p=>p.status='BUSY');
+  if(['demo-taken','demo-cancel'].includes(kind)){
+    const r=state.rooms.filter(r=>r.status==='REQUESTING').sort((a,b)=>b.requestId-a.requestId)[0];
+    if(r&&kind==='demo-cancel')Object.assign(r,{status:'IDLE',nurse:null,wait:0});
+    if(r&&kind==='demo-taken'){
+      const other=state.nurses.find(p=>p.logged&&p.id!==state.me&&p.status!=='COVERING');
+      if(other){Object.assign(r,{status:'COVERED',nurse:other.id});Object.assign(other,{status:'COVERING',room:r.id});}
+      else notify('沒有可模擬承接的其他登入人員');
+    }
+  }
+  if(kind==='demo-open'){
+    const item=d.items.filter(item=>n&&item.person===n.id)[Number(id)];
+    view=n?'nurse':'login';d.background=false;
+    if(item&&!item.test){const r=state.rooms.find(r=>r.id===item.room);notify(r.requestId!==item.requestId?'這筆需求已結束，請查看目前狀態':r.status==='COVERED'?'此需求已有人承接':r.status==='IDLE'?'此需求已取消或結束':'需求仍在等待，請確認目前狀態後承接');}
+  }
+  render();
+}
+
+const scenarios=[
+  ['notify-desktop','13 · 電腦通知與置頂','展示通知授權、背景提醒與置頂工作站。','notifications'],
+  ['notify-android','14 · Android 通知','模擬手機背景通知與點擊後回到工作站。','notifications'],
+  ['notify-ios','15 · iPhone 通知引導','先模擬加入主畫面，再啟用與測試通知。','notifications'],
+  ['notify-busy','16 · 全員 BUSY 例外通知','所有登入人員忙其他業務，每筆需求對同一人只提醒一次。','notifications'],
   ['home','00 · 共同入口','由首頁進入各診間、支援登入與分析；返回首頁可確認登出。','home'],
   ['idle','01 · 平時：無需求','無待處理診間；登入的1線與2線皆可支援。','nurse'],
   ['waiting','02 · 診間正在等待','3診等待 01:24；可接單者可承接，醫師可取消。','nurse'],
@@ -51,6 +135,8 @@ function setup(key){
   if(key==='multiple'){Object.assign(state.rooms[1],{status:'REQUESTING',wait:162});}
   if(key==='offline')state.online=false;
   if(['home','login','register'].includes(key)){state.nurses.forEach(n=>n.logged=false);state.me=null;}
+  if(key==='notify-busy'){state.nurses.forEach(n=>n.status='BUSY');r.status='REQUESTING';r.wait=84;}
+  resetNotifications(key);
   view=scenarios.find(s=>s[0]===key)[3];$('#view').value=view;$('#scenario').value=key;$('#message').hidden=true;render();
 }
 function button(text,action,extra='',disabled=false){return `<button data-action="${action}" class="${extra}" ${disabled||!state.online?'disabled':''}>${text}</button>`;}
@@ -81,33 +167,37 @@ function nursePage(){
   return `<h1 class="visually-hidden">護理工作站</h1>
     ${shortage?shortageCard(false):''}
     ${myStatus()}
+    <p><button class="outline" data-action="demo-settings">通知設定與置頂視窗展示</button></p>
     ${!state.online?'<div class="alert"><strong>連線中斷 · 正在重新同步</strong>目前為最後同步狀態，恢復連線後才能操作。<p></p><button data-action="reconnect">恢復連線（展示）</button></div>':''}
     <div class="layout"><div class="left"><section class="waiting-rooms"><h2>待處理診間 <span class="tag">${waiting.length}</span></h2>${waiting.length?waiting.map(r=>`<article class="call"><div class="room">${r.id}診</div><div><div class="waiting">等待支援人員</div><div class="timer">${String(Math.floor(r.wait/60)).padStart(2,'0')}:${String(r.wait%60).padStart(2,'0')}</div></div>${button(shortage?'我來支援 →':'接單 →',`accept:${r.id}`,'',self.status!=='AVAILABLE')}</article>`).join(''):'<div class="panel empty"><span>✓</span><h3>目前沒有等待中的診間</h3><p>新的需求會自動出現在這裡</p></div>'}</section></div>${rosterPage()}</div>`;
 }
 function doctorPage(){const r=state.rooms.find(r=>r.id===doctorRoom),assigned=state.nurses.find(n=>n.id===r.nurse);return heading(`${r.id}診`,'需要支援時，按一下即可通知工作站。','DOCTOR · 固定診間')+`<div class="layout doctor-layout"><div class="panel doctor ${r.status.toLowerCase()}"><span class="tag">${r.id}診</span><div class="symbol">${r.status==='IDLE'?'＋':r.status==='REQUESTING'?'◷':'✓'}</div><h2>${r.status==='IDLE'?'無需求':r.status==='REQUESTING'?'等待支援人員':'已有人承接'}</h2>${r.status==='IDLE'?'<p>工作站已準備接收您的呼叫</p>'+button('呼叫支援人員','request'):r.status==='REQUESTING'?`<div class="timer">${String(Math.floor(r.wait/60)).padStart(2,'0')}:${String(r.wait%60).padStart(2,'0')}</div><p>需求已送出，承接後將即時通知您</p>`+button('取消呼叫','cancel','outline'):`<p class="accepted">${esc(assigned?.name)}（${esc(assigned?.profession)}）已接單</p><p>通常由承接人員結束。若需由醫師代為結束，請先確認任務已完成。</p>`+button('結束承接','doctor-finish','outline')}</div>${rosterPage()}</div>`;}
-function loginPage(register){return heading('護理工作站','選擇線別並填寫職編，即可開始使用。','WELCOME BACK')+`<section class="panel login"><h2>${register?'註冊職編與姓名':'支援人員身分識別'}</h2><form id="identity"><label>線別<select name="line"><option value="PRIMARY" ${lastLine==='PRIMARY'?'selected':''}>1線</option><option value="SECONDARY" ${lastLine==='SECONDARY'?'selected':''}>2線</option></select></label><label>職編<input name="id" value="${register?'':esc(lastId)}" required maxlength="40" pattern="[a-zA-Z0-9_-]{1,40}" placeholder="請填寫職編"></label>${register?'<label>姓名<input name="name" required maxlength="60" placeholder="請填寫姓名"></label><label>職類<select name="profession" required><option>護理師</option><option>醫檢師</option><option>行政人員</option></select></label>':''}<button type="submit">${register?'註冊':'登入工作站'}</button></form><button class="outline" data-action="${register?'show-login':'show-register'}">${register?'返回登入':'尚未註冊？註冊職編與姓名'}</button><p class="muted">預填上次職編與線別，仍需按登入；登入後自動帶入註冊職類。</p><p class="muted">展示職編：1線 N001、N002；2線 N003（醫檢師）、N004（行政人員）</p></section>`;}
+function loginPage(register){return heading(register?'帳號註冊':'跟診支援登入',register?'註冊職編、姓名與職類；線別於每次登入時選擇。':'選擇本次班別的線別並填寫職編。','WELCOME BACK')+`<section class="panel login"><h2>${register?'註冊職編與姓名':'支援人員身分識別'}</h2><form id="identity">${register?'':`<label>本次線別<select name="line"><option value="PRIMARY" ${lastLine==='PRIMARY'?'selected':''}>1線</option><option value="SECONDARY" ${lastLine==='SECONDARY'?'selected':''}>2線</option></select></label>`}<label>職編<input name="id" value="${register?'':esc(lastId)}" required maxlength="40" pattern="[a-zA-Z0-9_-]{1,40}" placeholder="請填寫職編"></label>${register?'<label>姓名<input name="name" required maxlength="60" placeholder="請填寫姓名"></label><label>職類<select name="profession" required><option>護理師</option><option>醫檢師</option><option>行政人員</option></select></label>':''}<button type="submit">${register?'註冊':'登入工作站'}</button></form><button class="outline" data-action="${register?'show-login':'show-register'}">${register?'返回登入':'尚未註冊？註冊職編與姓名'}</button><p class="muted">預填上次職編與線別，仍需按登入；登入後自動帶入註冊職類。</p><p class="muted">展示職編：N001、N002（護理師）、N003（醫檢師）、N004（行政人員）；皆可依班別選1線或2線</p></section>`;}
 function analyticsPage(){return heading('人力配置分析','今日 · 範例數據，非實際統計','STAFFING INSIGHTS')+`<p class="muted">1線主責班段 · 占用包含準備、移動與實際服務</p><div class="metrics">${[['今日跟診占用總時間','2時 40分'],['BUSY 總時間','2時 00分'],['AVAILABLE 總時間','1時 45分'],['等待中位數','1分 12秒'],['最大等待','3分 24秒'],['1線不足總時間','18分 30秒']].map(([l,v])=>`<article class="panel metric"><span>${l}</span><strong>${v}</strong></article>`).join('')}</div><section class="panel graph"><h2>各時段人力分布</h2><div class="legend">承接占用（深綠） · 其他業務（灰褐） · 可接單（淺綠）</div>${['08:00–09:00','09:00–10:00','10:00–11:00'].map((h,i)=>`<p class="muted">${h}</p><div class="proportions"><span style="width:${30+i*12}%"></span><span style="width:${40-i*8}%"></span><span style="width:${30-i*4}%"></span></div>`).join('')}</section><div class="layout"><section class="panel graph"><h2>各診間總占用</h2><div class="bars">${[['1診','35分',40],['2診','1時15分',90],['3診','1時30分',110]].map(([r,d,h])=>`<div class="bar"><div style="--h:${h}px"></div>${r}<p>${d}</p></div>`).join('')}</div></section><section class="panel graph"><h2>1線不足時段</h2><p>09:12–09:20 <span class="tag">8分</span></p><p>10:05–10:15:30 <span class="tag">10分30秒</span></p><p class="muted">有診間等待且1線全不可用的聯合時間。</p></section></div>`;}
 function render(){
+  collectNotifications();
   const scene=scenarios.find(s=>s[0]===selected);$('#scene-title').textContent=scene[1];$('#scene-description').textContent=scene[2];$('#view').value=view;
   $('#screen').className=device==='phone'?'phone':'';
   const nurseActive=view==='nurse'&&me();
   const top=nurseActive?workbar():`<div class="top"><div class="brand"><span class="mark">＋</span><span>診間支援<small>CLINIC CARE CONNECT</small></span></div><span class="connection ${state.online?'':'offline'}">${['login','register'].includes(view)||view==='nurse'&&!me()?'尚未登入':state.online?'● 即時連線':'○ 連線中斷'}</span></div>`;
-  $('#screen').innerHTML=`${top}<div class="page">${view==='doctor'&&noAvailablePrimary()?shortageCard(true):''}${view==='home'?homePage():view==='doctor'?doctorPage():view==='analytics'?analyticsPage():view==='login'||view==='register'?loginPage(view==='register'):nursePage()}${view!=='home'?'<footer class="page-footer"><button class="outline" data-action="home">返回首頁</button></footer>':''}</div>`;
+  $('#screen').innerHTML=`${top}<div class="page">${view==='doctor'&&noAvailablePrimary()?shortageCard(true):''}${view==='notifications'?notificationPage():view==='home'?homePage():view==='doctor'?doctorPage():view==='analytics'?analyticsPage():view==='login'||view==='register'?loginPage(view==='register'):nursePage()}${view!=='home'?'<footer class="page-footer"><button class="outline" data-action="home">返回首頁</button></footer>':''}</div>`;
   document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>act(b.dataset.action));
+  bindNotificationControls();
   const form=$('#identity');if(form)form.onsubmit=e=>{
     e.preventDefault();const values=Object.fromEntries(new FormData(form));values.id=values.id.trim();const found=state.nurses.find(n=>n.id===values.id);
     if(view==='register'){
       if(found){notify('此職編已註冊，請直接登入');return;}
       if(!values.name.trim()){notify('請填寫姓名');return;}
-      state.nurses.push({id:values.id,name:values.name.trim(),profession:values.profession,line:values.line,status:'AVAILABLE',room:null,logged:false});lastId=values.id;lastLine=values.line;view='login';render();notify('註冊完成，請按「登入工作站」');
+      state.nurses.push({id:values.id,name:values.name.trim(),profession:values.profession,line:null,status:'AVAILABLE',room:null,logged:false});lastId=values.id;view='login';render();notify('註冊完成，請按「登入工作站」');
     }else{
-      if(!found){notify('此職編尚未註冊');return;}if(found.line!==values.line){notify(`此職編屬於${line(found)}，請確認線別`);return;}
+      if(!found){notify('此職編尚未註冊');return;}found.line=values.line;
       found.logged=true;state.me=found.id;lastId=found.id;lastLine=found.line;view='nurse';render();
     }
   };
 }
 function act(action){
   const [kind,id]=action.split(':');const self=me(),r=state.rooms.find(r=>r.id===Number(id))||state.rooms.find(r=>r.id===doctorRoom);
+  if(kind.startsWith('demo-')){notificationAction(kind,id);return;}
   if(kind==='home'){returnHome();return;}
   if(kind==='open-doctor'){doctorRoom=Number(id);view='doctor';}
   if(kind==='open-support')view=me()?'nurse':'login';
@@ -124,7 +214,7 @@ function act(action){
     };
     dialog.showModal();return;
   }
-  if(kind==='request'){Object.assign(r,{status:'REQUESTING',wait:0,nurse:null});notify(`${r.id}診已發出呼叫，可切到護理工作站接單`);}
+  if(kind==='request'){Object.assign(r,{status:'REQUESTING',wait:0,nurse:null,requestId:++notificationDemo.sequence});notify(`${r.id}診已發出呼叫，可切到護理工作站接單`);}
   if(kind==='cancel')Object.assign(r,{status:'IDLE',wait:0,nurse:null});
   if(kind==='accept'){
     if(selected==='conflict'){Object.assign(r,{status:'COVERED',nurse:'N002'});Object.assign(state.nurses[1],{status:'COVERING',room:r.id});notify('此診間已由其他護理師接手');}
