@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-Hant">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#17665b"><link rel="apple-touch-icon" href="icon-192.png"><title>診間支援 · 情境展示原型 · v1.0.0</title><style>:root{font-family:"Segoe UI","Microsoft JhengHei",sans-serif;color:#263e39;background:#e8ecea;font-synthesis:none;--green:#17665b;--muted:#697b75;--border:#dce5df}
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#17665b"><link rel="apple-touch-icon" href="icon-192.png"><title>診間支援 · 情境展示原型 · v1.1.0</title><style>:root{font-family:"Segoe UI","Microsoft JhengHei",sans-serif;color:#263e39;background:#e8ecea;font-synthesis:none;--green:#17665b;--muted:#697b75;--border:#dce5df}
 .home-menu{max-width:720px;margin:0 auto;display:grid;gap:18px}.room-entries{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.entry{min-height:76px;font-size:19px}.page-footer{border-top:1px solid var(--border);margin-top:32px;padding-top:24px;text-align:center}.page-footer button{width:100%;max-width:400px}.phone .room-entries{grid-template-columns:1fr}@media(max-width:700px){.room-entries{grid-template-columns:1fr}}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}.workbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;background:#fff;border-bottom:1px solid #dce5df}.workmetrics{display:flex;align-items:center;gap:32px}.workmetric{display:flex;flex-direction:column;gap:4px;min-width:72px}.workmetric strong{font-size:27px;line-height:1.1;color:#17665b;font-variant-numeric:tabular-nums}.workmetric strong small{font-size:11px;font-weight:400;margin-left:4px}.workmetric>span{font-size:12px;white-space:nowrap;color:#52685d}.workmetric.primary-count>span{font-weight:700;color:#17665b}.workmetric.none-available strong,.workmetric.none-available>span{color:#a65d23}.worktools{display:flex;align-items:center;gap:16px}.worktools button{font-size:12px;padding:8px 12px;min-height:40px}.workbar+.page,.phone .workbar+.page{padding-top:18px}.phone .workbar{padding:12px 14px;gap:10px}.phone .workmetrics{gap:16px;flex:1}.phone .workmetric{min-width:0;flex:1}.phone .workmetric strong{font-size:25px}.phone .workmetric>span{font-size:11px}.phone .worktools{flex-direction:column;gap:5px;flex-shrink:0}.phone .worktools .connection{font-size:10px}.phone .worktools button{min-height:36px;padding:6px 10px}@media(max-width:700px){.workbar{padding:12px 14px;gap:10px}.workmetrics{gap:16px;flex:1}.workmetric{min-width:0;flex:1}.workmetric strong{font-size:25px}.workmetric>span{font-size:11px}.worktools{flex-direction:column;gap:5px;flex-shrink:0}.worktools .connection{font-size:10px}.worktools button{min-height:36px;padding:6px 10px}}
 .my-status{margin-bottom:24px}.my-status .panel{padding-top:5px}.my-status .switch{max-width:540px}.assignment{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid #dce5df;padding-top:18px}.assignment strong{font-size:23px;color:#17665b}.assignment p{margin:7px 0 0;font-size:12px;color:#697b75}.assignment button{min-width:155px}.doctor-layout{align-items:start}.doctor-layout .doctor{margin:0;width:100%;max-width:none}.doctor-layout .personnel{min-width:0}.phone .assignment{align-items:stretch;flex-direction:column}.phone .assignment button{width:100%;min-height:54px}.phone .doctor-layout .doctor{margin-bottom:24px}dialog{max-width:440px;width:calc(100% - 32px);padding:26px;border:1px solid #cbd7ce;border-radius:15px;color:#263e39;background:white;box-shadow:0 20px 60px #0003}dialog::backdrop{background:#19372e88}dialog p{font-size:14px}dialog form{display:flex;gap:10px;flex-wrap:wrap}dialog form button{flex:1;min-width:140px}#finish-person{font-weight:650;color:#17665b}@media(max-width:700px){.assignment{flex-direction:column;align-items:stretch}.assignment button{width:100%}.doctor-layout .doctor{margin-bottom:24px}}
@@ -40,7 +40,30 @@
 .period-card header h2{font-size:24px;margin-bottom:22px}
 .period-card .period-chart{display:flex;align-items:center;gap:24px;padding:0}
 .period-card .pie{--support:32%;--busy:73%;width:180px;aspect-ratio:1;border-radius:50%;background:conic-gradient(#237a68 0 var(--support),#a68f72 var(--support) var(--busy),#a9d4b5 var(--busy) 100%);display:grid;place-items:center;position:relative;flex:0 0 auto}
+.period-card .pie.capacity-pie{background:conic-gradient(#237a68 0 var(--capacity),#a68f72 var(--capacity) 100%)}
 .period-card .pie.no-data{background:#e4e9e6}
+.period-card .pie-legend i.capacity-available{background:#237a68}
+.period-card .pie-legend i.capacity-unavailable{background:#a68f72}
+.demand-chart{margin-top:24px;min-width:0}
+.demand-chart h2{font-size:20px}
+.demand-legend{display:flex;flex-wrap:wrap;gap:12px 24px;margin:16px 0;font-size:13px}
+.demand-legend span{display:flex;align-items:center;gap:6px}
+.demand-legend i{display:inline-block;width:12px;height:12px}
+.demand-chart .primary{background:#237a68}
+.demand-chart .secondary{background:#518ab6}
+.demand-chart .waiting{background:#ce8438}
+.axis-unit,.axis-label{font-size:12px;color:#52685d}
+.axis-label{text-align:center;margin:10px 0}
+.demand-plot{display:flex;gap:8px;margin-top:30px}
+.demand-y{width:32px;flex-shrink:0;height:180px;display:flex;flex-direction:column;justify-content:space-between;text-align:right;font-size:12px}
+.demand-columns{display:grid;grid-template-columns:repeat(var(--columns),minmax(0,1fr));gap:10px;flex:1;min-width:0}
+.demand-track{height:180px;position:relative;border-bottom:1px solid #b9c9bf;background:linear-gradient(to top,transparent 49.5%,#e3eae5 49.5%,#e3eae5 50%,transparent 50%)}
+.demand-stack{height:100%;display:flex;flex-direction:column-reverse;width:65%;max-width:64px;margin:auto}
+.bar-total{position:absolute;left:0;right:0;text-align:center;font-size:12px;margin-bottom:3px}
+.bar-missing{position:absolute;bottom:0;left:0;right:0;text-align:center;color:#697b75}
+.demand-time{font-size:11px;text-align:center;display:flex;flex-direction:column;margin-top:7px;font-variant-numeric:tabular-nums}
+.demand-data summary{cursor:pointer;font-size:13px;padding:10px 0}
+@media(max-width:600px){.demand-chart{padding:16px 10px}.demand-columns{gap:3px}.demand-stack{width:75%}.demand-legend{gap:8px;font-size:12px}}
 .period-card .pie::after{content:"";position:absolute;inset:29%;background:#fff;border-radius:50%}
 .period-card .pie span{position:relative;z-index:1;text-align:center;font-size:12px;line-height:1.35;color:#52685d;font-weight:700}
 .period-card .pie-legend{margin:0;flex:1;min-width:0;max-width:none}
@@ -67,13 +90,32 @@
 .pie::after{content:none}
 </style></head>
 <body>
-<header class="studio"><div class="studio-brand"><strong>診間支援 · 展示原型</strong><small>獨立模擬資料，不會更動正式工作站 · <span class="version">v1.0.0</span></small></div><div class="context"><strong id="scene-title"></strong><span id="scene-description"></span></div><details class="demo-settings"><summary>展示設定</summary><section class="controls" aria-label="展示控制"><label>展示情境<select id="scenario" disabled><option>00 · 共同入口</option></select></label><label>觀看頁面<select id="view" disabled><option value="home">首頁</option><option value="nurse">護理工作站</option><option value="doctor">醫師端 · 所選診間</option><option value="login">跟診支援登入</option><option value="register">職編註冊</option><option value="analytics">人力分析</option></select></label><label>版面<select id="device" disabled><option value="desktop">電腦 · 寬版</option><option value="phone">手機 · 390px</option></select></label><button disabled id="reset" class="outline">重設此情境</button><div id="notification-tools" aria-label="通知與置頂設定"></div></section></details></header>
+<header class="studio"><div class="studio-brand"><strong>診間支援 · 展示原型</strong><small>獨立模擬資料，不會更動正式工作站 · <span class="version">v1.1.0</span></small></div><div class="context"><strong id="scene-title"></strong><span id="scene-description"></span></div><details class="demo-settings"><summary>展示設定</summary><section class="controls" aria-label="展示控制"><label>展示情境<select id="scenario" disabled><option>00 · 共同入口</option></select></label><label>觀看頁面<select id="view" disabled><option value="home">首頁</option><option value="nurse">護理工作站</option><option value="doctor">醫師端 · 所選診間</option><option value="login">跟診支援登入</option><option value="register">職編註冊</option><option value="analytics">人力分析</option></select></label><label>版面<select id="device" disabled><option value="desktop">電腦 · 寬版</option><option value="phone">手機 · 390px</option></select></label><button disabled id="reset" class="outline">重設此情境</button><div id="notification-tools" aria-label="通知與置頂設定"></div></section></details></header>
 <div id="preview-help" class="alert" style="margin:18px 24px"><strong>目前為靜態預覽</strong>若情境無法切換，代表此附件預覽器未執行互動程式。請下載這份 HTML，再以支援 JavaScript 的瀏覽器開啟。若手機仍只能預覽檔案，需要改用正式網頁網址。</div><div id="stage"><div id="screen"><div class="top"><div class="brand">診間支援</div></div><div class="page"><h1>首頁</h1><nav class="home-menu"><section class="panel"><h2>醫師診間</h2><div class="room-entries"><button disabled>醫師診間 1</button><button disabled>醫師診間 2</button><button disabled>醫師診間 3</button></div></section><button disabled class="entry">跟診支援登入</button><button disabled class="entry outline">人力分析紀錄</button></nav></div></div></div>
 <div id="message" role="status" hidden></div>
 <dialog id="finish-confirm" aria-labelledby="finish-title"><h2 id="finish-title">確認人員已結束任務？</h2><p id="finish-person"></p><p>通常由承接人員自行結束。請再次確認該人員已完成此診間任務，才由醫師代為解除承接。</p><p class="muted">確認後，診間恢復無需求，人員恢復可接單。</p><form method="dialog"><button value="cancel" class="outline" autofocus>返回，不結束</button><button value="confirm">確認已結束任務</button></form></dialog>
 <dialog id="home-confirm" aria-labelledby="home-title"><h2 id="home-title">返回首頁將登出工作站，確定繼續？</h2><p id="home-warning"></p><form method="dialog"><button value="cancel" class="outline" autofocus>取消，留在此頁</button><button value="confirm">登出並返回首頁</button></form></dialog>
-<footer class="studio-footer">展示原型 v1.0.0 · 日期、人員與分析數據均為範例。可直接操作呼叫、承接、結束與換手。</footer>
-<script>const PUSH_API='https://push-production-1078.up.railway.app';
+<footer class="studio-footer">展示原型 v1.1.0 · 日期、人員與分析數據均為範例。可直接操作呼叫、承接、結束與換手。</footer>
+<script>// Shared presentation for the live report and the standalone demonstration.
+window.clinicAnalyticsView=(()=>{
+  const minutes=ms=>Number((ms/60000).toFixed(1));
+  const series=[['primary','1線實際支援'],['secondary','2線實際支援'],['waiting','診間等待']];
+  function capacity(p){
+    const c=p.capacity,has=c.observed>0;
+    return `<div class="period-chart"><div class="pie capacity-pie ${has?'':'no-data'}" role="img" aria-label="${has?`1線可支援 ${c.available_percent}%，無法支援 ${c.unavailable_percent}%`:'尚無資料'}" style="--capacity:${c.available_percent??0}%"><span>${has?'1線支援<br>能力':'尚無<br>資料'}</span></div><dl class="pie-legend">${[['available','1線可支援',c.available_percent],['unavailable','1線無法支援',c.unavailable_percent]].map(([key,label,value])=>`<div><dt><i class="capacity-${key}"></i>${label}</dt><dd>${has?value+'%':'—'}</dd></div>`).join('')}</dl></div><p class="muted sample-count">已記錄 ${minutes(c.observed)} 分鐘 · 可支援 ${minutes(c.available)} 分鐘</p>`;
+  }
+  function chart(p){
+    const max=Math.max(1,...p.timeline.map(b=>(b.primary+b.secondary+b.waiting)/60000));
+    const ceiling=Math.ceil(max/10)*10;
+    return `<section class="panel demand-chart"><h2>${p.name}支援與等待時間分布</h2><p class="muted">${p.time} · 每柱30分鐘 · 所選日期合計</p><div class="demand-legend">${series.map(([key,label])=>`<span><i class="${key}"></i>${label}</span>`).join('')}</div><p class="axis-unit">診間分鐘</p><div class="demand-plot"><div class="demand-y"><span>${ceiling}</span><span>${ceiling/2}</span><span>0</span></div><div class="demand-columns" style="--columns:${p.timeline.length}">${p.timeline.map(b=>{
+      const total=minutes(b.primary+b.secondary+b.waiting),description=b.observed?series.map(([k,label])=>`${label} ${minutes(b[k])}診間分鐘`).join('；'):'尚無記錄';
+      return `<div class="demand-column"><div class="demand-track" role="img" aria-label="${b.start}–${b.end}：${description}" title="${b.start}–${b.end}：${description}">${b.observed?`<span class="bar-total" style="bottom:${total/ceiling*100}%">${total}</span><div class="demand-stack">${series.map(([key])=>`<div class="${key}" style="height:${b[key]/60000/ceiling*100}%"></div>`).join('')}</div>`:'<span class="bar-missing">—</span>'}</div><div class="demand-time"><span>${b.start}</span><span>${b.end}</span></div></div>`;
+    }).join('')}</div></div><p class="axis-label">時間（起–迄）</p><details class="demand-data"><summary>查看各時段數值</summary><div class="activity-table"><table><thead><tr><th>時段</th>${series.map(([,label])=>`<th>${label}</th>`).join('')}<th>已記錄分鐘</th></tr></thead><tbody>${p.timeline.map(b=>`<tr><td>${b.start}–${b.end}</td>${series.map(([key])=>`<td>${b.observed?minutes(b[key]):'—'}</td>`).join('')}<td>${minutes(b.observed)}</td></tr>`).join('')}</tbody></table></div></details></section>`;
+  }
+  return {capacity,chart};
+})();
+
+const PUSH_API='https://push-production-1078.up.railway.app';
 let notificationDemo={sequence:0},pipWindow=null,pushBusy=false,pushMessage='',pushConfig=null,swReady=null;
 let permissionPending=false;
 let cooldownUntil=0,sendDue=0,pushJobStatus='',polling=false,pollUntil=0,preparing=false,pushJobId='',receivedJob='';
@@ -263,7 +305,7 @@ function staffingSummary(){
   return `${waiting}診等待 · 1線 ${available('PRIMARY')}位可支援 · 2線 ${available('SECONDARY')}位可支援`;
 }
 function workbar(){
-  return `<header class="topbar"><div class="brand"><span class="brand-mark">＋</span><span>診間支援 <small>v1.0.0</small></span></div><span class="screen-summary">${staffingSummary()}</span><span class="connection ${state.online?'':'offline'}">${state.online?'● 即時連線':'○ 連線中斷'}</span></header>`;
+  return `<header class="topbar"><div class="brand"><span class="brand-mark">＋</span><span>診間支援 <small>v1.1.0</small></span></div><span class="screen-summary">${staffingSummary()}</span><span class="connection ${state.online?'':'offline'}">${state.online?'● 即時連線':'○ 連線中斷'}</span></header>`;
 }
 function rosterPage(){
   const active=state.nurses.filter(n=>n.logged);
@@ -286,17 +328,24 @@ const periodStats=[
   {name:'上午',time:'08:30–12:00',support:32,busy:41,available:27,median:'38秒',maximum:'3分42秒',shortage:'11分鐘'},
   {name:'下午',time:'13:30–16:00',support:21,busy:54,available:25,median:'22秒',maximum:'1分50秒',shortage:'4分鐘'}
 ];
-function analyticsPeriod(period){const supportEnd=period.support,busyEnd=supportEnd+period.busy;return `<article class="panel period-card"><header><p>${period.name}</p><h2>${period.time}</h2></header><div class="period-chart"><div class="pie" role="img" aria-label="診間支援 ${period.support}%，忙碌或無法支援 ${period.busy}%，可以支援 ${period.available}%" style="--support:${supportEnd}%;--busy:${busyEnd}%"><span>人力<br>狀態</span></div><dl class="pie-legend"><div><dt><i class="support"></i>診間支援</dt><dd>${period.support}%</dd></div><div><dt><i class="busy"></i>忙碌／無法支援</dt><dd>${period.busy}%</dd></div><div><dt><i class="available"></i>可以支援</dt><dd>${period.available}%</dd></div></dl></div><dl class="period-metrics"><div><dt>等待中位數</dt><dd>${period.median}</dd></div><div><dt>最大等待</dt><dd>${period.maximum}</dd></div><div><dt>1線不足</dt><dd>${period.shortage}</dd></div></dl><p class="muted sample-count">已承接樣本 ${period.name==='上午'?12:9}筆</p></article>`;}
+function analyticsPeriod(period){return `<article class="panel period-card"><header><p>${period.name}</p><h2>${period.time}</h2></header>${window.clinicAnalyticsView.capacity(period)}<dl class="period-metrics"><div><dt>等待中位數</dt><dd>${period.median}</dd></div><div><dt>最大等待</dt><dd>${period.maximum}</dd></div><div><dt>1線不足</dt><dd>${period.shortage}</dd></div></dl></article>`;}
+periodStats.forEach((p,index)=>{
+  const available=index?120:180,observed=index?150:210;
+  p.capacity={available:available*60000,unavailable:(observed-available)*60000,observed:observed*60000,available_percent:Math.round(available/observed*1000)/10,unavailable_percent:Math.round((observed-available)/observed*1000)/10};
+  const values=index?[[12,0,0],[25,8,2],[40,15,4],[22,5,0],[8,0,0]]:[[8,0,0],[20,5,1],[38,18,5],[45,22,8],[32,8,3],[18,0,0],[5,0,0]];
+  const format=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
+  p.timeline=values.map(([primary,secondary,waiting],i)=>({start:format((index?810:510)+i*30),end:format((index?810:510)+(i+1)*30),primary:primary*60000,secondary:secondary*60000,waiting:waiting*60000,observed:1800000}));
+});
 const activityRows=[['10:46:18','3診','完成','王怡文','#27'],['10:45:02','3診','接單','王怡文','#27'],['10:44:24','3診','呼叫','—','#27'],['09:37:50','2診','完成（醫師結束）','林佳穎','#26'],['09:35:11','2診','接單','林佳穎','#26'],['09:34:33','2診','呼叫','—','#26']];
-function analyticsPage(){return heading('人力分析紀錄','今日 · 範例數據，非實際統計','STAFFING INSIGHTS')+`<form class="filters demo-dates"><label>起日<input type="date" value="2026-09-13"></label><label>迄日<input type="date" value="2026-09-13"></label><button type="button">更新</button></form><p class="scope">圓餅圖：時段內已登入1線人力的累計時間比例 · 等待：所有線別承接 · 台北時間</p><div class="period-grid">${periodStats.map(analyticsPeriod).join('')}</div><p class="muted">範例資料。註冊但未登入者不計入人力比例；換手不重新計算等待。</p><section class="panel activity"><h2>執行紀錄</h2><p class="muted">呼叫、接單、完成 · 最新在上 · 依上方日期查詢</p><div class="activity-table"><table><thead><tr><th>時間</th><th>診間</th><th>操作</th><th>承接人員</th><th>需求編號</th></tr></thead><tbody>${activityRows.map(row=>`<tr>${row.map(value=>`<td>${value}</td>`).join('')}</tr>`).join('')}</tbody></table></div></section>`;}
+function analyticsPage(){return heading('人力分析紀錄','今日 · 範例數據，非實際統計','STAFFING INSIGHTS')+`<form class="filters demo-dates"><label>起日<input type="date" value="2026-09-13"></label><label>迄日<input type="date" value="2026-09-13"></label><button type="button">更新</button></form><p class="scope">圓餅圖：統計時段內1線團隊可支援的時間比例 · 台北時間</p><div class="period-grid">${periodStats.map(analyticsPeriod).join('')}</div><p class="muted">範例資料。至少一位已登入1線可支援即屬可支援期；分母不隨人數增加。</p>${periodStats.map(window.clinicAnalyticsView.chart).join('')}<p class="muted">範例資料。每柱30分鐘，午休不計入；兩診同時支援10分鐘＝20診間分鐘。換手依前後線別分計。</p><section class="panel activity"><h2>執行紀錄</h2><p class="muted">呼叫、接單、完成 · 最新在上 · 依上方日期查詢</p><div class="activity-table"><table><thead><tr><th>時間</th><th>診間</th><th>操作</th><th>承接人員</th><th>需求編號</th></tr></thead><tbody>${activityRows.map(row=>`<tr>${row.map(value=>`<td>${value}</td>`).join('')}</tr>`).join('')}</tbody></table></div></section>`;}
 function render(){
   pruneHandoffs();
   collectNotifications();
   const scene=scenarios.find(s=>s[0]===selected);$('#scene-title').textContent=scene[1];$('#scene-description').textContent=scene[2];$('#view').value=view;
   $('#screen').className=device==='phone'?'phone':'';
   const nurseActive=view==='nurse'&&me();
-  const top=nurseActive?workbar():`<header class="topbar"><div class="brand"><span class="brand-mark">＋</span><span>診間支援 <small>v1.0.0</small></span></div><span class="screen-summary">${view==='doctor'?staffingSummary():''}</span><span class="connection ${state.online?'':'offline'}">${['login','register'].includes(view)||view==='nurse'&&!me()?'尚未登入':state.online?'● 即時連線':'○ 連線中斷'}</span></header>`;
-  $('#screen').innerHTML=`${top}<div class="demo-main">${view==='home'?homePage():view==='doctor'?doctorPage():view==='analytics'?analyticsPage():view==='login'||view==='register'?loginPage(view==='register'):nursePage()}${view!=='home'?'<footer class="page-footer"><button class="outline" data-action="home">返回首頁</button><span>健檢中心 · 即時支援協作 · v1.0.0</span></footer>':''}</div>`;
+  const top=nurseActive?workbar():`<header class="topbar"><div class="brand"><span class="brand-mark">＋</span><span>診間支援 <small>v1.1.0</small></span></div><span class="screen-summary">${view==='doctor'?staffingSummary():''}</span><span class="connection ${state.online?'':'offline'}">${['login','register'].includes(view)||view==='nurse'&&!me()?'尚未登入':state.online?'● 即時連線':'○ 連線中斷'}</span></header>`;
+  $('#screen').innerHTML=`${top}<div class="demo-main">${view==='home'?homePage():view==='doctor'?doctorPage():view==='analytics'?analyticsPage():view==='login'||view==='register'?loginPage(view==='register'):nursePage()}${view!=='home'?'<footer class="page-footer"><button class="outline" data-action="home">返回首頁</button><span>健檢中心 · 即時支援協作 · v1.1.0</span></footer>':''}</div>`;
   document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>act(b.dataset.action));
   bindNotificationControls();
   bindHandoffSwitcher(document);
