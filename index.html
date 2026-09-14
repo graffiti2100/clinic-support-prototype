@@ -39,33 +39,26 @@
 .period-card header p{font-size:13px;color:var(--green);font-weight:700;margin-bottom:5px}
 .period-card header h2{font-size:24px;margin-bottom:22px}
 .period-card .period-chart{display:flex;align-items:center;gap:24px;padding:0}
-.period-card .pie{--support:32%;--busy:73%;width:180px;aspect-ratio:1;border-radius:50%;background:conic-gradient(#21876e 0 var(--support),#ad5e25 var(--support) var(--busy),#a9d4b5 var(--busy) 100%);display:grid;place-items:center;position:relative;flex:0 0 auto}
-.period-card .pie.capacity-pie{background:conic-gradient(#21876e 0 var(--capacity),#ad5e25 var(--capacity) 100%)}
+.period-card .pie{--support:32%;--busy:73%;width:180px;aspect-ratio:1;border-radius:50%;background:conic-gradient(#b8d4c4 0 var(--support),#efd1b4 var(--support) var(--busy),#a9d4b5 var(--busy) 100%);display:grid;place-items:center;position:relative;flex:0 0 auto}
+.period-card .pie.capacity-pie{background:conic-gradient(#b8d4c4 0 var(--capacity),#efd1b4 var(--capacity) 100%)}
 .period-card .pie.no-data{background:#e4e9e6}
-.period-card .pie-legend i.capacity-available{background:#21876e}
-.period-card .pie-legend i.capacity-unavailable{background:#ad5e25}
-.demand-chart{margin-top:20px;min-width:0;padding:16px 0 0;border-top:1px solid #dce5df}
-.demand-chart h3{font-size:14px;color:#263e39;margin:0 0 10px}
-.demand-legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:8px 0;font-size:11px;color:#52685d}
-.demand-legend span{display:flex;align-items:center;gap:5px}
-.demand-legend i{display:inline-block;width:10px;height:10px;border-radius:2px}
-.demand-chart .primary{background:#21876e}
-.demand-chart .secondary{background:#b5d8c9}
-.demand-chart .waiting{background:#ad5e25}
-.axis-unit{font-size:11px;color:#697b75;margin:6px 0}
-.demand-plot{display:flex;gap:8px;margin-top:8px}
-.demand-y{width:26px;flex-shrink:0;height:100px;display:flex;flex-direction:column;justify-content:space-between;text-align:right;font-size:11px;color:#697b75}
-.demand-columns{display:grid;grid-template-columns:repeat(var(--columns),minmax(0,1fr));gap:0;flex:1;min-width:0;border-bottom:1px solid #c9d8d0}
-.demand-chart .demand-track{display:block;width:100%;min-width:0;height:100px;position:relative;border:0;border-radius:0;padding:0;margin:0;background:linear-gradient(to top,transparent 49.5%,#e8efeb 49.5%,#e8efeb 50%,transparent 50%);cursor:pointer;box-shadow:none}
-.demand-chart .demand-track:hover{filter:none;background-color:#f0f7f3}
-.demand-chart .demand-track:focus-visible{outline:2px solid #17665b;outline-offset:1px;z-index:1}
-.demand-stack{height:100%;display:flex;flex-direction:column-reverse;width:100%;margin:0}
-.bar-missing{position:absolute;bottom:0;left:0;right:0;text-align:center;color:#697b75}
-.demand-axis{height:20px;position:relative;margin:6px 0 0 34px;font-size:11px;color:#697b75;font-variant-numeric:tabular-nums}
-.demand-axis span{position:absolute;top:0}
-.demand-axis span:first-child{left:0}
-.demand-axis span:last-child{right:0}
-.chart-detail{min-height:48px;margin:8px 0 0;font-size:11px;line-height:1.5;color:#52685d;overflow-wrap:anywhere}
+.period-card .pie-legend i.capacity-available{background:#b8d4c4}
+.period-card .pie-legend i.capacity-unavailable{background:#efd1b4}
+.demand-chart{margin-top:20px;min-width:0;padding-top:16px;border-top:1px solid #dce5df}
+.demand-chart h3{font-size:13px;color:#284950;margin:0 0 8px;display:flex;align-items:center;gap:6px}
+.demand-chart h3 i{width:10px;height:10px;border-radius:2px}
+.demand-chart .service{background:#b8d4c4}.demand-chart .wait{background:#efd1b4}
+.demand-plot{display:flex;gap:8px;margin-bottom:16px}
+.demand-y{width:36px;flex-shrink:0;height:90px;display:flex;flex-direction:column;justify-content:space-between;text-align:right;font-size:11px;color:#526b6e}
+.demand-space{flex:1;min-width:0}.demand-columns{display:grid;grid-template-columns:repeat(var(--columns),minmax(0,1fr));gap:0;border-bottom:1px solid #dce5df;background:linear-gradient(to top,transparent 49.5%,#e8efeb 49.5%,#e8efeb 50%,transparent 50%)}
+.demand-chart .demand-track{display:flex;align-items:flex-end;justify-content:center;width:100%;min-width:0;height:90px;position:relative;border:0;border-radius:0;padding:0;margin:0;background:transparent;cursor:pointer;box-shadow:none}
+.demand-chart .demand-track:hover{filter:none;background-color:#f0f7f3}.demand-chart .demand-track:focus-visible{outline:2px solid #17665b;outline-offset:1px;z-index:1}
+.demand-bar{display:block;width:60%;min-height:0}.bar-missing{position:absolute;bottom:0;left:0;right:0;text-align:center;color:#697b75}
+.wait-plot{margin-bottom:0}.wait-plot .demand-y,.wait-plot .demand-track{height:60px}
+.demand-axis-wrap{margin-left:44px}.demand-axis{height:25px;position:relative;font-size:11px;color:#526b6e;font-variant-numeric:tabular-nums}
+.demand-axis span{position:absolute;top:8px;white-space:nowrap}.time-tick{position:absolute;top:0;height:4px;border-left:1px solid #bacac1}
+.chart-detail{min-height:38px;margin:8px 0 0;font-size:11px;line-height:1.5;color:#526b6e;overflow-wrap:anywhere}
+.activity-pages{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px}.activity-pages button{width:auto}.activity-pages span{white-space:nowrap;font-size:13px}
 .period-card .pie::after{content:"";position:absolute;inset:29%;background:#fff;border-radius:50%}
 .period-card .pie span{position:relative;z-index:1;text-align:center;font-size:12px;line-height:1.35;color:#52685d;font-weight:700}
 .period-card .pie-legend{margin:0;flex:1;min-width:0;max-width:none}
@@ -74,8 +67,8 @@
 .period-card .pie-legend dt{display:flex;align-items:center;gap:8px;font-size:13px}
 .period-card .pie-legend dd{margin:0;font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
 .period-card .pie-legend i{width:12px;height:12px;border-radius:3px;flex:0 0 auto}
-.period-card .pie-legend i.support{background:#21876e}
-.period-card .pie-legend i.busy{background:#ad5e25}
+.period-card .pie-legend i.support{background:#b8d4c4}
+.period-card .pie-legend i.busy{background:#efd1b4}
 .period-card .pie-legend i.available{background:#a9d4b5}
 .period-card .period-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:24px 0 0;padding-top:20px;border-top:1px solid var(--line)}
 .period-card .period-metrics>div{text-align:center;padding:8px}
@@ -86,6 +79,18 @@
 
 @media(max-width:900px){.doctor-layout{grid-template-columns:1fr}.doctor-layout>.doctor+section>.roster-grid{grid-template-columns:1fr 1fr}.period-card .period-chart{justify-content:flex-start}}
 @media(max-width:760px){.doctor-layout>.doctor+section>.roster-grid{grid-template-columns:1fr}.doctor-layout .doctor{padding:28px 20px}.doctor-layout .doctor .doctor-timer .elapsed{font-size:48px}.period-card{padding:20px 16px}.period-card .period-chart{align-items:center;gap:15px}.period-card .pie{width:130px}.period-card .pie-legend dt{font-size:12px}.period-card .pie-legend dd{font-size:16px}.period-card .period-metrics{gap:2px}.period-card .period-metrics>div{padding:6px 2px}.period-card .period-metrics dd{font-size:17px}}
+/* Sound settings stay readable and fit narrow phone screens. */
+#sound-settings{margin-top:1.5rem;border-top:1px solid #cbd5e1;padding-top:1rem}
+.sound-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:1rem;margin:1rem 0}
+.sound-options label{min-width:0}.sound-options input,.sound-options select{max-width:100%;width:100%;box-sizing:border-box}
+#sound-status{color:#243b53}#sound-filename{overflow-wrap:anywhere}
+.doctor-tools{margin-bottom:20px}
+.pip .doctor-layout{display:block}.pip .doctor-layout .doctor{padding:18px}
+.pip .doctor-layout .doctor .symbol{font-size:32px;margin:14px 0}
+.pip .doctor-layout .doctor h2{font-size:22px}
+.pip .doctor-layout .doctor button{font-size:18px;min-height:48px;margin-top:18px}
+.pip .doctor-layout .doctor .doctor-timer .elapsed{font-size:40px;margin:12px}
+.pip-summary{font-size:12px;color:var(--muted);margin-bottom:12px}
 
 .studio{position:sticky;top:0;z-index:20;min-height:76px;display:flex;align-items:center;gap:24px;padding:12px max(20px,calc((100vw - 1280px)/2));background:#184c43;color:#fff}.studio-brand{min-width:max-content}.studio-brand strong{font-size:18px}.studio-brand small{display:block;margin-top:5px;color:#c2d8d0}.studio .context{flex:1;display:flex;flex-direction:column;gap:4px;margin:0;padding:0;color:#fff}.studio .context strong{color:#fff}.studio .context span{color:#c2d8d0;font-size:12px}.demo-settings{position:relative}.demo-settings summary{list-style:none;cursor:pointer;border:1px solid #8fb5a9;border-radius:9px;padding:10px 14px;white-space:nowrap;font-size:13px;font-weight:650}.demo-settings summary::-webkit-details-marker{display:none}.demo-settings[open] summary{background:#fff;color:#184c43}.controls{position:absolute;right:0;top:calc(100% + 12px);width:min(760px,calc(100vw - 32px));display:grid;grid-template-columns:2fr 1.3fr 1.2fr auto;gap:12px;align-items:end;padding:18px;background:#fff;color:#263e39;border:1px solid #cbd8d1;border-radius:14px;box-shadow:0 16px 45px #102d2680}.controls label,.controls label:first-child{min-width:0}.controls button{margin:0}.controls #notification-tools{grid-column:1/-1}.controls select{margin-top:6px}.controls .notification-buttons{display:flex;gap:8px;flex-wrap:wrap}.controls .notification-buttons button{margin:0}.controls #push-status{margin:8px 0 0}.context+#stage{margin-top:0}#stage{padding:24px;overflow-x:auto}#screen{max-width:1200px;margin:auto;background:#f5f7f5;min-height:650px;border:1px solid #d0d9d3;border-radius:15px;overflow:hidden;box-shadow:0 12px 30px #203f3710}#screen.phone{width:390px;max-width:100%;min-height:740px}.demo-main{max-width:1240px;padding:24px 28px 50px;margin:auto;min-height:570px}.screen-summary{font-size:13px;color:#47675b}.connection{margin-left:auto;white-space:nowrap;font-size:12px;color:#17665b}.connection.offline{color:#a4511f}.brand small{display:inline;font-size:10px;letter-spacing:0;color:#71877a;margin-left:4px}.outline{background:#fff;border-color:#ccd9d2;color:#36584c}.room-links button{display:inline-flex;gap:50px;border:1px solid var(--line);padding:16px;margin:0 14px 10px 0;border-radius:8px}.entry-grid button{text-align:left;color:inherit;font-weight:400}.entry-grid button h2{color:#263e39}.my-status{padding:20px}.status-dot.covering{background:#347caa}.status-dot.busy{background:#c58631}.status-dot.available{background:#278368}.service-card .handoff-actions{max-width:55%}.handoff-actions p{margin:0 0 8px;font-size:13px}.handoff-actions button{font-size:13px;padding:9px 12px;min-height:42px;margin:3px}.handoff-demo{display:block;background:#edf1ee;padding:12px;border-radius:8px;margin:0 0 18px;font-size:12px}.handoff-demo select{margin-top:8px}.settings>.outline{margin-top:10px}.demo-dates{display:flex}.page-footer{border-top:1px solid var(--line);margin-top:32px;padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:11px;color:#829087}.page-footer button{min-width:140px}.studio-footer{text-align:center;font-size:12px;color:#6b7c72;padding:0 20px 24px}#message{z-index:40}.phone .topbar{padding:12px 16px;gap:8px 14px;min-height:64px;flex-wrap:wrap}.phone .brand{font-size:18px}.phone .brand-mark{width:30px;height:30px}.phone .screen-summary{order:3;width:100%;font-size:12px}.phone .demo-main{padding:18px 16px 32px}.phone .work-grid{grid-template-columns:1fr;gap:24px}.phone .my-status{padding:16px;margin-bottom:20px}.phone .status-row{gap:8px}.phone .call-card{padding:16px;gap:12px;flex-wrap:nowrap}.phone .call-card button{width:auto;font-size:15px;min-width:70px;min-height:48px;padding:12px}.phone .room-number{font-size:25px}.phone .elapsed{font-size:25px}.phone .call-info{text-align:left;margin-left:0}.phone .period-grid{grid-template-columns:1fr}.phone .period{padding:20px}.phone .pie{width:125px}.phone .period-chart{gap:18px}.phone .doctor-card+.personnel .roster-grid{grid-template-columns:1fr}.phone .demo-dates{display:grid;grid-template-columns:1fr 1fr;gap:12px}.phone .demo-dates button{grid-column:1/-1}.phone .activity{padding:16px}.phone .page-footer{flex-wrap:wrap}
 @media(max-width:700px){.studio{position:relative;flex-wrap:wrap;padding:12px 16px;gap:10px}.studio-brand{flex:1}.studio .context{order:3;flex-basis:100%}.studio .context span{display:none}.demo-settings{position:static}.controls{right:16px;left:16px;top:68px;width:auto;grid-template-columns:1fr 1fr}.controls label:first-child{grid-column:1/-1}.controls #reset{width:100%}#stage{padding:12px 8px 20px}.demo-main{padding:18px 16px 32px}}
@@ -101,28 +106,28 @@
 <script>// Shared presentation for the live report and the standalone demonstration.
 window.clinicAnalyticsView=(()=>{
   const minutes=ms=>Number((ms/60000).toFixed(1));
-  const series=[['primary','1線實際支援'],['secondary','2線實際支援'],['waiting','診間等待']];
+  const duration=ms=>ms==null?'無等待紀錄':`${Math.floor(ms/60000)}分${String(Math.floor(ms/1000)%60).padStart(2,'0')}秒`;
   function capacity(p){
     const c=p.capacity,has=c.observed>0;
     return `<div class="period-chart"><div class="pie capacity-pie ${has?'':'no-data'}" role="img" aria-label="${has?`1線可支援 ${c.available_percent}%，無法支援 ${c.unavailable_percent}%`:'尚無資料'}" style="--capacity:${c.available_percent??0}%"><span>${has?'1線支援<br>能力':'尚無<br>資料'}</span></div><dl class="pie-legend">${[['available','1線可支援',c.available_percent],['unavailable','1線無法支援',c.unavailable_percent]].map(([key,label,value])=>`<div><dt><i class="capacity-${key}"></i>${label}</dt><dd>${has?value+'%':'—'}</dd></div>`).join('')}</dl></div><p class="muted sample-count">已記錄 ${minutes(c.observed)} 分鐘 · 可支援 ${minutes(c.available)} 分鐘</p>`;
   }
-  function chart(p){
-    const max=Math.max(1,...p.timeline.map(b=>(b.primary+b.secondary+b.waiting)/60000));
-    const ceiling=Math.ceil(max/10)*10;
-    return `<section class="demand-chart"><h3>支援與等待時間分布</h3><div class="demand-legend">${series.map(([key,label])=>`<span><i class="${key}"></i>${label}</span>`).join('')}</div><p class="axis-unit">診間分鐘 · 每30分鐘合計</p><div class="demand-plot"><div class="demand-y"><span>${ceiling}</span><span>${ceiling/2}</span><span>0</span></div><div class="demand-columns" style="--columns:${p.timeline.length}">${p.timeline.map(b=>{
-      const total=minutes(b.primary+b.secondary+b.waiting),description=b.observed?series.map(([k,label])=>`${label} ${minutes(b[k])}診間分鐘`).join('；'):'尚無記錄';
-      return `<div class="demand-column"><button type="button" class="demand-track" aria-label="${b.start}–${b.end}：${description}" data-chart-detail="${b.start}–${b.end}｜${description}">${b.observed?`<span class="demand-stack">${series.map(([key])=>`<span class="${key}" style="height:${b[key]/60000/ceiling*100}%"></span>`).join('')}</span>`:'<span class="bar-missing">—</span>'}</button></div>`;
-    }).join('')}</div></div><div class="demand-axis"><span>${p.timeline[0].start}</span><span style="left:${Math.floor(p.timeline.length/2)/p.timeline.length*100}%;transform:translateX(-50%)">${p.timeline[Math.floor(p.timeline.length/2)].start}</span><span>${p.timeline.at(-1).end}</span></div><p class="chart-detail" role="status">滑鼠停留或點按長條，查看時段與數值</p></section>`;
+  function waitCeiling(periods){return Math.max(1,Math.ceil(Math.max(0,...periods.flatMap(p=>p.timeline.map(b=>(b.maximum_wait??0)/60000)))));}
+  function chart(p,ceiling=5){
+    const n=p.timeline.length;
+    const detail=b=>`${b.start}–${b.end}｜支援時間佔比 ${b.service_percent==null?'尚無記錄':b.service_percent+'%'}；最大等待 ${duration(b.maximum_wait)}`;
+    const plot=(key,title,max,unit)=>`<h3><i class="${key}"></i>${title}</h3><div class="demand-plot ${key}-plot"><div class="demand-y"><span>${max}${unit}</span><span>${max/2}${unit}</span><span>0</span></div><div class="demand-space"><div class="demand-columns" style="--columns:${n};width:${n/7*100}%">${p.timeline.map(b=>{const value=key==='service'?b.service_percent:b.maximum_wait==null?null:b.maximum_wait/60000;return `<button type="button" class="demand-track" aria-label="${detail(b)}" data-chart-detail="${detail(b)}">${value==null?'<span class="bar-missing">—</span>':`<span class="demand-bar ${key}" style="height:${Math.min(100,value/max*100)}%"></span>`}</button>`;}).join('')}</div></div></div>`;
+    const boundaries=[...p.timeline.map(b=>b.start),p.timeline.at(-1).end];
+    return `<section class="demand-chart">${plot('service','支援時間佔比',100,'%')}${plot('wait','最大等待',ceiling,'分')}<div class="demand-axis-wrap"><div class="demand-axis" style="width:${n/7*100}%">${boundaries.map((label,i)=>`<i class="time-tick" style="left:${i/n*100}%"></i>${i===0||i===n||label.endsWith(':00')?`<span style="${i===n?'right:0':'left:'+i/n*100+'%'}">${label}</span>`:''}`).join('')}</div></div><p class="chart-detail" role="status">每柱30分鐘 · 停留或點按查看數值</p></section>`;
   }
   function show(target){const bar=target.closest?.('[data-chart-detail]');if(bar)bar.closest('.demand-chart').querySelector('.chart-detail').textContent=bar.dataset.chartDetail;}
   document.addEventListener('pointerover',e=>show(e.target));
   document.addEventListener('focusin',e=>show(e.target));
   document.addEventListener('click',e=>show(e.target));
-  return {capacity,chart};
+  return {capacity,chart,waitCeiling};
 })();
 
 const PUSH_API='https://push-production-1078.up.railway.app';
-let notificationDemo={sequence:0},pipWindow=null,pushBusy=false,pushMessage='',pushConfig=null,swReady=null;
+let notificationDemo={sequence:0},pipWindow=null,pipRole='nurse',pushBusy=false,pushMessage='',pushConfig=null,swReady=null;
 let permissionPending=false;
 let cooldownUntil=0,sendDue=0,pushJobStatus='',polling=false,pollUntil=0,preparing=false,pushJobId='',receivedJob='';
 let pushToken='';try{pushToken=localStorage.getItem('clinic-push-device')||'';cooldownUntil=Number(localStorage.getItem('clinic-push-cooldown'))||0;}catch{}
@@ -197,7 +202,7 @@ async function notificationAction(kind){
   if(kind==='real-pip'){
     try{
       if(pipWindow&&!pipWindow.closed){pipWindow.close();return;}
-      if(!me()){setup('waiting');pushMessage='已開啟展示工作站，可在小視窗接單。';}
+      pipRole=view==='doctor'?'doctor':'nurse';if(pipRole==='nurse'&&!me()){setup('waiting');pushMessage='已開啟展示工作站，可在小視窗接單。';}
       pipWindow=await documentPictureInPicture.requestWindow({width:430,height:600});
       pipWindow.document.title='診間支援';pipWindow.document.body.className='pip';installPipStyles(pipWindow.document);
       pipWindow.addEventListener('pagehide',()=>{pipWindow=null;updateNotificationControls();});syncPip();render();
@@ -233,6 +238,7 @@ async function notificationAction(kind){
 }
 function syncPip(){
   if(!pipWindow||pipWindow.closed)return;
+  if(pipRole==='doctor'){pipWindow.document.body.innerHTML=`<header class="pip-heading"><strong>${doctorRoom}診｜診間支援</strong><span>${state.online?'● 即時連線':'○ 連線中斷'}</span></header><p class="pip-summary">${staffingSummary()}</p>${allBusyCard()||(noAvailablePrimary()?shortageCard(true):'')}<div class="doctor-layout">${doctorCard()}</div>`;pipWindow.document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>act(b.dataset.action));return;}
   const n=me();if(!n){pipWindow.close();return;}
   const active=state.nurses.filter(person=>person.logged);
   const allBusy=state.rooms.some(r=>r.status==='REQUESTING')&&active.length>0&&active.every(person=>person.status==='BUSY');
@@ -328,22 +334,24 @@ function nursePage(){
   const shortage=noAvailablePrimary()&&self.line==='SECONDARY';
   return `${allBusyCard()}${shortage&&!allBusyCard()?shortageCard(false):''}${myStatus()}${handoffSwitcher()}<div class="work-grid"><div class="work-main">${waitingQueue()}${serviceRooms()}</div><aside>${rosterPage()}</aside></div><section class="settings panel"><h2>工作站設定</h2><div class="notification-slot"></div><button data-action="logout" class="outline">登出工作站</button><p class="muted">展示環境的通知與置頂功能由上方「展示設定」操作。</p></section>`;
 }
-function doctorPage(){const r=state.rooms.find(r=>r.id===doctorRoom),assigned=state.nurses.find(n=>n.id===r.nurse);return `${allBusyCard()||(noAvailablePrimary()?shortageCard(true):'')}${heading(`${r.id}診`,'需要支援時，按一下即可通知工作站。','DOCTOR · 固定診間')}<div class="doctor-layout"><section class="panel doctor ${r.status.toLowerCase()}"><span class="tag">${r.id}診</span><div class="symbol">${r.status==='IDLE'?'＋':r.status==='REQUESTING'?'◷':'✓'}</div><h2>${r.status==='IDLE'?'無需求':r.status==='REQUESTING'?'等待支援人員':'已有人承接'}</h2>${r.status==='IDLE'?'<p>工作站已準備接收您的呼叫</p>'+button('呼叫支援人員','request'):r.status==='REQUESTING'?`<div class="doctor-timer"><span class="elapsed" data-wait-room="${r.id}">${waitText(r)}</span></div><p>需求已送出，承接後將即時通知您</p>`+button('取消呼叫','cancel','outline'):`<p class="accepted-name">${esc(assigned?.name)}（${esc(assigned?.profession)}）已接單</p><p>通常由承接人員結束。若需由醫師代為結束，請先確認任務已完成。</p>`+button('結束承接','doctor-finish','outline')}</section>${rosterPage()}</div>`;}
+function doctorCard(){const r=state.rooms.find(r=>r.id===doctorRoom),assigned=state.nurses.find(n=>n.id===r.nurse);return `<section class="panel doctor ${r.status.toLowerCase()}"><span class="tag">${r.id}診</span><div class="symbol">${r.status==='IDLE'?'＋':r.status==='REQUESTING'?'◷':'✓'}</div><h2>${r.status==='IDLE'?'無需求':r.status==='REQUESTING'?'等待支援人員':'已有人承接'}</h2>${r.status==='IDLE'?'<p>工作站已準備接收您的呼叫</p>'+button('呼叫支援人員','request'):r.status==='REQUESTING'?`<div class="doctor-timer"><span class="elapsed" data-wait-room="${r.id}">${waitText(r)}</span></div><p>需求已送出，承接後將即時通知您</p><div class="button-row">${button('人員已到場','doctor-arrive')}${button('取消需求','cancel','outline')}</div>`:`<p class="accepted-name">${assigned?esc(assigned.name)+'（'+esc(assigned.profession)+'）已接單':'人員已到場 · 承接者未指定'}</p><p>確認人員已完成任務後，結束支援。</p>`+button(assigned?'結束承接':'結束支援','doctor-finish','outline')}</section>`;}
+function doctorPage(){return `${allBusyCard()||(noAvailablePrimary()?shortageCard(true):'')}${heading(doctorRoom+'診','需要支援時，按一下即可通知工作站。','DOCTOR · 固定診間')}${pipSupported()?'<div class="button-row doctor-tools">'+button('開啟置頂小視窗','real-pip','outline')+'</div>':''}<div class="doctor-layout">${doctorCard()}${rosterPage()}</div>`;}
 function loginPage(register){return heading(register?'註冊職編與姓名':'跟診支援登入',register?'註冊職編、姓名與職類；線別於每次登入時選擇。':'線別依本次班別選擇；職類由註冊資料帶入。')+`<section class="login-card panel"><h2>${register?'註冊職編與姓名':'登入工作站'}</h2><form id="identity">${register?'':`<label>本次線別<select name="line"><option value="PRIMARY" ${lastLine==='PRIMARY'?'selected':''}>1線</option><option value="SECONDARY" ${lastLine==='SECONDARY'?'selected':''}>2線</option></select></label>`}<label>職編<input name="id" inputmode="numeric" value="${register?'':esc(lastId)}" required maxlength="7" pattern="[0-9]{7}" placeholder="例如 1150001"></label>${register?'<label>姓名<input name="name" required maxlength="60" placeholder="請填寫姓名"></label><label>職類<select name="profession" required><option>護理師</option><option>醫檢師</option><option>行政人員</option></select></label>':''}<button type="submit">${register?'註冊':'登入工作站'}</button></form><button class="outline" data-action="${register?'show-login':'show-register'}">${register?'已有職編，返回登入':'註冊職編與姓名'}</button><p class="muted">免密碼。僅記住上次職編與線別，不會自動登入。</p><p class="muted">展示職編：1150001、1150002（護理師）、1150003（醫檢師）、1150004（行政人員）。</p></section>`;}
 const periodStats=[
   {name:'上午',time:'08:30–12:00',support:32,busy:41,available:27,median:'38秒',maximum:'3分42秒',shortage:'11分鐘'},
-  {name:'下午',time:'13:30–16:00',support:21,busy:54,available:25,median:'22秒',maximum:'1分50秒',shortage:'4分鐘'}
+  {name:'下午',time:'13:30–16:00',support:21,busy:54,available:25,median:'22秒',maximum:'4分20秒',shortage:'4分鐘'}
 ];
-function analyticsPeriod(period){return `<article class="panel period-card"><header><p>${period.name}</p><h2>${period.time}</h2></header>${window.clinicAnalyticsView.capacity(period)}${window.clinicAnalyticsView.chart(period)}<dl class="period-metrics"><div><dt>等待中位數</dt><dd>${period.median}</dd></div><div><dt>最大等待</dt><dd>${period.maximum}</dd></div><div><dt>1線不足</dt><dd>${period.shortage}</dd></div></dl></article>`;}
+function analyticsPeriod(period){return `<article class="panel period-card"><header><p>${period.name}</p><h2>${period.time}</h2></header>${window.clinicAnalyticsView.capacity(period)}${window.clinicAnalyticsView.chart(period,window.clinicAnalyticsView.waitCeiling(periodStats))}<dl class="period-metrics"><div><dt>已接單等待中位數</dt><dd>${period.median}</dd></div><div><dt>最大等待</dt><dd>${period.maximum}</dd></div><div><dt>1線不足</dt><dd>${period.shortage}</dd></div></dl></article>`;}
 periodStats.forEach((p,index)=>{
   const available=index?120:180,observed=index?150:210;
   p.capacity={available:available*60000,unavailable:(observed-available)*60000,observed:observed*60000,available_percent:Math.round(available/observed*1000)/10,unavailable_percent:Math.round((observed-available)/observed*1000)/10};
   const values=index?[[12,0,0],[25,8,2],[40,15,4],[22,5,0],[8,0,0]]:[[8,0,0],[20,5,1],[38,18,5],[45,22,8],[32,8,3],[18,0,0],[5,0,0]];
   const format=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
-  p.timeline=values.map(([primary,secondary,waiting],i)=>({start:format((index?810:510)+i*30),end:format((index?810:510)+(i+1)*30),primary:primary*60000,secondary:secondary*60000,waiting:waiting*60000,observed:1800000}));
+  p.timeline=values.map(([primary,secondary,waiting],i)=>({service_percent:(index?[20,48,75,38,15]:[15,30,65,85,55,30,10])[i],maximum_wait:(index?[260000,95000,112000,40000,null]:[38000,80000,180000,222000,120000,50000,null])[i],start:format((index?810:510)+i*30),end:format((index?810:510)+(i+1)*30),primary:primary*60000,secondary:secondary*60000,waiting:waiting*60000,observed:1800000}));
 });
-const activityRows=[['10:46:18','3診','完成','王怡文','#27'],['10:45:02','3診','接單','王怡文','#27'],['10:44:24','3診','呼叫','—','#27'],['09:37:50','2診','完成（醫師結束）','林佳穎','#26'],['09:35:11','2診','接單','林佳穎','#26'],['09:34:33','2診','呼叫','—','#26']];
-function analyticsPage(){return heading('人力分析紀錄','今日 · 範例數據，非實際統計','STAFFING INSIGHTS')+`<form class="filters demo-dates"><label>起日<input type="date" value="2026-09-13"></label><label>迄日<input type="date" value="2026-09-13"></label><button type="button">更新</button></form><p class="scope">圓餅圖：統計時段內1線團隊可支援的時間比例 · 台北時間</p><div class="period-grid">${periodStats.map(analyticsPeriod).join('')}</div><p class="muted">範例資料。至少一位已登入1線可支援即屬可支援期；分母不隨人數增加。</p><p class="muted">範例資料。每柱30分鐘，午休不計入；兩診同時支援10分鐘＝20診間分鐘。換手依前後線別分計。</p><section class="panel activity"><h2>執行紀錄</h2><p class="muted">呼叫、接單、完成 · 最新在上 · 依上方日期查詢</p><div class="activity-table"><table><thead><tr><th>時間</th><th>診間</th><th>操作</th><th>承接人員</th><th>需求編號</th></tr></thead><tbody>${activityRows.map(row=>`<tr>${row.map(value=>`<td>${value}</td>`).join('')}</tr>`).join('')}</tbody></table></div></section>`;}
+let demoActivityPage=0;
+const activityRows=[['15:40:53','1診','取消需求','—','#37'],['15:40:24','1診','呼叫','—','#37'],['15:16:48','1診','完成（醫師結束）','—','#36'],['15:16:08','1診','醫師確認到場','未指定','#36'],['15:14:15','1診','呼叫','—','#36'],['13:42:02','1診','取消需求','—','#33'],['13:37:42','1診','呼叫','—','#33'],['10:46:18','3診','完成','王怡文','#27'],['10:45:02','3診','接單','王怡文','#27'],['10:44:24','3診','呼叫','—','#27'],['09:37:50','2診','完成（醫師結束）','林佳穎','#26'],['09:35:11','2診','接單','林佳穎','#26'],['09:34:33','2診','呼叫','—','#26']];
+function analyticsPage(){return heading('人力分析紀錄','今日 · 範例數據，非實際統計','STAFFING INSIGHTS')+`<form class="filters demo-dates"><label>起日<input type="date" value="2026-09-13"></label><label>迄日<input type="date" value="2026-09-13"></label><button type="button">更新</button></form><p class="scope">圓餅圖：統計時段內1線團隊可支援的時間比例 · 台北時間</p><div class="period-grid">${periodStats.map(analyticsPeriod).join('')}</div><p class="muted">範例資料。至少一位已登入1線可支援即屬可支援期；分母不隨人數增加。</p><p class="muted">範例資料。每柱30分鐘，支援時間佔比以有診間支援的時間計算，同時多診只計一次。最大等待含接單、到場與取消，保留完整等待時間；未結束者計到目前。</p><section class="panel activity"><h2>執行紀錄</h2><p class="muted">呼叫、接單、到場、取消、完成 · 每頁10筆 · 最新在上</p><div class="activity-table"><table><thead><tr><th>時間</th><th>診間</th><th>操作</th><th>承接人員</th><th>需求編號</th></tr></thead><tbody>${activityRows.slice(demoActivityPage*10,(demoActivityPage+1)*10).map(row=>`<tr>${row.map(value=>`<td>${value}</td>`).join('')}</tr>`).join('')}</tbody></table></div><nav class="activity-pages" aria-label="執行紀錄分頁">${button('上一頁','activity-prev','outline',demoActivityPage===0)}<span>第 ${demoActivityPage+1} 頁</span>${button('下一頁','activity-next','outline',(demoActivityPage+1)*10>=activityRows.length)}</nav></section>`;}
 function render(){
   pruneHandoffs();
   collectNotifications();
@@ -353,6 +361,7 @@ function render(){
   const top=nurseActive?workbar():`<header class="topbar"><div class="brand"><span class="brand-mark">＋</span><span>診間支援 <small>v1.01</small></span></div><span class="screen-summary">${view==='doctor'?staffingSummary():''}</span><span class="connection ${state.online?'':'offline'}">${['login','register'].includes(view)||view==='nurse'&&!me()?'尚未登入':state.online?'● 即時連線':'○ 連線中斷'}</span></header>`;
   $('#screen').innerHTML=`${top}<div class="demo-main">${view==='home'?homePage():view==='doctor'?doctorPage():view==='analytics'?analyticsPage():view==='login'||view==='register'?loginPage(view==='register'):nursePage()}${view!=='home'?'<footer class="page-footer"><button class="outline" data-action="home">返回首頁</button><span>健檢中心 · 即時支援協作 · v1.01</span></footer>':''}</div>`;
   document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>act(b.dataset.action));
+  const dates=document.querySelector('.demo-dates');if(dates)dates.querySelector('button').onclick=()=>{demoActivityPage=0;render();};
   bindNotificationControls();
   bindHandoffSwitcher(document);
   const form=$('#identity');if(form)form.onsubmit=e=>{
@@ -371,26 +380,28 @@ function act(action){
   const [kind,id]=action.split(':');const self=me(),r=state.rooms.find(r=>r.id===Number(id))||state.rooms.find(r=>r.id===doctorRoom);
   if(kind.startsWith('real-')){notificationAction(kind,id);return;}
   if(kind.startsWith('handoff-')){handoffAction(action);return;}
+  if(kind==='activity-prev'||kind==='activity-next'){demoActivityPage=Math.max(0,Math.min(Math.ceil(activityRows.length/10)-1,demoActivityPage+(kind==='activity-next'?1:-1)));render();return;}
+  if(kind==='doctor-arrive'){if(r.status!=='REQUESTING')return;Object.assign(r,{status:'COVERED',nurse:null,acceptedAt:Date.now()});recordDemo('醫師確認到場',r,'未指定');render();return;}
   if(kind==='home'){returnHome();return;}
   if(kind==='open-doctor'){doctorRoom=Number(id);view='doctor';}
   if(kind==='open-support')view=me()?'nurse':'login';
-  if(kind==='open-analytics')view='analytics';
+  if(kind==='open-analytics'){view='analytics';demoActivityPage=0;}
   if(kind==='reconnect'){state.online=true;notify('已重新同步，可繼續操作');}
   if(kind==='doctor-finish'){
     const assigned=state.nurses.find(n=>n.id===r.nurse),dialog=$('#finish-confirm');
-    $('#finish-person').textContent=`${r.id}診 · ${assigned.name}（${assigned.profession}）`;
+    $('#finish-person').textContent=`${r.id}診 · ${assigned?assigned.name+'（'+assigned.profession+'）':'承接人員未指定'}`;
     dialog.returnValue='';
     dialog.onclose=()=>{
       if(dialog.returnValue!=='confirm')return;
-      if(!state.online||r.status!=='COVERED'||r.nurse!==assigned.id){notify('狀態已變更，請重新確認');return;}
-      Object.assign(r,{status:'IDLE',nurse:null,wait:0});Object.assign(assigned,{status:'AVAILABLE',room:null});render();notify('醫師已確認結束承接，人員恢復可接單');
+      if(!state.online||r.status!=='COVERED'||r.nurse!==(assigned?.id??null)){notify('狀態已變更，請重新確認');return;}
+      recordDemo('完成（醫師結束）',r,assigned?.name||'未指定');Object.assign(r,{status:'IDLE',nurse:null,wait:0});if(assigned)Object.assign(assigned,{status:'AVAILABLE',room:null});render();notify('醫師已確認結束支援');
     };
     dialog.showModal();return;
   }
-  if(kind==='request'){Object.assign(r,{status:'REQUESTING',wait:0,requestedAt:Date.now(),nurse:null,requestId:++notificationDemo.sequence});notify(`${r.id}診已發出呼叫，可切到護理工作站接單`);}
-  if(kind==='cancel')Object.assign(r,{status:'IDLE',wait:0,nurse:null});
-  if(kind==='accept'){Object.assign(r,{status:'COVERED',nurse:self.id});Object.assign(self,{status:'COVERING',room:r.id});notify('已承接，可切到醫師端查看承接者');}
-  if(kind==='finish'){Object.assign(state.rooms.find(r=>r.id===self.room),{status:'IDLE',nurse:null,wait:0});Object.assign(self,{status:'AVAILABLE',room:null});}
+  if(kind==='request'){Object.assign(r,{status:'REQUESTING',wait:0,requestedAt:Date.now(),nurse:null,requestId:++notificationDemo.sequence});recordDemo('呼叫',r);notify(`${r.id}診已發出呼叫，可切到護理工作站接單`);}
+  if(kind==='cancel'){recordDemo('取消需求',r);Object.assign(r,{status:'IDLE',wait:0,nurse:null});}
+  if(kind==='accept'){Object.assign(r,{status:'COVERED',nurse:self.id});Object.assign(self,{status:'COVERING',room:r.id});recordDemo('接單',r,self.name);notify('已承接，可切到醫師端查看承接者');}
+  if(kind==='finish'){recordDemo('完成',state.rooms.find(r=>r.id===self.room),self.name);Object.assign(state.rooms.find(r=>r.id===self.room),{status:'IDLE',nurse:null,wait:0});Object.assign(self,{status:'AVAILABLE',room:null});}
   if(kind==='busy')self.status='BUSY';if(kind==='available')self.status='AVAILABLE';
   if(kind==='logout'&&pushToken){stopPush().then(()=>act('logout')).catch(e=>notify('尚未停止待發通知：'+e.message));return;}
   if(kind==='logout'){lastId=self.id;lastLine=self.line;self.logged=false;state.me=null;view='login';}
@@ -425,8 +436,9 @@ function serviceRooms(){
       if(h.from===self.id)controls+=button('接受換手',`handoff-accept:${r.id}:${h.id}`)+button('婉拒',`handoff-decline:${r.id}:${h.id}`,'outline');
       if(h.to===self.id)controls+=button('取消申請',`handoff-cancel:${r.id}:${h.id}`,'outline');
     }else if(owner?.id===self.id)controls='<p>您正在承接此診間</p>';
+    else if(!owner)controls='<span class="muted">承接人員未指定 · 由醫師結束支援</span>';
     else controls=button('申請接手',`handoff-request:${r.id}`,'outline',!self.logged||self.status!=='AVAILABLE'||!!self.room||pending||!owner?.logged);
-    return `<article class="panel service-card" data-service-room="${r.id}"><div><h3>${r.id}診</h3><p>${esc(owner?.name)} · ${owner?line(owner):''} · ${esc(owner?.profession)}${owner&&!owner.logged?'（未登入）':''}</p></div><div class="handoff-actions">${controls}</div></article>`;
+    return `<article class="panel service-card" data-service-room="${r.id}"><div><h3>${r.id}診</h3><p>${owner?esc(owner.name)+' · '+line(owner)+' · '+esc(owner.profession):'承接人員未指定'}${owner&&!owner.logged?'（未登入）':''}</p></div><div class="handoff-actions">${controls}</div></article>`;
   }).join('')||'<div class="panel compact muted">目前沒有服務中的診間</div>'}</section>`;
 }
 function handoffAction(action){
@@ -459,6 +471,8 @@ setup(selected);
 setInterval(updateWaitingTimes,1000);
 document.addEventListener('visibilitychange',updateWaitingTimes);
 preparePush();
+
+function recordDemo(action,r,person='—'){activityRows.unshift([new Date().toLocaleTimeString('zh-TW',{hour12:false}),r.id+'診',action,person,'#'+(r.requestId||'展示')]);demoActivityPage=0;}
 
 document.getElementById('preview-help').hidden=true;
 document.querySelectorAll('.controls select,.controls button').forEach(element=>element.disabled=false);
