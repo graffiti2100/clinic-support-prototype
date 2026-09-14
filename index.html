@@ -91,6 +91,52 @@
 .pip .doctor-layout .doctor button{font-size:18px;min-height:48px;margin-top:18px}
 .pip .doctor-layout .doctor .doctor-timer .elapsed{font-size:40px;margin:12px}
 .pip-summary{font-size:12px;color:var(--muted);margin-bottom:12px}
+/* Compact PiP only: preserve the full page and share these rules with the demo. */
+body.pip{padding:8px;font-size:clamp(12px,4vw,14px);height:100dvh;display:flex;flex-direction:column;gap:8px;overflow:auto;min-width:0}
+.pip>*{flex-shrink:0;min-width:0}
+.pip .pip-heading{margin:0;gap:6px;line-height:1.4}
+.pip .pip-heading span{font-size:10px;white-space:nowrap}
+.pip .pip-summary{font-size:11px;margin:0;line-height:1.5}
+.pip .panel{border-radius:10px}
+.pip button{font-size:12px;min-height:34px;padding:6px 9px;border-radius:7px;white-space:normal}
+.pip .my-status{padding:8px 10px;margin:0}
+.pip .status-row{gap:6px}
+.pip .status-row>div:first-child{min-width:0;overflow-wrap:anywhere}
+.pip .status-row h2{font-size:11px;margin:0 0 3px}
+.pip .status-row .tag{display:inline-block;margin:2px 0 0;padding:2px 4px;font-size:10px}
+.pip .current-status{margin:3px 0 0;font-size:12px;line-height:1.4}
+.pip .status-controls button{font-size:12px;min-height:34px;padding:6px 8px}
+.pip .shortage,.pip .pip-notice{padding:7px 9px;margin:0;font-size:12px;gap:4px;line-height:1.4}
+.pip .shortage span{font-size:11px;line-height:1.4}
+.pip .pip-list{flex:1 1 auto;min-height:76px;overflow:auto;scrollbar-gutter:stable;overscroll-behavior:contain}
+.pip h2,.pip .section-heading{font-size:13px;margin:0 0 6px}
+.pip .section-heading h2{margin:0}
+.pip .queue{gap:6px}
+.pip .call-card{padding:7px 8px;gap:8px;flex-wrap:nowrap;border-radius:10px}
+.pip .call-card button{font-size:12px;min-width:46px;min-height:34px;padding:6px 8px}
+.pip .call-info{margin-left:auto;text-align:right;min-width:0}
+.pip .waiting-label{font-size:10px}
+.pip .room-number,.pip .elapsed{font-size:clamp(18px,6vw,22px);line-height:1.2;white-space:nowrap}
+.pip .services{margin-top:10px}
+.pip .service-card{padding:8px;gap:6px;margin-bottom:6px}
+.pip .service-card h3{font-size:15px;margin:0 0 3px}
+.pip .service-card p{font-size:11px;line-height:1.4;overflow-wrap:anywhere}
+.pip .compact{padding:9px;font-size:11px}
+.pip .handoff{padding-top:6px;margin-top:6px;font-size:12px}
+.pip .handoff p{margin:0 0 5px;line-height:1.4}
+.pip .button-row{gap:6px}
+.pip .service-card .handoff-actions{max-width:100%}
+.pip .handoff-actions button{font-size:12px;padding:6px 8px;min-height:34px;margin:0}
+.pip .handoff-demo{padding:7px;margin:8px 0 0;font-size:11px}
+.pip .handoff-demo select{padding:5px;margin-top:4px}
+.pip .doctor-layout .doctor{padding:10px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;text-align:left}
+.pip .doctor-layout .doctor>.tag,.pip .doctor-layout .doctor>.symbol,.pip .doctor-layout .doctor>p:not(.accepted-name){display:none}
+.pip .doctor-layout .doctor h2{font-size:clamp(14px,5vw,17px);margin:0}
+.pip .doctor-layout .doctor .doctor-timer .elapsed{font-size:clamp(22px,8vw,28px);margin:0}
+.pip .doctor-layout .doctor .accepted-name{grid-column:1/-1;font-size:13px!important;margin:0;line-height:1.5;overflow-wrap:anywhere}
+.pip .doctor-layout .doctor>.button-row,.pip .doctor-layout .doctor>button{grid-column:1/-1}
+.pip .doctor-layout .doctor .button-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.pip .doctor-layout .doctor button{font-size:13px;min-height:36px;padding:7px 6px;margin:0;width:100%}
 
 .studio{position:sticky;top:0;z-index:20;min-height:76px;display:flex;align-items:center;gap:24px;padding:12px max(20px,calc((100vw - 1280px)/2));background:#184c43;color:#fff}.studio-brand{min-width:max-content}.studio-brand strong{font-size:18px}.studio-brand small{display:block;margin-top:5px;color:#c2d8d0}.studio .context{flex:1;display:flex;flex-direction:column;gap:4px;margin:0;padding:0;color:#fff}.studio .context strong{color:#fff}.studio .context span{color:#c2d8d0;font-size:12px}.demo-settings{position:relative}.demo-settings summary{list-style:none;cursor:pointer;border:1px solid #8fb5a9;border-radius:9px;padding:10px 14px;white-space:nowrap;font-size:13px;font-weight:650}.demo-settings summary::-webkit-details-marker{display:none}.demo-settings[open] summary{background:#fff;color:#184c43}.controls{position:absolute;right:0;top:calc(100% + 12px);width:min(760px,calc(100vw - 32px));display:grid;grid-template-columns:2fr 1.3fr 1.2fr auto;gap:12px;align-items:end;padding:18px;background:#fff;color:#263e39;border:1px solid #cbd8d1;border-radius:14px;box-shadow:0 16px 45px #102d2680}.controls label,.controls label:first-child{min-width:0}.controls button{margin:0}.controls #notification-tools{grid-column:1/-1}.controls select{margin-top:6px}.controls .notification-buttons{display:flex;gap:8px;flex-wrap:wrap}.controls .notification-buttons button{margin:0}.controls #push-status{margin:8px 0 0}.context+#stage{margin-top:0}#stage{padding:24px;overflow-x:auto}#screen{max-width:1200px;margin:auto;background:#f5f7f5;min-height:650px;border:1px solid #d0d9d3;border-radius:15px;overflow:hidden;box-shadow:0 12px 30px #203f3710}#screen.phone{width:390px;max-width:100%;min-height:740px}.demo-main{max-width:1240px;padding:24px 28px 50px;margin:auto;min-height:570px}.screen-summary{font-size:13px;color:#47675b}.connection{margin-left:auto;white-space:nowrap;font-size:12px;color:#17665b}.connection.offline{color:#a4511f}.brand small{display:inline;font-size:10px;letter-spacing:0;color:#71877a;margin-left:4px}.outline{background:#fff;border-color:#ccd9d2;color:#36584c}.room-links button{display:inline-flex;gap:50px;border:1px solid var(--line);padding:16px;margin:0 14px 10px 0;border-radius:8px}.entry-grid button{text-align:left;color:inherit;font-weight:400}.entry-grid button h2{color:#263e39}.my-status{padding:20px}.status-dot.covering{background:#347caa}.status-dot.busy{background:#c58631}.status-dot.available{background:#278368}.service-card .handoff-actions{max-width:55%}.handoff-actions p{margin:0 0 8px;font-size:13px}.handoff-actions button{font-size:13px;padding:9px 12px;min-height:42px;margin:3px}.handoff-demo{display:block;background:#edf1ee;padding:12px;border-radius:8px;margin:0 0 18px;font-size:12px}.handoff-demo select{margin-top:8px}.settings>.outline{margin-top:10px}.demo-dates{display:flex}.page-footer{border-top:1px solid var(--line);margin-top:32px;padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:11px;color:#829087}.page-footer button{min-width:140px}.studio-footer{text-align:center;font-size:12px;color:#6b7c72;padding:0 20px 24px}#message{z-index:40}.phone .topbar{padding:12px 16px;gap:8px 14px;min-height:64px;flex-wrap:wrap}.phone .brand{font-size:18px}.phone .brand-mark{width:30px;height:30px}.phone .screen-summary{order:3;width:100%;font-size:12px}.phone .demo-main{padding:18px 16px 32px}.phone .work-grid{grid-template-columns:1fr;gap:24px}.phone .my-status{padding:16px;margin-bottom:20px}.phone .status-row{gap:8px}.phone .call-card{padding:16px;gap:12px;flex-wrap:nowrap}.phone .call-card button{width:auto;font-size:15px;min-width:70px;min-height:48px;padding:12px}.phone .room-number{font-size:25px}.phone .elapsed{font-size:25px}.phone .call-info{text-align:left;margin-left:0}.phone .period-grid{grid-template-columns:1fr}.phone .period{padding:20px}.phone .pie{width:125px}.phone .period-chart{gap:18px}.phone .doctor-card+.personnel .roster-grid{grid-template-columns:1fr}.phone .demo-dates{display:grid;grid-template-columns:1fr 1fr;gap:12px}.phone .demo-dates button{grid-column:1/-1}.phone .activity{padding:16px}.phone .page-footer{flex-wrap:wrap}
 @media(max-width:700px){.studio{position:relative;flex-wrap:wrap;padding:12px 16px;gap:10px}.studio-brand{flex:1}.studio .context{order:3;flex-basis:100%}.studio .context span{display:none}.demo-settings{position:static}.controls{right:16px;left:16px;top:68px;width:auto;grid-template-columns:1fr 1fr}.controls label:first-child{grid-column:1/-1}.controls #reset{width:100%}#stage{padding:12px 8px 20px}.demo-main{padding:18px 16px 32px}}
@@ -203,7 +249,12 @@ async function notificationAction(kind){
     try{
       if(pipWindow&&!pipWindow.closed){pipWindow.close();return;}
       pipRole=view==='doctor'?'doctor':'nurse';if(pipRole==='nurse'&&!me()){setup('waiting');pushMessage='已開啟展示工作站，可在小視窗接單。';}
-      pipWindow=await documentPictureInPicture.requestWindow({width:430,height:600});
+      const sizeKey='clinic:prototype:pip-size:'+pipRole;
+      let size={width:260,height:pipRole==='doctor'?240:340};
+      try{const saved=JSON.parse(localStorage.getItem(sizeKey));if(saved&&Number.isFinite(saved.width)&&Number.isFinite(saved.height)&&saved.width>0&&saved.height>0)size={width:Math.min(Math.round(saved.width),screen.availWidth),height:Math.min(Math.round(saved.height),screen.availHeight)};}catch{}
+      pipWindow=await documentPictureInPicture.requestWindow(size);
+      const win=pipWindow,rememberSize=()=>{if(win.innerWidth>0&&win.innerHeight>0){try{localStorage.setItem(sizeKey,JSON.stringify({width:win.innerWidth,height:win.innerHeight}));}catch{}}};
+      win.addEventListener('resize',rememberSize);win.addEventListener('pagehide',rememberSize);
       pipWindow.document.title='診間支援';pipWindow.document.body.className='pip';installPipStyles(pipWindow.document);
       pipWindow.addEventListener('pagehide',()=>{pipWindow=null;updateNotificationControls();});syncPip();render();
     }catch{pushMessage='無法開啟置頂視窗，請使用支援此功能的電腦瀏覽器。';render();}return;
@@ -243,7 +294,9 @@ function syncPip(){
   const active=state.nurses.filter(person=>person.logged);
   const allBusy=state.rooms.some(r=>r.status==='REQUESTING')&&active.length>0&&active.every(person=>person.status==='BUSY');
   const alert=allBusy?allBusyCard():n.line==='SECONDARY'&&noAvailablePrimary()?shortageCard(false):'';
-  pipWindow.document.body.innerHTML=`<header class="pip-heading"><strong>診間支援</strong><span>${state.online?'● 即時連線':'○ 連線中斷'}</span></header>${alert}${myStatus()}${waitingQueue()}${serviceRooms()}${handoffSwitcher()}`;
+  const scrollTop=pipWindow.document.querySelector('.pip-list')?.scrollTop||0;
+  pipWindow.document.body.innerHTML=`<header class="pip-heading"><strong>診間支援</strong><span>${state.online?'● 即時連線':'○ 連線中斷'}</span></header>${alert}${myStatus()}<div class="pip-list" tabindex="0" aria-label="等待及服務中的診間">${waitingQueue()}${serviceRooms()}${handoffSwitcher()}</div>`;
+  pipWindow.document.querySelector('.pip-list').scrollTop=scrollTop;
   bindHandoffSwitcher(pipWindow.document);
   pipWindow.document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>act(b.dataset.action));
 }
