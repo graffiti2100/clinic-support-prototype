@@ -137,6 +137,9 @@ body.pip{padding:8px;font-size:clamp(12px,4vw,14px);height:100dvh;display:flex;f
 .pip .doctor-layout .doctor>.button-row,.pip .doctor-layout .doctor>button{grid-column:1/-1}
 .pip .doctor-layout .doctor .button-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .pip .doctor-layout .doctor button{font-size:13px;min-height:36px;padding:7px 6px;margin:0;width:100%}
+.takeover-notice{background:#eef7f1;border:1px solid #bfd8c8;border-radius:9px;padding:10px 12px;color:#265c48;line-height:1.5;margin:10px 0;overflow-wrap:anywhere}
+.pip .doctor-layout .takeover-notice{grid-column:1/-1;font-size:12px;padding:7px;margin:0}
+.replacement-reminder{background:#fff5e6;border-color:#d5ac73}
 
 .studio{position:sticky;top:0;z-index:20;min-height:76px;display:flex;align-items:center;gap:24px;padding:12px max(20px,calc((100vw - 1280px)/2));background:#184c43;color:#fff}.studio-brand{min-width:max-content}.studio-brand strong{font-size:18px}.studio-brand small{display:block;margin-top:5px;color:#c2d8d0}.studio .context{flex:1;display:flex;flex-direction:column;gap:4px;margin:0;padding:0;color:#fff}.studio .context strong{color:#fff}.studio .context span{color:#c2d8d0;font-size:12px}.demo-settings{position:relative}.demo-settings summary{list-style:none;cursor:pointer;border:1px solid #8fb5a9;border-radius:9px;padding:10px 14px;white-space:nowrap;font-size:13px;font-weight:650}.demo-settings summary::-webkit-details-marker{display:none}.demo-settings[open] summary{background:#fff;color:#184c43}.controls{position:absolute;right:0;top:calc(100% + 12px);width:min(760px,calc(100vw - 32px));display:grid;grid-template-columns:2fr 1.3fr 1.2fr auto;gap:12px;align-items:end;padding:18px;background:#fff;color:#263e39;border:1px solid #cbd8d1;border-radius:14px;box-shadow:0 16px 45px #102d2680}.controls label,.controls label:first-child{min-width:0}.controls button{margin:0}.controls #notification-tools{grid-column:1/-1}.controls select{margin-top:6px}.controls .notification-buttons{display:flex;gap:8px;flex-wrap:wrap}.controls .notification-buttons button{margin:0}.controls #push-status{margin:8px 0 0}.context+#stage{margin-top:0}#stage{padding:24px;overflow-x:auto}#screen{max-width:1200px;margin:auto;background:#f5f7f5;min-height:650px;border:1px solid #d0d9d3;border-radius:15px;overflow:hidden;box-shadow:0 12px 30px #203f3710}#screen.phone{width:390px;max-width:100%;min-height:740px}.demo-main{max-width:1240px;padding:24px 28px 50px;margin:auto;min-height:570px}.screen-summary{font-size:13px;color:#47675b}.connection{margin-left:auto;white-space:nowrap;font-size:12px;color:#17665b}.connection.offline{color:#a4511f}.brand small{display:inline;font-size:10px;letter-spacing:0;color:#71877a;margin-left:4px}.outline{background:#fff;border-color:#ccd9d2;color:#36584c}.room-links button{display:inline-flex;gap:50px;border:1px solid var(--line);padding:16px;margin:0 14px 10px 0;border-radius:8px}.entry-grid button{text-align:left;color:inherit;font-weight:400}.entry-grid button h2{color:#263e39}.my-status{padding:20px}.status-dot.covering{background:#347caa}.status-dot.busy{background:#c58631}.status-dot.available{background:#278368}.service-card .handoff-actions{max-width:55%}.handoff-actions p{margin:0 0 8px;font-size:13px}.handoff-actions button{font-size:13px;padding:9px 12px;min-height:42px;margin:3px}.handoff-demo{display:block;background:#edf1ee;padding:12px;border-radius:8px;margin:0 0 18px;font-size:12px}.handoff-demo select{margin-top:8px}.settings>.outline{margin-top:10px}.demo-dates{display:flex}.page-footer{border-top:1px solid var(--line);margin-top:32px;padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:11px;color:#829087}.page-footer button{min-width:140px}.studio-footer{text-align:center;font-size:12px;color:#6b7c72;padding:0 20px 24px}#message{z-index:40}.phone .topbar{padding:12px 16px;gap:8px 14px;min-height:64px;flex-wrap:wrap}.phone .brand{font-size:18px}.phone .brand-mark{width:30px;height:30px}.phone .screen-summary{order:3;width:100%;font-size:12px}.phone .demo-main{padding:18px 16px 32px}.phone .work-grid{grid-template-columns:1fr;gap:24px}.phone .my-status{padding:16px;margin-bottom:20px}.phone .status-row{gap:8px}.phone .call-card{padding:16px;gap:12px;flex-wrap:nowrap}.phone .call-card button{width:auto;font-size:15px;min-width:70px;min-height:48px;padding:12px}.phone .room-number{font-size:25px}.phone .elapsed{font-size:25px}.phone .call-info{text-align:left;margin-left:0}.phone .period-grid{grid-template-columns:1fr}.phone .period{padding:20px}.phone .pie{width:125px}.phone .period-chart{gap:18px}.phone .doctor-card+.personnel .roster-grid{grid-template-columns:1fr}.phone .demo-dates{display:grid;grid-template-columns:1fr 1fr;gap:12px}.phone .demo-dates button{grid-column:1/-1}.phone .activity{padding:16px}.phone .page-footer{flex-wrap:wrap}
 @media(max-width:700px){.studio{position:relative;flex-wrap:wrap;padding:12px 16px;gap:10px}.studio-brand{flex:1}.studio .context{order:3;flex-basis:100%}.studio .context span{display:none}.demo-settings{position:static}.controls{right:16px;left:16px;top:68px;width:auto;grid-template-columns:1fr 1fr}.controls label:first-child{grid-column:1/-1}.controls #reset{width:100%}#stage{padding:12px 8px 20px}.demo-main{padding:18px 16px 32px}}
@@ -146,7 +149,7 @@ body.pip{padding:8px;font-size:clamp(12px,4vw,14px);height:100dvh;display:flex;f
 <header class="studio"><div class="studio-brand"><strong>診間支援 · 展示原型</strong><small>獨立模擬資料，不會更動正式工作站 · <span class="version">v1.01</span></small></div><div class="context"><strong id="scene-title"></strong><span id="scene-description"></span></div><details class="demo-settings"><summary>展示設定</summary><section class="controls" aria-label="展示控制"><label>展示情境<select id="scenario" disabled><option>00 · 共同入口</option></select></label><label>觀看頁面<select id="view" disabled><option value="home">首頁</option><option value="nurse">護理工作站</option><option value="doctor">醫師端 · 所選診間</option><option value="login">跟診支援登入</option><option value="register">職編註冊</option><option value="analytics">人力分析</option></select></label><label>版面<select id="device" disabled><option value="desktop">電腦 · 寬版</option><option value="phone">手機 · 390px</option></select></label><button disabled id="reset" class="outline">重設此情境</button><div id="notification-tools" aria-label="通知與置頂設定"></div></section></details></header>
 <div id="preview-help" class="alert" style="margin:18px 24px"><strong>目前為靜態預覽</strong>若情境無法切換，代表此附件預覽器未執行互動程式。請下載這份 HTML，再以支援 JavaScript 的瀏覽器開啟。若手機仍只能預覽檔案，需要改用正式網頁網址。</div><div id="stage"><div id="screen"><div class="top"><div class="brand">診間支援</div></div><div class="page"><h1>首頁</h1><nav class="home-menu"><section class="panel"><h2>醫師診間</h2><div class="room-entries"><button disabled>醫師診間 1</button><button disabled>醫師診間 2</button><button disabled>醫師診間 3</button></div></section><button disabled class="entry">跟診支援登入</button><button disabled class="entry outline">人力分析紀錄</button></nav></div></div></div>
 <div id="message" role="status" hidden></div>
-<dialog id="finish-confirm" aria-labelledby="finish-title"><h2 id="finish-title">確認人員已結束任務？</h2><p id="finish-person"></p><p>通常由承接人員自行結束。請再次確認該人員已完成此診間任務，才由醫師代為解除承接。</p><p class="muted">確認後，診間恢復無需求，人員恢復可接單。</p><form method="dialog"><button value="cancel" class="outline" autofocus>返回，不結束</button><button value="confirm">確認已結束任務</button></form></dialog>
+<dialog id="finish-confirm" aria-labelledby="finish-title"><h2 id="finish-title">確認結束承接？</h2><p id="finish-person"></p><p>確認此診間任務已完成。</p><p class="muted">診間恢復無需求，人員恢復承接前狀態。</p><form method="dialog"><button value="cancel" class="outline" autofocus>返回，不結束</button><button value="confirm">結束承接</button></form></dialog>
 <dialog id="home-confirm" aria-labelledby="home-title"><h2 id="home-title">返回首頁將登出工作站，確定繼續？</h2><p id="home-warning"></p><form method="dialog"><button value="cancel" class="outline" autofocus>取消，留在此頁</button><button value="confirm">登出並返回首頁</button></form></dialog>
 <footer class="studio-footer">展示原型 v1.01 · 日期、人員與分析數據均為範例。可直接操作呼叫、承接、結束與換手。</footer>
 <script>// Shared presentation for the live report and the standalone demonstration.
@@ -295,7 +298,7 @@ function syncPip(){
   const allBusy=state.rooms.some(r=>r.status==='REQUESTING')&&active.length>0&&active.every(person=>person.status==='BUSY');
   const alert=allBusy?allBusyCard():n.line==='SECONDARY'&&noAvailablePrimary()?shortageCard(false):'';
   const scrollTop=pipWindow.document.querySelector('.pip-list')?.scrollTop||0;
-  pipWindow.document.body.innerHTML=`<header class="pip-heading"><strong>診間支援</strong><span>${state.online?'● 即時連線':'○ 連線中斷'}</span></header>${alert}${myStatus()}<div class="pip-list" tabindex="0" aria-label="等待及服務中的診間">${waitingQueue()}${serviceRooms()}${handoffSwitcher()}</div>`;
+  pipWindow.document.body.innerHTML=`<header class="pip-heading"><strong>診間支援</strong><span>${state.online?'● 即時連線':'○ 連線中斷'}</span></header>${alert}${replacementReminder()}${myStatus()}<div class="pip-list" tabindex="0" aria-label="等待及服務中的診間">${waitingQueue()}${serviceRooms()}${handoffSwitcher()}</div>`;
   pipWindow.document.querySelector('.pip-list').scrollTop=scrollTop;
   bindHandoffSwitcher(pipWindow.document);
   pipWindow.document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>act(b.dataset.action));
@@ -319,8 +322,8 @@ const scenarios=[
   ['all-busy','04 · 全員忙碌','1、2線皆忙於其他業務；開啟置頂視窗查看例外提醒，切回可支援後解除。','nurse'],
   ['shortage','05 · 1線全不可用','護理端在我的狀態上方提示；醫師端在診間支援頂欄下方提示。','nurse'],
   ['multiple','06 · 多診同時等待','兩診依等待時間排序；一人只能承接一診。','nurse'],
-  ['doctor-finish','07 · 醫師代為結束','醫師查看人力，確認承接人員已結束任務後解除承接。','doctor'],
-  ['handoff','08 · 換手支援','2線正在支援3診；由1線申請接手，再切換為2線接受或婉拒。','nurse']
+  ['doctor-finish','07 · 醫師結束承接','醫師確認任務完成後結束承接，人員恢復承接前狀態。','doctor'],
+  ['handoff','08 · 換手支援','2線正在支援3診；1線可直接接手2線支援，醫師同步看到換手訊息。','nurse']
 ];
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let state,selected='home',view='home',doctorRoom=3,device='desktop',lastId='1150001',lastLine='PRIMARY',toast;
@@ -337,7 +340,7 @@ function updateWaitingTimes(){
 }
 const noAvailablePrimary=()=>state.rooms.some(r=>r.status==='REQUESTING')&&!state.nurses.some(n=>n.logged&&n.line==='PRIMARY'&&n.status==='AVAILABLE');
 const shortageCard=doctor=>`<div class="shortage" role="status"><strong>目前無可用1線</strong><span>${doctor?'有診間等待支援，目前1線皆無法支援。':'有診間等待支援，2線可主動協助。'}</span></div>`;
-const allBusyCard=()=>state.rooms.some(r=>r.status==='REQUESTING')&&state.nurses.filter(n=>n.logged).length&&state.nurses.filter(n=>n.logged).every(n=>n.status==='BUSY')?'<div class="shortage severe" role="alert"><strong>全員忙碌</strong><span>仍有診間等待；方便時請切換「可以支援」並承接。</span></div>':'';
+const allBusyCard=()=>state.rooms.some(r=>r.status==='REQUESTING')&&state.nurses.filter(n=>n.logged).length&&state.nurses.filter(n=>n.logged).every(n=>n.status==='BUSY')?'<div class="shortage severe" role="alert"><strong>全員忙碌</strong><span>仍有診間等待；方便時可直接承接。</span></div>':'';
 function notify(text){clearTimeout(toast);$('#message').textContent=text;$('#message').hidden=false;toast=setTimeout(()=>$('#message').hidden=true,5000);}
 function setup(key){
   doctorRoom=3;
@@ -379,15 +382,15 @@ function rosterPage(){
 function myStatus(){const self=me();return `<section class="panel my-status ${self.status.toLowerCase()}"><div class="status-row"><div><h2>我的狀態</h2><strong>${esc(self.name)}</strong> <span class="tag">${line(self)} · ${esc(self.profession)}</span><p class="current-status">${personStatus(self)}</p></div><div class="status-controls">${self.room?button('結束承接','finish'):button(self.status==='AVAILABLE'?'改為忙碌':'改為可以支援',self.status==='AVAILABLE'?'busy':'available','secondary')}</div></div></section>`;}
 function waitingQueue(){
   const self=me(),waiting=state.rooms.filter(r=>r.status==='REQUESTING').sort((a,b)=>a.requestedAt-b.requestedAt);
-  return `<section><div class="section-heading"><h2>等待支援 · ${waiting.length}診</h2></div><div class="queue">${waiting.length?waiting.map(r=>`<article class="call-card"><strong class="room-number">${r.id}診</strong><div class="call-info"><span class="waiting-label">等待時間</span><span class="elapsed" data-wait-room="${r.id}">${waitText(r)}</span></div>${button('承接',`accept:${r.id}`,'',self.status!=='AVAILABLE')}</article>`).join(''):'<div class="panel compact muted">目前沒有等待中的診間</div>'}</div></section>`;
+  return `<section><div class="section-heading"><h2>等待支援 · ${waiting.length}診</h2></div><div class="queue">${waiting.length?waiting.map(r=>`<article class="call-card"><strong class="room-number">${r.id}診</strong><div class="call-info"><span class="waiting-label">等待時間</span><span class="elapsed" data-wait-room="${r.id}">${waitText(r)}</span></div>${button('承接',`accept:${r.id}`,'',self.status==='COVERING')}</article>`).join(''):'<div class="panel compact muted">目前沒有等待中的診間</div>'}</div></section>`;
 }
 function nursePage(){
   if(!me())return loginPage(false);
   const self=me();
   const shortage=noAvailablePrimary()&&self.line==='SECONDARY';
-  return `${allBusyCard()}${shortage&&!allBusyCard()?shortageCard(false):''}${myStatus()}${handoffSwitcher()}<div class="work-grid"><div class="work-main">${waitingQueue()}${serviceRooms()}</div><aside>${rosterPage()}</aside></div><section class="settings panel"><h2>工作站設定</h2><div class="notification-slot"></div><button data-action="logout" class="outline">登出工作站</button><p class="muted">展示環境的通知與置頂功能由上方「展示設定」操作。</p></section>`;
+  return `${allBusyCard()}${shortage&&!allBusyCard()?shortageCard(false):''}${replacementReminder()}${myStatus()}${handoffSwitcher()}<div class="work-grid"><div class="work-main">${waitingQueue()}${serviceRooms()}</div><aside>${rosterPage()}</aside></div><section class="settings panel"><h2>工作站設定</h2><div class="notification-slot"></div><button data-action="logout" class="outline">登出工作站</button><p class="muted">展示環境的通知與置頂功能由上方「展示設定」操作。</p></section>`;
 }
-function doctorCard(){const r=state.rooms.find(r=>r.id===doctorRoom),assigned=state.nurses.find(n=>n.id===r.nurse);return `<section class="panel doctor ${r.status.toLowerCase()}"><span class="tag">${r.id}診</span><div class="symbol">${r.status==='IDLE'?'＋':r.status==='REQUESTING'?'◷':'✓'}</div><h2>${r.status==='IDLE'?'無需求':r.status==='REQUESTING'?'等待支援人員':'已有人承接'}</h2>${r.status==='IDLE'?'<p>工作站已準備接收您的呼叫</p>'+button('呼叫支援人員','request'):r.status==='REQUESTING'?`<div class="doctor-timer"><span class="elapsed" data-wait-room="${r.id}">${waitText(r)}</span></div><p>需求已送出，承接後將即時通知您</p><div class="button-row">${button('人員已到場','doctor-arrive')}${button('取消需求','cancel','outline')}</div>`:`<p class="accepted-name">${assigned?esc(assigned.name)+'（'+esc(assigned.profession)+'）已接單':'人員已到場 · 承接者未指定'}</p><p>確認人員已完成任務後，結束支援。</p>`+button(assigned?'結束承接':'結束支援','doctor-finish','outline')}</section>`;}
+function doctorCard(){const r=state.rooms.find(r=>r.id===doctorRoom),assigned=state.nurses.find(n=>n.id===r.nurse);return `<section class="panel doctor ${r.status.toLowerCase()}"><span class="tag">${r.id}診</span><div class="symbol">${r.status==='IDLE'?'＋':r.status==='REQUESTING'?'◷':'✓'}</div><h2>${r.status==='IDLE'?'無需求':r.status==='REQUESTING'?'等待支援人員':'已有人承接'}</h2>${r.status==='IDLE'?'<p>工作站已準備接收您的呼叫</p>'+button('呼叫支援人員','request'):r.status==='REQUESTING'?`<div class="doctor-timer"><span class="elapsed" data-wait-room="${r.id}">${waitText(r)}</span></div><p>需求已送出，承接後將即時通知您</p><div class="button-row">${button('人員已到場','doctor-arrive')}${button('取消需求','cancel','outline')}</div>`:`<p class="accepted-name">${assigned?esc(assigned.name)+'（'+esc(assigned.profession)+'）已接單':coverageLabel(r)}</p><p>任務完成時，請按「結束承接」。</p>${r.takeover_message?`<div class="takeover-notice" role="status">${esc(r.takeover_message)}</div>`:''}${!assigned?button(r.coverage_line==='SECONDARY'?'改為1線承接':'承接者非1線',r.coverage_line==='SECONDARY'?'doctor-primary':'doctor-nonprimary','outline'):''}`+button('結束承接','doctor-finish','outline')}</section>`;}
 function doctorPage(){return `${allBusyCard()||(noAvailablePrimary()?shortageCard(true):'')}${heading(doctorRoom+'診','需要支援時，按一下即可通知工作站。','DOCTOR · 固定診間')}${pipSupported()?'<div class="button-row doctor-tools">'+button('開啟置頂小視窗','real-pip','outline')+'</div>':''}<div class="doctor-layout">${doctorCard()}${rosterPage()}</div>`;}
 function loginPage(register){return heading(register?'註冊職編與姓名':'跟診支援登入',register?'註冊職編、姓名與職類；線別於每次登入時選擇。':'線別依本次班別選擇；職類由註冊資料帶入。')+`<section class="login-card panel"><h2>${register?'註冊職編與姓名':'登入工作站'}</h2><form id="identity">${register?'':`<label>本次線別<select name="line"><option value="PRIMARY" ${lastLine==='PRIMARY'?'selected':''}>1線</option><option value="SECONDARY" ${lastLine==='SECONDARY'?'selected':''}>2線</option></select></label>`}<label>職編<input name="id" inputmode="numeric" value="${register?'':esc(lastId)}" required maxlength="7" pattern="[0-9]{7}" placeholder="例如 1150001"></label>${register?'<label>姓名<input name="name" required maxlength="60" placeholder="請填寫姓名"></label><label>職類<select name="profession" required><option>護理師</option><option>醫檢師</option><option>行政人員</option></select></label>':''}<button type="submit">${register?'註冊':'登入工作站'}</button></form><button class="outline" data-action="${register?'show-login':'show-register'}">${register?'已有職編，返回登入':'註冊職編與姓名'}</button><p class="muted">免密碼。僅記住上次職編與線別，不會自動登入。</p><p class="muted">展示職編：1150001、1150002（護理師）、1150003（醫檢師）、1150004（行政人員）。</p></section>`;}
 const periodStats=[
@@ -406,7 +409,8 @@ let demoActivityPage=0;
 const activityRows=[['15:40:53','1診','取消需求','—','#37'],['15:40:24','1診','呼叫','—','#37'],['15:16:48','1診','完成（醫師結束）','—','#36'],['15:16:08','1診','醫師確認到場','未指定','#36'],['15:14:15','1診','呼叫','—','#36'],['13:42:02','1診','取消需求','—','#33'],['13:37:42','1診','呼叫','—','#33'],['10:46:18','3診','完成','王怡文','#27'],['10:45:02','3診','接單','王怡文','#27'],['10:44:24','3診','呼叫','—','#27'],['09:37:50','2診','完成（醫師結束）','林佳穎','#26'],['09:35:11','2診','接單','林佳穎','#26'],['09:34:33','2診','呼叫','—','#26']];
 function analyticsPage(){return heading('人力分析紀錄','今日 · 範例數據，非實際統計','STAFFING INSIGHTS')+`<form class="filters demo-dates"><label>起日<input type="date" value="2026-09-13"></label><label>迄日<input type="date" value="2026-09-13"></label><button type="button">更新</button></form><p class="scope">圓餅圖：統計時段內1線團隊可支援的時間比例 · 台北時間</p><div class="period-grid">${periodStats.map(analyticsPeriod).join('')}</div><p class="muted">範例資料。至少一位已登入1線可支援即屬可支援期；分母不隨人數增加。</p><p class="muted">範例資料。每柱30分鐘，支援時間佔比以有診間支援的時間計算，同時多診只計一次。最大等待含接單、到場與取消，保留完整等待時間；未結束者計到目前。</p><section class="panel activity"><h2>執行紀錄</h2><p class="muted">呼叫、接單、到場、取消、完成 · 每頁10筆 · 最新在上</p><div class="activity-table"><table><thead><tr><th>時間</th><th>診間</th><th>操作</th><th>承接人員</th><th>需求編號</th></tr></thead><tbody>${activityRows.slice(demoActivityPage*10,(demoActivityPage+1)*10).map(row=>`<tr>${row.map(value=>`<td>${value}</td>`).join('')}</tr>`).join('')}</tbody></table></div><nav class="activity-pages" aria-label="執行紀錄分頁">${button('上一頁','activity-prev','outline',demoActivityPage===0)}<span>第 ${demoActivityPage+1} 頁</span>${button('下一頁','activity-next','outline',(demoActivityPage+1)*10>=activityRows.length)}</nav></section>`;}
 function render(){
-  pruneHandoffs();
+  for(const r of state.rooms)if(r.status==='COVERED'&&!r.assignment_token)r.assignment_token=crypto.randomUUID();
+  for(const n of state.nurses)if(n.status==='COVERING'&&!n.resume_status)n.resume_status=n.line==='SECONDARY'?'BUSY':'AVAILABLE';
   collectNotifications();
   const scene=scenarios.find(s=>s[0]===selected);$('#scene-title').textContent=scene[1];$('#scene-description').textContent=scene[2];$('#view').value=view;
   $('#screen').className=device==='phone'?'phone':'';
@@ -432,9 +436,15 @@ function render(){
 function act(action){
   const [kind,id]=action.split(':');const self=me(),r=state.rooms.find(r=>r.id===Number(id))||state.rooms.find(r=>r.id===doctorRoom);
   if(kind.startsWith('real-')){notificationAction(kind,id);return;}
-  if(kind.startsWith('handoff-')){handoffAction(action);return;}
   if(kind==='activity-prev'||kind==='activity-next'){demoActivityPage=Math.max(0,Math.min(Math.ceil(activityRows.length/10)-1,demoActivityPage+(kind==='activity-next'?1:-1)));render();return;}
-  if(kind==='doctor-arrive'){if(r.status!=='REQUESTING')return;Object.assign(r,{status:'COVERED',nurse:null,acceptedAt:Date.now()});recordDemo('醫師確認到場',r,'未指定');render();return;}
+  if(kind==='doctor-arrive'){if(r.status!=='REQUESTING')return;Object.assign(r,{status:'COVERED',nurse:null,coverage_line:'PRIMARY',takeover_message:'',assignment_token:crypto.randomUUID(),acceptedAt:Date.now()});recordDemo('醫師確認到場',r,'未指定');render();return;}
+  if(kind==='takeover'){
+    if(!state.online||!self?.logged||self.status==='COVERING'||r.status!=='COVERED'||action.split(':')[2]!==r.assignment_token)return;
+    const old=state.nurses.find(n=>n.id===r.nurse);if(old)restoreDemo(old);
+    r.takeover_message=self.name+'已接手，請轉知原承接者'+(old?.name||'（未指定姓名）');
+    Object.assign(self,{resume_status:self.status,status:'COVERING',room:r.id});Object.assign(r,{nurse:self.id,coverage_line:null,assignment_token:crypto.randomUUID()});recordDemo('接手',r,self.name);render();return;
+  }
+  if(kind==='doctor-primary'||kind==='doctor-nonprimary'){if(r.status==='COVERED'&&!r.nurse)r.coverage_line=kind==='doctor-primary'?'PRIMARY':'SECONDARY';render();return;}
   if(kind==='home'){returnHome();return;}
   if(kind==='open-doctor'){doctorRoom=Number(id);view='doctor';}
   if(kind==='open-support')view=me()?'nurse':'login';
@@ -447,29 +457,22 @@ function act(action){
     dialog.onclose=()=>{
       if(dialog.returnValue!=='confirm')return;
       if(!state.online||r.status!=='COVERED'||r.nurse!==(assigned?.id??null)){notify('狀態已變更，請重新確認');return;}
-      recordDemo('完成（醫師結束）',r,assigned?.name||'未指定');Object.assign(r,{status:'IDLE',nurse:null,wait:0});if(assigned)Object.assign(assigned,{status:'AVAILABLE',room:null});render();notify('醫師已確認結束支援');
+      recordDemo('完成（醫師結束）',r,assigned?.name||'未指定');Object.assign(r,{status:'IDLE',nurse:null,wait:0});if(assigned)restoreDemo(assigned);render();notify('醫師已確認結束支援');
     };
     dialog.showModal();return;
   }
-  if(kind==='request'){Object.assign(r,{status:'REQUESTING',wait:0,requestedAt:Date.now(),nurse:null,requestId:++notificationDemo.sequence});recordDemo('呼叫',r);notify(`${r.id}診已發出呼叫，可切到護理工作站接單`);}
+  if(kind==='request'){Object.assign(r,{status:'REQUESTING',wait:0,requestedAt:Date.now(),nurse:null,coverage_line:null,takeover_message:'',assignment_token:crypto.randomUUID(),requestId:++notificationDemo.sequence});recordDemo('呼叫',r);notify(`${r.id}診已發出呼叫，可切到護理工作站接單`);}
   if(kind==='cancel'){recordDemo('取消需求',r);Object.assign(r,{status:'IDLE',wait:0,nurse:null});}
-  if(kind==='accept'){Object.assign(r,{status:'COVERED',nurse:self.id});Object.assign(self,{status:'COVERING',room:r.id});recordDemo('接單',r,self.name);notify('已承接，可切到醫師端查看承接者');}
-  if(kind==='finish'){recordDemo('完成',state.rooms.find(r=>r.id===self.room),self.name);Object.assign(state.rooms.find(r=>r.id===self.room),{status:'IDLE',nurse:null,wait:0});Object.assign(self,{status:'AVAILABLE',room:null});}
+  if(kind==='accept'){if(self.status==='COVERING'||r.status!=='REQUESTING')return;Object.assign(r,{status:'COVERED',nurse:self.id,coverage_line:null,assignment_token:crypto.randomUUID()});Object.assign(self,{resume_status:self.status,status:'COVERING',room:r.id});recordDemo('接單',r,self.name);notify('已承接，可切到醫師端查看承接者');}
+  if(kind==='finish'){recordDemo('完成',state.rooms.find(r=>r.id===self.room),self.name);Object.assign(state.rooms.find(r=>r.id===self.room),{status:'IDLE',nurse:null,wait:0});restoreDemo(self);}
   if(kind==='busy')self.status='BUSY';if(kind==='available')self.status='AVAILABLE';
   if(kind==='logout'&&pushToken){stopPush().then(()=>act('logout')).catch(e=>notify('尚未停止待發通知：'+e.message));return;}
   if(kind==='logout'){lastId=self.id;lastLine=self.line;self.logged=false;state.me=null;view='login';}
   if(kind==='show-register')view='register';if(kind==='show-login')view='login';render();
 }
-function pruneHandoffs(){
-  for(const r of state.rooms){
-    const h=r.handoff;if(!h)continue;
-    const from=state.nurses.find(n=>n.id===h.from),to=state.nurses.find(n=>n.id===h.to);
-    if(r.status!=='COVERED'||r.nurse!==h.from||!from?.logged||!to?.logged||from.room!==r.id||from.status!=='COVERING'||to.status!=='AVAILABLE'||to.room){
-      const message=`${r.id}診換手申請已取消：任務或人員狀態已變更。`;
-      if(from)from.handoffNotice=message;if(to)to.handoffNotice=message;delete r.handoff;
-    }
-  }
-}
+function restoreDemo(n){Object.assign(n,{status:n.resume_status==='AVAILABLE'?'AVAILABLE':'BUSY',room:null,resume_status:null});}
+function coverageLabel(r){return r.coverage_line==='PRIMARY'?'1線支援中 · 未指定姓名':r.coverage_line==='SECONDARY'?'非1線支援中 · 未指定姓名':'承接人員及線別未指定';}
+function replacementReminder(){const n=me();if(!n||n.line!=='PRIMARY'||n.status==='COVERING')return '';const rooms=state.rooms.filter(r=>r.status==='COVERED'&&(r.nurse?state.nurses.find(p=>p.id===r.nurse)?.line==='SECONDARY':r.coverage_line==='SECONDARY'));return rooms.length?'<div class="shortage replacement-reminder" role="status"><strong>請1線有空後接手支援</strong><span>'+rooms.map(r=>r.id+'診').join('、')+'目前由非1線人員支援，可在下方直接接手。</span></div>':'';}
 function handoffSwitcher(){
   if(selected!=='handoff')return '';
   return `<label class="handoff-demo">展示操作身分（切換不會登出）<select data-handoff-person>${state.nurses.filter(n=>n.logged).map(n=>`<option value="${esc(n.id)}" ${n.id===state.me?'selected':''}>${esc(n.name)} · ${line(n)} · ${personStatus(n)}</option>`).join('')}</select></label>`;
@@ -477,44 +480,7 @@ function handoffSwitcher(){
 function bindHandoffSwitcher(doc){
   doc.querySelectorAll('[data-handoff-person]').forEach(select=>select.onchange=()=>{const n=state.nurses.find(n=>n.id===select.value&&n.logged);if(n){state.me=n.id;view='nurse';render();}});
 }
-function serviceRooms(){
-  const self=me();if(!self)return '';
-  const rooms=state.rooms.filter(r=>r.status==='COVERED');
-  const pending=state.rooms.some(r=>r.handoff?.to===self.id);
-  return `<section class="services"><h2>服務中的診間</h2>${self.handoffNotice?`<p class="handoff-result" role="status">${esc(self.handoffNotice)}</p>`:''}${rooms.map(r=>{
-    const owner=state.nurses.find(n=>n.id===r.nurse),h=r.handoff,applicant=h&&state.nurses.find(n=>n.id===h.to);
-    let controls='';
-    if(h){
-      controls=`<p class="handoff-pending">${esc(applicant.name)}（${line(applicant)}）申請接手，等待 ${esc(owner.name)} 確認。</p>`;
-      if(h.from===self.id)controls+=button('接受換手',`handoff-accept:${r.id}:${h.id}`)+button('婉拒',`handoff-decline:${r.id}:${h.id}`,'outline');
-      if(h.to===self.id)controls+=button('取消申請',`handoff-cancel:${r.id}:${h.id}`,'outline');
-    }else if(owner?.id===self.id)controls='<p>您正在承接此診間</p>';
-    else if(!owner)controls='<span class="muted">承接人員未指定 · 由醫師結束支援</span>';
-    else controls=button('申請接手',`handoff-request:${r.id}`,'outline',!self.logged||self.status!=='AVAILABLE'||!!self.room||pending||!owner?.logged);
-    return `<article class="panel service-card" data-service-room="${r.id}"><div><h3>${r.id}診</h3><p>${owner?esc(owner.name)+' · '+line(owner)+' · '+esc(owner.profession):'承接人員未指定'}${owner&&!owner.logged?'（未登入）':''}</p></div><div class="handoff-actions">${controls}</div></article>`;
-  }).join('')||'<div class="panel compact muted">目前沒有服務中的診間</div>'}</section>`;
-}
-function handoffAction(action){
-  const [kind,roomId,token]=action.split(':'),r=state.rooms.find(r=>r.id===Number(roomId)),self=me();
-  if(!state.online||!self?.logged||!r)return;
-  pruneHandoffs();
-  const owner=state.nurses.find(n=>n.id===r.nurse),h=r.handoff;
-  if(kind==='handoff-request'){
-    if(r.status!=='COVERED'||!owner?.logged||owner.status!=='COVERING'||owner.room!==r.id||owner.id===self.id||self.status!=='AVAILABLE'||self.room||h||state.rooms.some(room=>room.handoff?.to===self.id)){render();notify('目前無法申請，請確認人員與診間狀態。');return;}
-    r.handoff={id:crypto.randomUUID(),from:owner.id,to:self.id};self.handoffNotice='';owner.handoffNotice='';
-  }else{
-    if(!h||h.id!==token){render();notify('這筆換手申請已失效，請查看最新狀態。');return;}
-    const applicant=state.nurses.find(n=>n.id===h.to);
-    if(kind==='handoff-cancel'&&h.to===self.id){self.handoffNotice=`已取消${r.id}診換手申請。`;owner.handoffNotice=`${applicant.name}已取消${r.id}診換手申請。`;delete r.handoff;}
-    else if(kind==='handoff-decline'&&h.from===self.id){self.handoffNotice=`已婉拒${r.id}診換手申請，您繼續承接。`;applicant.handoffNotice=`${owner.name}已婉拒${r.id}診換手申請。`;delete r.handoff;}
-    else if(kind==='handoff-accept'&&h.from===self.id){
-      Object.assign(owner,{status:'AVAILABLE',room:null,handoffNotice:`${r.id}診已交由${applicant.name}承接，您已恢復可接單。`});
-      Object.assign(applicant,{status:'COVERING',room:r.id,handoffNotice:`換手完成，您已接手${r.id}診。`});
-      r.nurse=applicant.id;delete r.handoff;
-    }
-  }
-  render();
-}
+function serviceRooms(){const self=me();if(!self)return '';return '<section class="services"><h2>服務中的診間</h2>'+(state.rooms.filter(r=>r.status==='COVERED').map(r=>{const n=state.nurses.find(n=>n.id===r.nurse);return '<article class="panel service-card" data-service-room="'+r.id+'"><div><h3>'+r.id+'診</h3><p>'+(n?esc(n.name)+' · '+line(n)+' · '+esc(n.profession):coverageLabel(r))+'</p></div>'+(r.nurse===self.id?'<span class="tag">我正在支援</span>':button('接手','takeover:'+r.id+':'+r.assignment_token,'outline',self.status==='COVERING'))+'</article>';}).join('')||'<div class="panel compact muted">目前沒有服務中的診間</div>')+'</section>';}
 const handoffCss='.service-rooms{margin:20px 0}.service-rooms h2{font-size:18px}.service-room{background:#fff;border:1px solid #bdd1d9;border-radius:10px;padding:14px;margin:10px 0;overflow-wrap:anywhere}.service-room>strong{color:#1e3a8a}.service-room p{font-size:14px;line-height:1.5;margin:8px 0}.handoff-actions button{margin:4px 6px 4px 0;font-size:14px}.handoff-pending,.handoff-result{background:#eff6ff;color:#1e3a8a;padding:10px;border-radius:8px;line-height:1.5}.handoff-demo{display:block;background:#edf1ee;padding:12px;border-radius:8px;margin:16px 0;font-size:12px}.handoff-demo select{box-sizing:border-box;display:block;width:100%;max-width:100%;font:inherit;padding:10px;margin-top:8px;border:1px solid #b8c8be;border-radius:6px;background:white;color:#263e39}';
 const handoffStyle=document.createElement('style');handoffStyle.textContent=handoffCss;document.head.append(handoffStyle);
 $('#scenario').innerHTML=scenarios.map(s=>`<option value="${s[0]}">${s[1]}</option>`).join('');
