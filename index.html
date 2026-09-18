@@ -407,7 +407,7 @@ function syncPip(){
   if(pipRole==='doctor'){pipWindow.document.body.innerHTML=`<header class="pip-heading"><strong>${doctorRoom}診｜診間支援</strong><span>${state.online?'● 即時連線':'○ 連線中斷'}</span></header><p class="pip-summary">${staffingSummary()}</p>${allBusyCard()||(noAvailablePrimary()?shortageCard(true):'')}<div class="doctor-layout">${doctorCard()}</div>`;pipWindow.document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>pipAction(b));return;}
   const n=me();if(!n){pipWindow.close();return;}
   const active=state.nurses.filter(person=>person.logged);
-  const allBusy=state.rooms.some(r=>r.status==='REQUESTING')&&active.length>0&&active.every(person=>person.status==='BUSY');
+  const allBusy=state.rooms.some(r=>r.status==='REQUESTING')&&!active.some(person=>person.status==='AVAILABLE');
   const alert=allBusy?allBusyCard():n.line==='SECONDARY'&&noAvailablePrimary()?shortageCard(false):'';
   const scrollTop=pipWindow.document.querySelector('.pip-list')?.scrollTop||0;
   pipWindow.document.body.innerHTML=`<header class="pip-heading"><strong>診間支援</strong><span>${state.online?'● 即時連線':'○ 連線中斷'}</span></header>${alert}${replacementReminder()}${myStatus()}<div class="pip-list" tabindex="0" aria-label="等待及服務中的診間">${waitingQueue()}${serviceRooms()}${handoffSwitcher()}</div>`;
@@ -452,7 +452,7 @@ function updateWaitingTimes(){
 }
 const noAvailablePrimary=()=>state.rooms.some(r=>r.status==='REQUESTING')&&!state.nurses.some(n=>n.logged&&n.line==='PRIMARY'&&n.status==='AVAILABLE');
 const shortageCard=doctor=>`<div class="shortage" role="status"><strong>目前無可用1線</strong><span>${doctor?'有診間等待支援，目前1線皆無法支援。':'有診間等待支援，2線可主動協助。'}</span></div>`;
-const allBusyCard=()=>state.rooms.some(r=>r.status==='REQUESTING')&&state.nurses.filter(n=>n.logged).length&&state.nurses.filter(n=>n.logged).every(n=>n.status==='BUSY')?'<div class="shortage severe" role="alert"><strong>全員忙碌</strong><span>仍有診間等待；方便時可直接承接。</span></div>':'';
+const allBusyCard=()=>state.rooms.some(r=>r.status==='REQUESTING')&&!state.nurses.some(n=>n.logged&&n.status==='AVAILABLE')?'<div class="shortage severe" role="alert"><strong>目前無人可支援</strong><span>仍有診間等待；未承接的人員方便時可直接承接。</span></div>':'';
 function notify(text){clearTimeout(toast);$('#message').textContent=text;$('#message').hidden=false;toast=setTimeout(()=>$('#message').hidden=true,5000);}
 function setup(key){
   doctorRoom=3;
@@ -536,7 +536,7 @@ function render(){
   bindHandoffSwitcher(document);
   if(view==='nurse'&&me()&&window.demoSound){const panel=document.createElement('section');panel.id='sound-settings';document.querySelector('#screen .settings')?.append(panel);window.demoSound.mount(panel);}
   const people=state.nurses.filter(n=>n.logged),primary=people.filter(n=>n.line==='PRIMARY'&&n.status==='AVAILABLE'),secondary=people.filter(n=>n.line==='SECONDARY'&&n.status==='AVAILABLE');
-  const targets=primary.length?primary:secondary.length?secondary:people.length&&people.every(n=>n.status==='BUSY')?people:[];
+  const targets=primary.length?primary:secondary.length?secondary:people.filter(n=>n.status==='BUSY');
   if(!me()||view!=='nurse')window.demoSound?.silence();else window.demoSound?.setDesired(state.rooms.some(r=>r.status==='REQUESTING')&&targets.some(n=>n.id===state.me));
   const form=$('#identity');if(form)form.onsubmit=e=>{
     e.preventDefault();const values=Object.fromEntries(new FormData(form));values.id=values.id.trim();const found=state.nurses.find(n=>n.id===values.id);
