@@ -148,6 +148,13 @@ body.pip{padding:8px;font-size:clamp(12px,4vw,14px);height:100dvh;display:flex;f
 .logout-dialog button{width:100%;margin:0;min-height:44px}
 .pip .pip-finish-confirm{grid-column:1/-1;background:#fff5e6;border:1px solid #d5ac73;border-radius:8px;padding:8px}
 .pip .pip-finish-confirm p{margin:0 0 8px;font-size:13px;line-height:1.4}
+.line-controls{margin-top:10px;border-top:1px solid #d9e4df;padding-top:10px;overflow-wrap:anywhere}
+.line-controls summary{cursor:pointer;font-size:13px;color:#246d62}
+.line-controls label{display:block;margin:10px 0}
+.line-controls select{width:100%;min-width:0;max-width:100%}
+.line-controls .button-row{flex-wrap:wrap;gap:6px}
+.pip .line-controls{font-size:11px;margin-top:6px;padding-top:6px}
+.pip .line-controls button,.pip .line-controls select,.pip .line-controls summary{font-size:11px;min-width:0;max-width:100%}
 
 .studio{position:sticky;top:0;z-index:20;min-height:76px;display:flex;align-items:center;gap:24px;padding:12px max(20px,calc((100vw - 1280px)/2));background:#184c43;color:#fff}.studio-brand{min-width:max-content}.studio-brand strong{font-size:18px}.studio-brand small{display:block;margin-top:5px;color:#c2d8d0}.studio .context{flex:1;display:flex;flex-direction:column;gap:4px;margin:0;padding:0;color:#fff}.studio .context strong{color:#fff}.studio .context span{color:#c2d8d0;font-size:12px}.demo-settings{position:relative}.demo-settings summary{list-style:none;cursor:pointer;border:1px solid #8fb5a9;border-radius:9px;padding:10px 14px;white-space:nowrap;font-size:13px;font-weight:650}.demo-settings summary::-webkit-details-marker{display:none}.demo-settings[open] summary{background:#fff;color:#184c43}.controls{position:absolute;right:0;top:calc(100% + 12px);width:min(760px,calc(100vw - 32px));display:grid;grid-template-columns:2fr 1.3fr 1.2fr auto;gap:12px;align-items:end;padding:18px;background:#fff;color:#263e39;border:1px solid #cbd8d1;border-radius:14px;box-shadow:0 16px 45px #102d2680}.controls label,.controls label:first-child{min-width:0}.controls button{margin:0}.controls #notification-tools{grid-column:1/-1}.controls select{margin-top:6px}.controls .notification-buttons{display:flex;gap:8px;flex-wrap:wrap}.controls .notification-buttons button{margin:0}.controls #push-status{margin:8px 0 0}.context+#stage{margin-top:0}#stage{padding:24px;overflow-x:auto}#screen{max-width:1200px;margin:auto;background:#f5f7f5;min-height:650px;border:1px solid #d0d9d3;border-radius:15px;overflow:hidden;box-shadow:0 12px 30px #203f3710}#screen.phone{width:390px;max-width:100%;min-height:740px}.demo-main{max-width:1240px;padding:24px 28px 50px;margin:auto;min-height:570px}.screen-summary{font-size:13px;color:#47675b}.connection{margin-left:auto;white-space:nowrap;font-size:12px;color:#17665b}.connection.offline{color:#a4511f}.brand small{display:inline;font-size:10px;letter-spacing:0;color:#71877a;margin-left:4px}.outline{background:#fff;border-color:#ccd9d2;color:#36584c}.room-links button{display:inline-flex;gap:50px;border:1px solid var(--line);padding:16px;margin:0 14px 10px 0;border-radius:8px}.entry-grid button{text-align:left;color:inherit;font-weight:400}.entry-grid button h2{color:#263e39}.my-status{padding:20px}.status-dot.covering{background:#347caa}.status-dot.busy{background:#c58631}.status-dot.available{background:#278368}.service-card .handoff-actions{max-width:55%}.handoff-actions p{margin:0 0 8px;font-size:13px}.handoff-actions button{font-size:13px;padding:9px 12px;min-height:42px;margin:3px}.handoff-demo{display:block;background:#edf1ee;padding:12px;border-radius:8px;margin:0 0 18px;font-size:12px}.handoff-demo select{margin-top:8px}.settings>.outline{margin-top:10px}.demo-dates{display:flex}.page-footer{border-top:1px solid var(--line);margin-top:32px;padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:11px;color:#829087}.page-footer button{min-width:140px}.studio-footer{text-align:center;font-size:12px;color:#6b7c72;padding:0 20px 24px}#message{z-index:40}.phone .topbar{padding:12px 16px;gap:8px 14px;min-height:64px;flex-wrap:wrap}.phone .brand{font-size:18px}.phone .brand-mark{width:30px;height:30px}.phone .screen-summary{order:3;width:100%;font-size:12px}.phone .demo-main{padding:18px 16px 32px}.phone .work-grid{grid-template-columns:1fr;gap:24px}.phone .my-status{padding:16px;margin-bottom:20px}.phone .status-row{gap:8px}.phone .call-card{padding:16px;gap:12px;flex-wrap:nowrap}.phone .call-card button{width:auto;font-size:15px;min-width:70px;min-height:48px;padding:12px}.phone .room-number{font-size:25px}.phone .elapsed{font-size:25px}.phone .call-info{text-align:left;margin-left:0}.phone .period-grid{grid-template-columns:1fr}.phone .period{padding:20px}.phone .pie{width:125px}.phone .period-chart{gap:18px}.phone .doctor-card+.personnel .roster-grid{grid-template-columns:1fr}.phone .demo-dates{display:grid;grid-template-columns:1fr 1fr;gap:12px}.phone .demo-dates button{grid-column:1/-1}.phone .activity{padding:16px}.phone .page-footer{flex-wrap:wrap}
 @media(max-width:700px){.studio{position:relative;flex-wrap:wrap;padding:12px 16px;gap:10px}.studio-brand{flex:1}.studio .context{order:3;flex-basis:100%}.studio .context span{display:none}.demo-settings{position:static}.controls{right:16px;left:16px;top:68px;width:auto;grid-template-columns:1fr 1fr}.controls label:first-child{grid-column:1/-1}.controls #reset{width:100%}#stage{padding:12px 8px 20px}.demo-main{padding:18px 16px 32px}}
@@ -219,6 +226,10 @@ class ReminderSound {
     this.refresh();
   }
   enable(){this.settings.enabled=true;this.save();this.stop();this.unlocked=true;this.start(true,10000);}
+  async unlock(){
+    try{await this.prepareAudio();this.unlocked=true;this.error='';this.sync();}
+    catch{this.unlocked=false;this.error='音訊尚未啟用，請按「啟用響鈴」或「試聽」。';this.refresh();}
+  }
   setDesired(value){this.desired=value;this.sync();}
   sync(){if(!this.shouldPlay()){if(!this.previewing)this.stop();}else if(!this.playing&&!this.timer)this.start();this.refresh();}
   silence(){this.stop();this.desired=false;this.refresh();}
@@ -410,10 +421,11 @@ function syncPip(){
   const allBusy=state.rooms.some(r=>r.status==='REQUESTING')&&!active.some(person=>person.status==='AVAILABLE');
   const alert=allBusy?allBusyCard():n.line==='SECONDARY'&&noAvailablePrimary()?shortageCard(false):'';
   const scrollTop=pipWindow.document.querySelector('.pip-list')?.scrollTop||0;
-  pipWindow.document.body.innerHTML=`<header class="pip-heading"><strong>診間支援</strong><span>${state.online?'● 即時連線':'○ 連線中斷'}</span></header>${alert}${replacementReminder()}${myStatus()}<div class="pip-list" tabindex="0" aria-label="等待及服務中的診間">${waitingQueue()}${serviceRooms()}${handoffSwitcher()}</div>`;
+  pipWindow.document.body.innerHTML=`<header class="pip-heading"><strong>診間支援</strong><span>${state.online?'● 即時連線':'○ 連線中斷'}</span></header>${alert}${myStatus()}<div class="pip-list" tabindex="0" aria-label="等待及服務中的診間">${waitingQueue()}${serviceRooms()}${handoffSwitcher()}</div>`;
   pipWindow.document.querySelector('.pip-list').scrollTop=scrollTop;
   bindHandoffSwitcher(pipWindow.document);
   pipWindow.document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>act(b.dataset.action));
+  bindDemoLines(pipWindow.document);
 }
 async function checkPushStatus(){
   if(polling)return;let id;try{id=localStorage.getItem('clinic-push-job');}catch{}
@@ -435,10 +447,12 @@ const scenarios=[
   ['shortage','05 · 1線全不可用','護理端在我的狀態上方提示；醫師端在診間支援頂欄下方提示。','nurse'],
   ['multiple','06 · 多診同時等待','兩診依等待時間排序；一人只能承接一診。','nurse'],
   ['doctor-finish','07 · 醫師結束承接','醫師確認任務完成後結束承接，人員恢復承接前狀態。','doctor'],
-  ['handoff','08 · 換手支援','2線正在支援3診；1線可直接接手2線支援，醫師同步看到換手訊息。','nurse']
+  ['line-exchange','08 · 交換線別','提議交換1、2線，再切換對方身分同意；承接中的診間保持不變。','nurse']
 ];
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let state,selected='home',view='home',doctorRoom=3,device='desktop',lastId='1150001',lastLine='PRIMARY',toast;
+let employeeLogin=false,quickId='shared-consultation';
+const demoJobs=[{id:'shared-consultation',name:'諮詢櫃台'},{id:'shared-laboratory',name:'檢驗櫃台'},{id:'shared-support',name:'支援人員'}];
 const line=n=>n.line==='PRIMARY'?'1線':'2線';
 const me=()=>state.nurses.find(n=>n.id===state.me);
 const roomName=id=>`${id}診`;
@@ -457,11 +471,13 @@ function notify(text){clearTimeout(toast);$('#message').textContent=text;$('#mes
 function setup(key){
   doctorRoom=3;
   selected=key;state={online:true,me:'1150001',rooms:[1,2,3].map(id=>({id,status:'IDLE',wait:0,nurse:null})),nurses:[{id:'1150001',name:'王怡文',profession:'護理師',line:'PRIMARY',status:'AVAILABLE',room:null,logged:true},{id:'1150002',name:'林佳穎',profession:'護理師',line:'PRIMARY',status:'AVAILABLE',room:null,logged:true},{id:'1150003',name:'陳志明',profession:'醫檢師',line:'SECONDARY',status:'AVAILABLE',room:null,logged:true},{id:'1150004',name:'李雅婷',profession:'行政人員',line:'SECONDARY',status:'AVAILABLE',room:null,logged:true}]};
+  state.line_exchanges=[];
+  for(const job of demoJobs)state.nurses.push({...job,profession:'共用職務',line:'PRIMARY',status:'AVAILABLE',room:null,logged:false});
   const r=state.rooms[2];
   if(['waiting','all-busy','shortage','multiple'].includes(key)){r.status='REQUESTING';r.wait=84;}
   if(['covered','doctor-finish'].includes(key)){r.status='COVERED';r.nurse='1150001';Object.assign(me(),{status:'COVERING',room:3});}
   if(key==='all-busy')state.nurses.forEach(n=>n.status='BUSY');
-  if(key==='handoff'){Object.assign(r,{status:'COVERED',nurse:'1150003'});Object.assign(state.nurses[2],{status:'COVERING',room:3});}
+  if(key==='line-exchange'){state.nurses.forEach(n=>n.logged=false);const a=state.nurses.find(n=>n.id==='shared-consultation'),b=state.nurses.find(n=>n.id==='shared-laboratory');Object.assign(a,{logged:true,line:'PRIMARY',status:'BUSY'});Object.assign(b,{logged:true,line:'SECONDARY',status:'COVERING',room:3,resume_status:'BUSY'});state.me=a.id;Object.assign(r,{status:'COVERED',nurse:b.id});}
   if(key==='shortage'){state.me='1150003';state.nurses[0].status='BUSY';Object.assign(state.nurses[1],{status:'COVERING',room:2});Object.assign(state.rooms[1],{status:'COVERED',nurse:'1150002'});}
   if(key==='multiple'){Object.assign(state.rooms[1],{status:'REQUESTING',wait:162});}
   const now=Date.now();state.rooms.forEach(room=>{room.requestedAt=now-room.wait*1000;});
@@ -473,7 +489,7 @@ function button(text,action,extra='',disabled=false){return `<button data-action
 function homePage(){return heading('診間支援','選擇入口，開始本次工作。')+`<section class="panel room-links"><h2>醫師診間</h2>${[1,2,3].map(id=>`<button class="outline" data-action="open-doctor:${id}">${id}診 →</button>`).join('')}</section><div class="entry-grid"><button class="panel entry" data-action="open-support"><h2>跟診支援登入 →</h2><p>選擇本次線別，登入後即可承接</p></button><button class="panel entry outline" data-action="open-analytics"><h2>人力分析紀錄 →</h2><p>上午、下午的人力分布與等待時間</p></button></div>`;}
 function returnHome(){
   if($('#demo-other-login')?.checked&&me()){demoLogout(true);return;}
-  const leave=async()=>{try{await stopPush();}catch(e){notify('尚未停止待發通知：'+e.message);return;}const self=me();if(self){lastId=self.id;lastLine=self.line;self.logged=false;state.me=null;}view='home';render();};
+  const leave=async()=>{try{await stopPush();}catch(e){notify('尚未停止待發通知：'+e.message);return;}const self=me();if(self){if(!self.id.startsWith('shared-'))lastId=self.id;lastLine=self.line;state.line_exchanges=state.line_exchanges.filter(e=>e.from_id!==self.id&&e.to_id!==self.id);self.logged=false;state.me=null;}view='home';render();};
   if(!me()){leave();return;}
   const dialog=$('#home-confirm');
   $('#home-warning').textContent=me().room?'登出不會結束目前承接，請先完成任務並結束承接。':'確認後，您將從已登入的人員狀態中移除；再次使用需手動登入。';
@@ -492,7 +508,7 @@ function rosterPage(){
   const active=state.nurses.filter(n=>n.logged);
   return `<section class="personnel"><h2>人員狀態</h2><div class="roster-grid">${['PRIMARY','SECONDARY'].map(level=>`<section class="panel roster"><h3>${level==='PRIMARY'?'1線':'2線'} · ${active.filter(n=>n.line===level&&n.status==='AVAILABLE').length}位可以支援</h3>${active.filter(n=>n.line===level).map(n=>`<div class="person"><span class="status-dot ${n.status.toLowerCase()}"></span><div><strong>${esc(n.name)}</strong> <small>${esc(n.profession)}</small><p class="status ${n.status.toLowerCase()}">${personStatus(n)}</p></div></div>`).join('')||'<p class="muted">目前無人登入</p>'}</section>`).join('')}</div></section>`;
 }
-function myStatus(){const self=me();return `<section class="panel my-status ${self.status.toLowerCase()}"><div class="status-row"><div><h2>我的狀態</h2><strong>${esc(self.name)}</strong> <span class="tag">${line(self)} · ${esc(self.profession)}</span><p class="current-status">${personStatus(self)}</p></div><div class="status-controls">${self.room?button('結束承接','finish'):button(self.status==='AVAILABLE'?'改為忙碌':'改為可以支援',self.status==='AVAILABLE'?'busy':'available','secondary')}</div></div></section>`;}
+function myStatus(){const self=me();return `<section class="panel my-status ${self.status.toLowerCase()}"><div class="status-row"><div><h2>我的狀態</h2><strong>${esc(self.name)}</strong> <span class="tag">${line(self)} · ${esc(self.profession)}</span><p class="current-status">${personStatus(self)}</p></div><div class="status-controls">${self.room?button('結束承接','finish'):button(self.status==='AVAILABLE'?'改為忙碌':'改為可以支援',self.status==='AVAILABLE'?'busy':'available','secondary')}</div></div>${demoLineControls()}</section>`;}
 function waitingQueue(){
   const self=me(),waiting=state.rooms.filter(r=>r.status==='REQUESTING').sort((a,b)=>a.requestedAt-b.requestedAt);
   return `<section><div class="section-heading"><h2>等待支援 · ${waiting.length}診</h2></div><div class="queue">${waiting.length?waiting.map(r=>`<article class="call-card"><strong class="room-number">${r.id}診</strong><div class="call-info"><span class="waiting-label">等待時間</span><span class="elapsed" data-wait-room="${r.id}">${waitText(r)}</span></div>${button('承接',`accept:${r.id}`,'',self.status==='COVERING')}</article>`).join(''):'<div class="panel compact muted">目前沒有等待中的診間</div>'}</div></section>`;
@@ -501,11 +517,13 @@ function nursePage(){
   if(!me())return loginPage(false);
   const self=me();
   const shortage=noAvailablePrimary()&&self.line==='SECONDARY';
-  return `${allBusyCard()}${shortage&&!allBusyCard()?shortageCard(false):''}${replacementReminder()}${myStatus()}${handoffSwitcher()}<div class="work-grid"><div class="work-main">${waitingQueue()}${serviceRooms()}</div><aside>${rosterPage()}</aside></div><section class="settings panel"><h2>工作站設定</h2><div class="notification-slot"></div><button data-action="logout" class="outline">登出工作站</button><p class="muted">展示環境的通知與置頂功能由上方「展示設定」操作。</p></section>`;
+  return `${allBusyCard()}${shortage&&!allBusyCard()?shortageCard(false):''}${myStatus()}${handoffSwitcher()}<div class="work-grid"><div class="work-main">${waitingQueue()}${serviceRooms()}</div><aside>${rosterPage()}</aside></div><section class="settings panel"><h2>工作站設定</h2><div class="notification-slot"></div><button data-action="logout" class="outline">登出工作站</button><p class="muted">展示環境的通知與置頂功能由上方「展示設定」操作。</p></section>`;
 }
-function doctorCard(){const r=state.rooms.find(r=>r.id===doctorRoom),assigned=state.nurses.find(n=>n.id===r.nurse);return `<section class="panel doctor ${r.status.toLowerCase()}"><span class="tag">${r.id}診</span><div class="symbol">${r.status==='IDLE'?'＋':r.status==='REQUESTING'?'◷':'✓'}</div><h2>${r.status==='IDLE'?'無需求':r.status==='REQUESTING'?'等待支援人員':'已有人承接'}</h2>${r.status==='IDLE'?'<p>工作站已準備接收您的呼叫</p>'+button('呼叫支援人員','request'):r.status==='REQUESTING'?`<div class="doctor-timer"><span class="elapsed" data-wait-room="${r.id}">${waitText(r)}</span></div><p>需求已送出，承接後將即時通知您</p><div class="button-row">${button('人員已到場','doctor-arrive')}${button('取消需求','cancel','outline')}</div>`:`<p class="accepted-name">${assigned?esc(assigned.name)+'（'+esc(assigned.profession)+'）已接單':coverageLabel(r)}</p><p>任務完成時，請按「結束承接」。</p>${r.takeover_message?`<div class="takeover-notice" role="status">${esc(r.takeover_message)}</div>`:''}${!assigned?button(r.coverage_line==='SECONDARY'?'改為1線承接':'承接者非1線',r.coverage_line==='SECONDARY'?'doctor-primary':'doctor-nonprimary','outline'):''}`+button('結束承接','doctor-finish','outline')}</section>`;}
+function doctorCard(){const r=state.rooms.find(r=>r.id===doctorRoom),assigned=state.nurses.find(n=>n.id===r.nurse);return `<section class="panel doctor ${r.status.toLowerCase()}"><span class="tag">${r.id}診</span><div class="symbol">${r.status==='IDLE'?'＋':r.status==='REQUESTING'?'◷':'✓'}</div><h2>${r.status==='IDLE'?'無需求':r.status==='REQUESTING'?'等待支援人員':'已有人承接'}</h2>${r.status==='IDLE'?'<p>工作站已準備接收您的呼叫</p>'+button('呼叫支援人員','request'):r.status==='REQUESTING'?`<div class="doctor-timer"><span class="elapsed" data-wait-room="${r.id}">${waitText(r)}</span></div><p>需求已送出，承接後將即時通知您</p><div class="button-row">${button('人員已到場','doctor-arrive')}${button('取消需求','cancel','outline')}</div>`:`<p class="accepted-name">${assigned?esc(assigned.name)+'（'+esc(assigned.profession)+'）已接單':coverageLabel(r)}</p><p>任務完成時，請按「結束承接」。</p>`+button('結束承接','doctor-finish','outline')}</section>`;}
 function doctorPage(){return `${allBusyCard()||(noAvailablePrimary()?shortageCard(true):'')}${heading(doctorRoom+'診','需要支援時，按一下即可通知工作站。','DOCTOR · 固定診間')}${pipSupported()?'<div class="button-row doctor-tools">'+button('開啟置頂小視窗','real-pip','outline')+'</div>':''}<div class="doctor-layout">${doctorCard()}${rosterPage()}</div>`;}
-function loginPage(register){return heading(register?'註冊職編與姓名':'跟診支援登入',register?'註冊職編、姓名與職類；線別於每次登入時選擇。':'線別依本次班別選擇；職類由註冊資料帶入。')+`<section class="login-card panel"><h2>${register?'註冊職編與姓名':'登入工作站'}</h2><form id="identity">${register?'':`<label>本次線別<select name="line"><option value="PRIMARY" ${lastLine==='PRIMARY'?'selected':''}>1線</option><option value="SECONDARY" ${lastLine==='SECONDARY'?'selected':''}>2線</option></select></label>`}<label>職編<input name="id" inputmode="numeric" value="${register?'':esc(lastId)}" required maxlength="7" pattern="[0-9]{7}" placeholder="例如 1150001"></label>${register?'<label>姓名<input name="name" required maxlength="60" placeholder="請填寫姓名"></label><label>職類<select name="profession" required><option>護理師</option><option>醫檢師</option><option>行政人員</option></select></label>':''}<button type="submit">${register?'註冊':'登入工作站'}</button></form><button class="outline" data-action="${register?'show-login':'show-register'}">${register?'已有職編，返回登入':'註冊職編與姓名'}</button><p class="muted">免密碼。僅記住上次職編與線別，不會自動登入。</p><p class="muted">展示職編：1150001、1150002（護理師）、1150003（醫檢師）、1150004（行政人員）。</p></section>`;}
+function loginPage(register){
+ if(!register&&!employeeLogin)return heading('跟診支援登入','線別只決定通知順序；1、2線都可主動承接。')+`<section class="login-card panel"><h2>職務登入</h2><form id="identity"><label>職務<select name="id">${demoJobs.map(j=>`<option value="${j.id}" ${quickId===j.id?'selected':''}>${j.name}</option>`).join('')}</select></label><label>本次線別<select name="line"><option value="PRIMARY" ${lastLine==='PRIMARY'?'selected':''}>1線</option><option value="SECONDARY" ${lastLine==='SECONDARY'?'selected':''}>2線</option></select></label><button>登入工作站</button></form>${button('職編登入','employee-login','outline')}<p class="muted">每個職務是一位共用人力；已登入時沿用目前線別。諮詢櫃台、檢驗櫃台中午保留登入，下午班末登出；支援人員依原班末規則登出。</p></section>`;
+ return heading(register?'註冊職編與姓名':'跟診支援登入',register?'註冊職編、姓名與職類；線別於每次登入時選擇。':'線別依本次班別選擇；職類由註冊資料帶入。')+`<section class="login-card panel"><h2>${register?'註冊職編與姓名':'登入工作站'}</h2><form id="identity">${register?'':`<label>本次線別<select name="line"><option value="PRIMARY" ${lastLine==='PRIMARY'?'selected':''}>1線</option><option value="SECONDARY" ${lastLine==='SECONDARY'?'selected':''}>2線</option></select></label>`}<label>職編<input name="id" inputmode="numeric" value="${register?'':esc(lastId)}" required maxlength="7" pattern="[0-9]{7}" placeholder="例如 1150001"></label>${register?'<label>姓名<input name="name" required maxlength="60" placeholder="請填寫姓名"></label><label>職類<select name="profession" required><option>護理師</option><option>醫檢師</option><option>行政人員</option></select></label>':''}<button type="submit">${register?'註冊':'登入工作站'}</button></form><button class="outline" data-action="${register?'show-login':'show-register'}">${register?'已有職編，返回登入':'註冊職編與姓名'}</button>${button('返回職務登入','quick-login','outline')}<p class="muted">免密碼。僅記住上次職編與線別，不會自動登入。</p><p class="muted">展示職編：1150001、1150002（護理師）、1150003（醫檢師）、1150004（行政人員）。</p></section>`;}
 const periodStats=[
   {name:'上午',time:'08:30–12:00',support:32,busy:41,available:27,median:'38秒',maximum:'3分42秒',shortage:'11分鐘'},
   {name:'下午',time:'13:30–16:00',support:21,busy:54,available:25,median:'22秒',maximum:'4分20秒',shortage:'4分鐘'}
@@ -533,35 +551,30 @@ function render(){
   document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>act(b.dataset.action));
   const dates=document.querySelector('.demo-dates');if(dates)dates.querySelector('button').onclick=()=>{demoActivityPage=0;render();};
   bindNotificationControls();
-  bindHandoffSwitcher(document);
+  bindHandoffSwitcher(document);bindDemoLines(document);
   if(view==='nurse'&&me()&&window.demoSound){const panel=document.createElement('section');panel.id='sound-settings';document.querySelector('#screen .settings')?.append(panel);window.demoSound.mount(panel);}
-  const people=state.nurses.filter(n=>n.logged),primary=people.filter(n=>n.line==='PRIMARY'&&n.status==='AVAILABLE'),secondary=people.filter(n=>n.line==='SECONDARY'&&n.status==='AVAILABLE');
-  const targets=primary.length?primary:secondary.length?secondary:people.filter(n=>n.status==='BUSY');
-  if(!me()||view!=='nurse')window.demoSound?.silence();else window.demoSound?.setDesired(state.rooms.some(r=>r.status==='REQUESTING')&&targets.some(n=>n.id===state.me));
+  syncDemoSound();
   const form=$('#identity');if(form)form.onsubmit=e=>{
     e.preventDefault();const values=Object.fromEntries(new FormData(form));values.id=values.id.trim();const found=state.nurses.find(n=>n.id===values.id);
     if(view==='register'){
       if(found){notify('此職編已註冊，請直接登入');return;}
       if(!values.name.trim()){notify('請填寫姓名');return;}
-      state.nurses.push({id:values.id,name:values.name.trim(),profession:values.profession,line:null,status:'AVAILABLE',room:null,logged:false});lastId=values.id;view='login';render();notify('註冊完成，請按「登入工作站」');
+      state.nurses.push({id:values.id,name:values.name.trim(),profession:values.profession,line:null,status:'AVAILABLE',room:null,logged:false});lastId=values.id;employeeLogin=true;view='login';render();notify('註冊完成，請按「登入工作站」');
     }else{
-      if(!found){notify('此職編尚未註冊');return;}found.line=values.line;
-      found.logged=true;state.me=found.id;lastId=found.id;lastLine=found.line;view='nurse';render();
+      if(!found){notify('此職編尚未註冊');return;}if(!found.logged)found.line=values.line;if(found.id.startsWith('shared-'))quickId=found.id;
+      if(window.demoSound?.settings.enabled)window.demoSound.unlock();
+      found.logged=true;state.me=found.id;if(!found.id.startsWith('shared-'))lastId=found.id;lastLine=found.line;view='nurse';render();
     }
   };
 }
 function act(action,finishConfirmed=false){
   const [kind,id]=action.split(':');const self=me(),r=state.rooms.find(r=>r.id===Number(id))||state.rooms.find(r=>r.id===doctorRoom);
+  if(kind==='employee-login'){employeeLogin=true;view='login';render();return;}
+  if(kind==='quick-login'){employeeLogin=false;view='login';render();return;}
+  if(kind.startsWith('line-')){demoLineAction(kind,id);return;}
   if(kind.startsWith('real-')){notificationAction(kind,id);return;}
   if(kind==='activity-prev'||kind==='activity-next'){demoActivityPage=Math.max(0,Math.min(Math.ceil(activityRows.length/10)-1,demoActivityPage+(kind==='activity-next'?1:-1)));render();return;}
-  if(kind==='doctor-arrive'){if(r.status!=='REQUESTING')return;Object.assign(r,{status:'COVERED',nurse:null,coverage_line:'PRIMARY',takeover_message:'',assignment_token:crypto.randomUUID(),acceptedAt:Date.now()});recordDemo('醫師確認到場',r,'未指定');render();return;}
-  if(kind==='takeover'){
-    if(!state.online||!self?.logged||self.status==='COVERING'||r.status!=='COVERED'||action.split(':')[2]!==r.assignment_token)return;
-    const old=state.nurses.find(n=>n.id===r.nurse);if(old)restoreDemo(old);
-    r.takeover_message=self.name+'已接手，請轉知原承接者'+(old?.name||'（未指定姓名）');
-    Object.assign(self,{resume_status:self.status,status:'COVERING',room:r.id});Object.assign(r,{nurse:self.id,coverage_line:null,assignment_token:crypto.randomUUID()});recordDemo('接手',r,self.name);render();return;
-  }
-  if(kind==='doctor-primary'||kind==='doctor-nonprimary'){if(r.status==='COVERED'&&!r.nurse)r.coverage_line=kind==='doctor-primary'?'PRIMARY':'SECONDARY';render();return;}
+  if(kind==='doctor-arrive'){if(r.status!=='REQUESTING')return;Object.assign(r,{status:'COVERED',nurse:null,coverage_line:null,takeover_message:'',assignment_token:crypto.randomUUID(),acceptedAt:Date.now()});recordDemo('醫師確認到場',r,'未指定');render();return;}
   if(kind==='home'){returnHome();return;}
   if(kind==='open-doctor'){doctorRoom=Number(id);view='doctor';}
   if(kind==='open-support')view=me()?'nurse':'login';
@@ -587,16 +600,41 @@ function act(action,finishConfirmed=false){
   if(kind==='show-register')view='register';if(kind==='show-login')view='login';render();
 }
 function restoreDemo(n){Object.assign(n,{status:n.resume_status==='AVAILABLE'?'AVAILABLE':'BUSY',room:null,resume_status:null});}
-function coverageLabel(r){return r.coverage_line==='PRIMARY'?'1線支援中 · 未指定姓名':r.coverage_line==='SECONDARY'?'非1線支援中 · 未指定姓名':'承接人員及線別未指定';}
-function replacementReminder(){const n=me();if(!n||n.line!=='PRIMARY'||n.status==='COVERING')return '';const rooms=state.rooms.filter(r=>r.status==='COVERED'&&(r.nurse?state.nurses.find(p=>p.id===r.nurse)?.line==='SECONDARY':r.coverage_line==='SECONDARY'));return rooms.length?'<div class="shortage replacement-reminder" role="status"><strong>請1線有空後接手支援</strong><span>'+rooms.map(r=>r.id+'診').join('、')+'目前由非1線人員支援，可在下方直接接手。</span></div>':'';}
+function coverageLabel(){return '人員已到場';}
+function syncDemoSound(){
+ const people=state.nurses.filter(n=>n.logged),primary=people.filter(n=>n.line==='PRIMARY'&&n.status==='AVAILABLE'),secondary=people.filter(n=>n.line==='SECONDARY'&&n.status==='AVAILABLE');
+ const escalated=state.rooms.some(r=>r.status==='REQUESTING'&&waitSeconds(r)>=30);
+ const targets=primary.length?[...primary,...(escalated?people.filter(n=>n.line==='SECONDARY'&&n.status!=='COVERING'):[])]:secondary.length?secondary:people.filter(n=>n.status==='BUSY');
+ if(!me()||view!=='nurse')window.demoSound?.silence();else window.demoSound?.setDesired(state.rooms.some(r=>r.status==='REQUESTING')&&targets.some(n=>n.id===state.me));
+}
+function demoLineControls(){
+ const n=me(),other=n.line==='PRIMARY'?'SECONDARY':'PRIMARY',e=state.line_exchanges.find(e=>e.from_id===n.id||e.to_id===n.id);
+ const change=button('改為'+(other==='PRIMARY'?'1線':'2線'),'line-change:'+other,'secondary');
+ if(e){const a=state.nurses.find(n=>n.id===e.from_id),b=state.nurses.find(n=>n.id===e.to_id);return `<div class="line-controls"><div class="button-row">${change}</div><p>${esc(a.name)} 提議交換線別：${esc(a.name)} → ${line(b)}；${esc(b.name)} → ${line(a)}。</p><div class="button-row">${n.id===e.to_id?button('同意交換','line-accept:'+e.id,'secondary')+button('暫不交換','line-reject:'+e.id,'secondary'):'<span>等待對方同意</span>'+button('撤回提議','line-withdraw:'+e.id,'secondary')}</div></div>`;}
+ const people=state.nurses.filter(p=>p.logged&&p.id!==n.id&&p.line!==n.line);
+ return `<details class="line-controls"><summary>線別設定 · 目前${line(n)}</summary><p class="muted">線別只影響通知順序，正在承接的任務不變。</p><div class="button-row">${change}</div>${people.length?`<label>交換對象<select class="exchange-target">${people.map(p=>`<option value="${p.id}">${esc(p.name)} · ${line(p)}</option>`).join('')}</select></label><p class="muted">同意後：您 → ${other==='PRIMARY'?'1線':'2線'}，對方 → ${line(n)}。</p>${button('提議交換線別','line-propose','secondary')}`:'<p class="muted">目前沒有另一線的已登入人員。</p>'}</details>`;
+}
+function demoLineAction(kind,id){
+ const n=me();if(!n||!state.online)return;
+ if(kind==='line-change'){n.line=id;state.line_exchanges=state.line_exchanges.filter(e=>e.from_id!==n.id&&e.to_id!==n.id);}
+ else if(kind==='line-propose'){
+   const target=state.nurses.find(p=>p.id===id&&p.logged&&p.line!==n.line);if(!target)return;
+   if(state.line_exchanges.some(e=>[e.from_id,e.to_id].some(i=>[n.id,target.id].includes(i)))){notify('其中一方已有待處理的交換提議');return;}
+   state.line_exchanges.push({id:crypto.randomUUID(),from_id:n.id,to_id:target.id});
+ }else{const e=state.line_exchanges.find(e=>e.id===id);if(!e||(kind==='line-withdraw'?e.from_id:e.to_id)!==n.id)return;
+   if(kind==='line-accept'){const a=state.nurses.find(p=>p.id===e.from_id),b=state.nurses.find(p=>p.id===e.to_id);[a.line,b.line]=[b.line,a.line];}
+   state.line_exchanges=state.line_exchanges.filter(p=>p.id!==id);
+ }render();
+}
+function bindDemoLines(doc){doc.querySelectorAll('[data-action="line-propose"]').forEach(b=>b.onclick=()=>act('line-propose:'+b.closest('.line-controls').querySelector('.exchange-target').value));}
 function handoffSwitcher(){
-  if(selected!=='handoff')return '';
+  if(selected!=='line-exchange')return '';
   return `<label class="handoff-demo">展示操作身分（切換不會登出）<select data-handoff-person>${state.nurses.filter(n=>n.logged).map(n=>`<option value="${esc(n.id)}" ${n.id===state.me?'selected':''}>${esc(n.name)} · ${line(n)} · ${personStatus(n)}</option>`).join('')}</select></label>`;
 }
 function bindHandoffSwitcher(doc){
   doc.querySelectorAll('[data-handoff-person]').forEach(select=>select.onchange=()=>{const n=state.nurses.find(n=>n.id===select.value&&n.logged);if(n){state.me=n.id;view='nurse';render();}});
 }
-function serviceRooms(){const self=me();if(!self)return '';return '<section class="services"><h2>服務中的診間</h2>'+(state.rooms.filter(r=>r.status==='COVERED').map(r=>{const n=state.nurses.find(n=>n.id===r.nurse);return '<article class="panel service-card" data-service-room="'+r.id+'"><div><h3>'+r.id+'診</h3><p>'+(n?esc(n.name)+' · '+line(n)+' · '+esc(n.profession):coverageLabel(r))+'</p></div>'+(r.nurse===self.id?'<span class="tag">我正在支援</span>':button('接手','takeover:'+r.id+':'+r.assignment_token,'outline',self.status==='COVERING'))+'</article>';}).join('')||'<div class="panel compact muted">目前沒有服務中的診間</div>')+'</section>';}
+function serviceRooms(){const self=me();if(!self)return '';return '<section class="services"><h2>服務中的診間</h2>'+(state.rooms.filter(r=>r.status==='COVERED').map(r=>{const n=state.nurses.find(n=>n.id===r.nurse);return '<article class="panel service-card" data-service-room="'+r.id+'"><div><h3>'+r.id+'診</h3><p>'+(n?esc(n.name)+' · '+line(n)+' · '+esc(n.profession):coverageLabel(r))+'</p></div>'+(r.nurse===self.id?'<span class="tag">我正在支援</span>':'')+'</article>';}).join('')||'<div class="panel compact muted">目前沒有服務中的診間</div>')+'</section>';}
 const handoffCss='.service-rooms{margin:20px 0}.service-rooms h2{font-size:18px}.service-room{background:#fff;border:1px solid #bdd1d9;border-radius:10px;padding:14px;margin:10px 0;overflow-wrap:anywhere}.service-room>strong{color:#1e3a8a}.service-room p{font-size:14px;line-height:1.5;margin:8px 0}.handoff-actions button{margin:4px 6px 4px 0;font-size:14px}.handoff-pending,.handoff-result{background:#eff6ff;color:#1e3a8a;padding:10px;border-radius:8px;line-height:1.5}.handoff-demo{display:block;background:#edf1ee;padding:12px;border-radius:8px;margin:16px 0;font-size:12px}.handoff-demo select{box-sizing:border-box;display:block;width:100%;max-width:100%;font:inherit;padding:10px;margin-top:8px;border:1px solid #b8c8be;border-radius:6px;background:white;color:#263e39}';
 const handoffStyle=document.createElement('style');handoffStyle.textContent=handoffCss;document.head.append(handoffStyle);
 $('#scenario').innerHTML=scenarios.map(s=>`<option value="${s[0]}">${s[1]}</option>`).join('');
@@ -604,7 +642,7 @@ $('#scenario').onchange=e=>setup(e.target.value);$('#view').onchange=e=>{if(e.ta
 document.addEventListener('click',event=>{const settings=$('.demo-settings');if(settings?.open&&!settings.contains(event.target)){settings.open=false;event.preventDefault();event.stopPropagation();}},true);
 const logoutSetting=document.createElement('label');logoutSetting.innerHTML='<span>登出選項體驗</span><span><input type="checkbox" id="demo-other-login"> 展示有其他有效登入</span>';$('.controls').append(logoutSetting);
 setup(selected);
-setInterval(updateWaitingTimes,1000);
+setInterval(()=>{updateWaitingTimes();syncDemoSound();},1000);
 document.addEventListener('visibilitychange',updateWaitingTimes);
 preparePush();
 
@@ -616,13 +654,13 @@ async function demoLogout(home){
   if($('#demo-other-login').checked){
     choice=await new Promise(resolve=>{
       const dialog=document.createElement('dialog');dialog.className='logout-dialog';dialog.setAttribute('aria-labelledby','logout-title');
-      dialog.innerHTML=`<h2 id="logout-title">是否一起登出其他登入？</h2><p>此職編還有其他有效登入。</p><p>僅登出目前登入：其他登入保留，人員仍會留在工作站名單。<br>全部登出：所有登入失效，人員退出名單。</p>${self.room?'<p class="takeover-notice">您仍有承接中的診間；登出不會結束任務，請完成任務或交接。</p>':''}<form method="dialog"><button value="current" class="secondary">僅登出目前登入</button><button value="all">全部登出</button><button value="cancel" class="quiet" autofocus>取消</button></form>`;
+      dialog.innerHTML=`<h2 id="logout-title">是否一起登出其他登入？</h2><p>此身分還有其他有效登入。</p><p>僅登出目前登入：其他登入保留，人員仍會留在工作站名單。<br>全部登出：所有登入失效，人員退出名單。</p>${self.room?'<p class="takeover-notice">您仍有承接中的診間；登出不會結束任務，請完成任務或交接。</p>':''}<form method="dialog"><button value="current" class="secondary">僅登出目前登入</button><button value="all">全部登出</button><button value="cancel" class="quiet" autofocus>取消</button></form>`;
       dialog.onclose=()=>{const result=dialog.returnValue;dialog.remove();resolve(result);};document.body.append(dialog);dialog.showModal();
     });
     if(!['current','all'].includes(choice))return;
   }else if(!confirm(self.room?'您仍有承接中的診間。登出不會結束任務；請先完成任務或交接。仍要登出？':'確定登出工作站？'))return;
   try{await stopPush();}catch(e){notify('尚未停止待發通知：'+e.message);return;}
-  lastId=self.id;lastLine=self.line;self.logged=choice==='current';state.me=null;view=home?'home':'login';window.demoSound?.silence();render();
+  if(!self.id.startsWith('shared-'))lastId=self.id;lastLine=self.line;state.line_exchanges=state.line_exchanges.filter(e=>e.from_id!==self.id&&e.to_id!==self.id);self.logged=choice==='current';state.me=null;view=home?'home':'login';window.demoSound?.silence();render();
 }
 
 document.getElementById('preview-help').hidden=true;
