@@ -147,12 +147,13 @@ body.pip{padding:8px;font-size:clamp(12px,4vw,14px);height:100dvh;display:flex;f
 .logout-dialog form{display:grid;gap:10px;margin-top:20px}
 .logout-dialog button{width:100%;margin:0;min-height:44px}
 .line-controls{margin-top:10px;border-top:1px solid #d9e4df;padding-top:10px;overflow-wrap:anywhere}
-.line-controls summary{cursor:pointer;font-size:13px;color:#246d62}
-.line-controls label{display:block;margin:10px 0}
-.line-controls select{width:100%;min-width:0;max-width:100%}
-.line-controls .button-row{flex-wrap:wrap;gap:6px}
-.pip .line-controls{font-size:11px;margin-top:6px;padding-top:6px}
-.pip .line-controls button,.pip .line-controls select,.pip .line-controls summary{font-size:11px;min-width:0;max-width:100%}
+.line-controls .button-row{flex-wrap:wrap;align-items:center;gap:12px}
+.line-controls>p{margin:10px 0 0;font-size:12px}
+.roster .person{flex-wrap:wrap;gap:10px}
+.roster .person>div{flex:1;min-width:100px;overflow-wrap:anywhere}
+.roster .exchange-button{margin-left:auto;padding:9px 12px;font-size:12px;min-height:44px;white-space:nowrap}
+.pip .line-controls{font-size:12px;margin-top:8px;padding-top:8px}
+.pip .line-controls button{font-size:12px;padding:8px;min-height:40px}
 
 .studio{position:sticky;top:0;z-index:20;min-height:76px;display:flex;align-items:center;gap:24px;padding:12px max(20px,calc((100vw - 1280px)/2));background:#184c43;color:#fff}.studio-brand{min-width:max-content}.studio-brand strong{font-size:18px}.studio-brand small{display:block;margin-top:5px;color:#c2d8d0}.studio .context{flex:1;display:flex;flex-direction:column;gap:4px;margin:0;padding:0;color:#fff}.studio .context strong{color:#fff}.studio .context span{color:#c2d8d0;font-size:12px}.demo-settings{position:relative}.demo-settings summary{list-style:none;cursor:pointer;border:1px solid #8fb5a9;border-radius:9px;padding:10px 14px;white-space:nowrap;font-size:13px;font-weight:650}.demo-settings summary::-webkit-details-marker{display:none}.demo-settings[open] summary{background:#fff;color:#184c43}.controls{position:absolute;right:0;top:calc(100% + 12px);width:min(760px,calc(100vw - 32px));display:grid;grid-template-columns:2fr 1.3fr 1.2fr auto;gap:12px;align-items:end;padding:18px;background:#fff;color:#263e39;border:1px solid #cbd8d1;border-radius:14px;box-shadow:0 16px 45px #102d2680}.controls label,.controls label:first-child{min-width:0}.controls button{margin:0}.controls #notification-tools{grid-column:1/-1}.controls select{margin-top:6px}.controls .notification-buttons{display:flex;gap:8px;flex-wrap:wrap}.controls .notification-buttons button{margin:0}.controls #push-status{margin:8px 0 0}.context+#stage{margin-top:0}#stage{padding:24px;overflow-x:auto}#screen{max-width:1200px;margin:auto;background:#f5f7f5;min-height:650px;border:1px solid #d0d9d3;border-radius:15px;overflow:hidden;box-shadow:0 12px 30px #203f3710}#screen.phone{width:390px;max-width:100%;min-height:740px}.demo-main{max-width:1240px;padding:24px 28px 50px;margin:auto;min-height:570px}.screen-summary{font-size:13px;color:#47675b}.connection{margin-left:auto;white-space:nowrap;font-size:12px;color:#17665b}.connection.offline{color:#a4511f}.brand small{display:inline;font-size:10px;letter-spacing:0;color:#71877a;margin-left:4px}.outline{background:#fff;border-color:#ccd9d2;color:#36584c}.room-links button{display:inline-flex;gap:50px;border:1px solid var(--line);padding:16px;margin:0 14px 10px 0;border-radius:8px}.entry-grid button{text-align:left;color:inherit;font-weight:400}.entry-grid button h2{color:#263e39}.my-status{padding:20px}.status-dot.covering{background:#347caa}.status-dot.busy{background:#c58631}.status-dot.available{background:#278368}.service-card .handoff-actions{max-width:55%}.handoff-actions p{margin:0 0 8px;font-size:13px}.handoff-actions button{font-size:13px;padding:9px 12px;min-height:42px;margin:3px}.handoff-demo{display:block;background:#edf1ee;padding:12px;border-radius:8px;margin:0 0 18px;font-size:12px}.handoff-demo select{margin-top:8px}.settings>.outline{margin-top:10px}.demo-dates{display:flex}.page-footer{border-top:1px solid var(--line);margin-top:32px;padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:11px;color:#829087}.page-footer button{min-width:140px}.studio-footer{text-align:center;font-size:12px;color:#6b7c72;padding:0 20px 24px}#message{z-index:40}.phone .topbar{padding:12px 16px;gap:8px 14px;min-height:64px;flex-wrap:wrap}.phone .brand{font-size:18px}.phone .brand-mark{width:30px;height:30px}.phone .screen-summary{order:3;width:100%;font-size:12px}.phone .demo-main{padding:18px 16px 32px}.phone .work-grid{grid-template-columns:1fr;gap:24px}.phone .my-status{padding:16px;margin-bottom:20px}.phone .status-row{gap:8px}.phone .call-card{padding:16px;gap:12px;flex-wrap:nowrap}.phone .call-card button{width:auto;font-size:15px;min-width:70px;min-height:48px;padding:12px}.phone .room-number{font-size:25px}.phone .elapsed{font-size:25px}.phone .call-info{text-align:left;margin-left:0}.phone .period-grid{grid-template-columns:1fr}.phone .period{padding:20px}.phone .pie{width:125px}.phone .period-chart{gap:18px}.phone .doctor-card+.personnel .roster-grid{grid-template-columns:1fr}.phone .demo-dates{display:grid;grid-template-columns:1fr 1fr;gap:12px}.phone .demo-dates button{grid-column:1/-1}.phone .activity{padding:16px}.phone .page-footer{flex-wrap:wrap}
 @media(max-width:700px){.studio{position:relative;flex-wrap:wrap;padding:12px 16px;gap:10px}.studio-brand{flex:1}.studio .context{order:3;flex-basis:100%}.studio .context span{display:none}.demo-settings{position:static}.controls{right:16px;left:16px;top:68px;width:auto;grid-template-columns:1fr 1fr}.controls label:first-child{grid-column:1/-1}.controls #reset{width:100%}#stage{padding:12px 8px 20px}.demo-main{padding:18px 16px 32px}}
@@ -491,11 +492,9 @@ function syncPip(){
   const allBusy=state.rooms.some(r=>r.status==='REQUESTING')&&!active.some(person=>person.status==='AVAILABLE');
   const alert=allBusy?allBusyCard():n.line==='SECONDARY'&&noAvailablePrimary()?shortageCard(false):'';
   const scrollTop=pipWindow.document.querySelector('.pip-list')?.scrollTop||0;
-  pipWindow.document.body.innerHTML=`<header class="pip-heading"><strong>診間支援</strong><span>${state.online?'● 即時連線':'○ 連線中斷'}</span></header>${alert}${myStatus()}<div class="pip-list" tabindex="0" aria-label="等待及服務中的診間">${waitingQueue()}${serviceRooms()}${handoffSwitcher()}</div>`;
+  pipWindow.document.body.innerHTML=`<header class="pip-heading"><strong>診間支援</strong><span>${state.online?'● 即時連線':'○ 連線中斷'}</span></header>${alert}${myStatus(false)}<div class="pip-list" tabindex="0" aria-label="等待及服務中的診間">${waitingQueue()}${serviceRooms()}</div>`;
   pipWindow.document.querySelector('.pip-list').scrollTop=scrollTop;
-  bindHandoffSwitcher(pipWindow.document);
   pipWindow.document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>act(b.dataset.action));
-  bindDemoLines(pipWindow.document);
 }
 async function checkPushStatus(){
   if(polling)return;let id;try{id=localStorage.getItem('clinic-push-job');}catch{}
@@ -574,11 +573,17 @@ function staffingSummary(){
 function workbar(){
   return `<header class="topbar"><div class="brand"><span class="brand-mark">＋</span><span>診間支援 <small>v1.02</small></span></div><span class="screen-summary">${staffingSummary()}</span><span class="connection ${state.online?'':'offline'}">${state.online?'● 即時連線':'○ 連線中斷'}</span></header>`;
 }
+function demoExchangeButton(person){
+  const self=view==='nurse'?me():null;
+  if(!self||person.id===self.id||person.line===self.line)return '';
+  const pendingExchange=state.line_exchanges.some(e=>[e.from_id,e.to_id].some(id=>id===self.id||id===person.id));
+  return button('提議交換線別','line-propose:'+person.id,'secondary exchange-button',pendingExchange).replace('data-action=',`aria-label="與${esc(person.name)}提議交換線別" data-action=`);
+}
 function rosterPage(){
   const active=state.nurses.filter(n=>n.logged);
-  return `<section class="personnel"><h2>人員狀態</h2><div class="roster-grid">${['PRIMARY','SECONDARY'].map(level=>`<section class="panel roster"><h3>${level==='PRIMARY'?'1線':'2線'} · ${active.filter(n=>n.line===level&&n.status==='AVAILABLE').length}位可以支援</h3>${active.filter(n=>n.line===level).map(n=>`<div class="person"><span class="status-dot ${n.status.toLowerCase()}"></span><div><strong>${esc(n.name)}</strong> <small>${esc(n.profession)}</small><p class="status ${n.status.toLowerCase()}">${personStatus(n)}</p></div></div>`).join('')||'<p class="muted">目前無人登入</p>'}</section>`).join('')}</div></section>`;
+  return `<section class="personnel"><h2>人員狀態</h2><div class="roster-grid">${['PRIMARY','SECONDARY'].map(level=>`<section class="panel roster"><h3>${level==='PRIMARY'?'1線':'2線'} · ${active.filter(n=>n.line===level&&n.status==='AVAILABLE').length}位可以支援</h3>${active.filter(n=>n.line===level).map(n=>`<div class="person"><span class="status-dot ${n.status.toLowerCase()}"></span><div><strong>${esc(n.name)}</strong> <small>${esc(n.profession)}</small><p class="status ${n.status.toLowerCase()}">${personStatus(n)}</p></div>${demoExchangeButton(n)}</div>`).join('')||'<p class="muted">目前無人登入</p>'}</section>`).join('')}</div></section>`;
 }
-function myStatus(){const self=me();return `<section class="panel my-status ${self.status.toLowerCase()}"><div class="status-row"><div><h2>我的狀態</h2><strong>${esc(self.name)}</strong> <span class="tag">${line(self)} · ${esc(self.profession)}</span><p class="current-status">${personStatus(self)}</p></div><div class="status-controls">${self.room?button('結束承接','finish'):button(self.status==='AVAILABLE'?'改為忙碌':'改為可以支援',self.status==='AVAILABLE'?'busy':'available','secondary')}</div></div>${demoLineControls()}</section>`;}
+function myStatus(showLines=true){const self=me();return `<section class="panel my-status ${self.status.toLowerCase()}"><div class="status-row"><div><h2>我的狀態</h2><strong>${esc(self.name)}</strong> <span class="tag">${line(self)} · ${esc(self.profession)}</span><p class="current-status">${personStatus(self)}</p></div><div class="status-controls">${self.room?button('結束承接','finish'):button(self.status==='AVAILABLE'?'改為忙碌':'改為可以支援',self.status==='AVAILABLE'?'busy':'available','secondary')}</div></div>${demoLineControls(!showLines)}</section>`;}
 function waitingQueue(){
   const self=me(),waiting=state.rooms.filter(r=>r.status==='REQUESTING').sort((a,b)=>a.requestedAt-b.requestedAt);
   return `<section><div class="section-heading"><h2>等待支援 · ${waiting.length}診</h2></div><div class="queue">${waiting.length?waiting.map(r=>`<article class="call-card"><strong class="room-number">${r.id}診</strong><div class="call-info"><span class="waiting-label">等待時間</span><span class="elapsed" data-wait-room="${r.id}">${waitText(r)}</span></div>${button('承接',`accept:${r.id}`,'',self.status==='COVERING')}</article>`).join(''):'<div class="panel compact muted">目前沒有等待中的診間</div>'}</div></section>`;
@@ -621,7 +626,7 @@ function render(){
   document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>act(b.dataset.action));
   const dates=document.querySelector('.demo-dates');if(dates)dates.querySelector('button').onclick=()=>{demoActivityPage=0;render();};
   bindNotificationControls();
-  bindHandoffSwitcher(document);bindDemoLines(document);
+  bindHandoffSwitcher(document);
   if(view==='nurse'&&me()&&window.demoSound){const panel=document.createElement('section');panel.id='sound-settings';document.querySelector('#screen .settings')?.append(panel);window.demoSound.mount(panel);}
   syncDemoSound();
   const form=$('#identity');if(form)form.onsubmit=e=>{
@@ -671,12 +676,12 @@ function syncDemoSound(){
  const targets=primary.length?[...primary,...(escalated?people.filter(n=>n.line==='SECONDARY'&&n.status!=='COVERING'):[])]:secondary.length?secondary:people.filter(n=>n.status==='BUSY');
  if(!me()||view!=='nurse')window.demoSound?.silence();else window.demoSound?.setDesired(state.rooms.some(r=>r.status==='REQUESTING')&&targets.some(n=>n.id===state.me));
 }
-function demoLineControls(){
+function demoLineControls(responseOnly=false){
  const n=me(),other=n.line==='PRIMARY'?'SECONDARY':'PRIMARY',e=state.line_exchanges.find(e=>e.from_id===n.id||e.to_id===n.id);
- const change=button('改為'+(other==='PRIMARY'?'1線':'2線'),'line-change:'+other,'secondary');
- if(e){const a=state.nurses.find(n=>n.id===e.from_id),b=state.nurses.find(n=>n.id===e.to_id);return `<div class="line-controls"><div class="button-row">${change}</div><p>${esc(a.name)} 提議交換線別：${esc(a.name)} → ${line(b)}；${esc(b.name)} → ${line(a)}。</p><div class="button-row">${n.id===e.to_id?button('同意交換','line-accept:'+e.id,'secondary')+button('暫不交換','line-reject:'+e.id,'secondary'):'<span>等待對方同意</span>'+button('撤回提議','line-withdraw:'+e.id,'secondary')}</div></div>`;}
- const people=state.nurses.filter(p=>p.logged&&p.id!==n.id&&p.line!==n.line);
- return `<details class="line-controls"><summary>線別設定 · 目前${line(n)}</summary><p class="muted">線別只影響通知順序，正在承接的任務不變。</p><div class="button-row">${change}</div>${people.length?`<label>交換對象<select class="exchange-target">${people.map(p=>`<option value="${p.id}">${esc(p.name)} · ${line(p)}</option>`).join('')}</select></label><p class="muted">同意後：您 → ${other==='PRIMARY'?'1線':'2線'}，對方 → ${line(n)}。</p>${button('提議交換線別','line-propose','secondary')}`:'<p class="muted">目前沒有另一線的已登入人員。</p>'}</details>`;
+ if(responseOnly&&e?.to_id!==n.id)return '';
+ const change=responseOnly?'':button('改為'+(other==='PRIMARY'?'1線':'2線'),'line-change:'+other,'secondary');
+ if(e){const a=state.nurses.find(n=>n.id===e.from_id),b=state.nurses.find(n=>n.id===e.to_id);return `<div class="line-controls">${change?`<div class="button-row">${change}</div>`:''}<p>${esc(a.name)} 提議交換線別：${esc(a.name)} → ${line(b)}；${esc(b.name)} → ${line(a)}。</p><div class="button-row">${n.id===e.to_id?button('同意交換','line-accept:'+e.id,'secondary')+button('暫不交換','line-reject:'+e.id,'secondary'):'<span>等待對方同意</span>'+button('撤回提議','line-withdraw:'+e.id,'secondary')}</div></div>`;}
+ return `<div class="line-controls"><div class="button-row"><span>目前${line(n)}</span>${change}</div><p class="muted">與他人交換線別，請在人員狀態中選擇對象；交換需對方同意。</p></div>`;
 }
 function demoLineAction(kind,id){
  const n=me();if(!n||!state.online)return;
@@ -690,7 +695,6 @@ function demoLineAction(kind,id){
    state.line_exchanges=state.line_exchanges.filter(p=>p.id!==id);
  }render();
 }
-function bindDemoLines(doc){doc.querySelectorAll('[data-action="line-propose"]').forEach(b=>b.onclick=()=>act('line-propose:'+b.closest('.line-controls').querySelector('.exchange-target').value));}
 function handoffSwitcher(){
   if(selected!=='line-exchange')return '';
   return `<label class="handoff-demo">展示操作身分（切換不會登出）<select data-handoff-person>${state.nurses.filter(n=>n.logged).map(n=>`<option value="${esc(n.id)}" ${n.id===state.me?'selected':''}>${esc(n.name)} · ${line(n)} · ${personStatus(n)}</option>`).join('')}</select></label>`;
