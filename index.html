@@ -435,7 +435,6 @@ function updateNotificationControls(){
 }
 function bindNotificationControls(){updateNotificationControls();}
 async function stopPush(){
-  if(pipWindow)pipWindow.close();
   if(!pushToken)return;
   try{await pushRequest('/subscription','DELETE');}catch(e){if(e.status!==401)throw e;}storePushToken('');pushJobId='';pushJobStatus='';cooldownUntil=0;pollUntil=0;pushMessage='通知已停止，尚未送出的測試已取消。';
   const subscription=await swReady?.pushManager.getSubscription();if(subscription)await subscription.unsubscribe();
