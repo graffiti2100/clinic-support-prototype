@@ -306,7 +306,7 @@ async function pushRequest(path,method='GET',body,token=pushToken){
 }
 async function preparePush(){
   if(preparing||!pushSupported()||location.protocol==='file:')return;preparing=true;pushMessage='正在連接通知服務…';updateNotificationControls();
-  try{await navigator.serviceWorker.register('./sw.js',{scope:'./'});swReady=await navigator.serviceWorker.ready;pushConfig=await pushRequest('/config');if(pushToken){try{await pushRequest('/subscription');const sub=await swReady.pushManager.getSubscription();if(!sub)storePushToken('');}catch(e){if(e.status!==401)throw e;pushMessage='通知訂閱已到期，請重新啟用。';}}if(!pushMessage.includes('到期'))pushMessage=pushToken?'通知已啟用，可直接測試。':'請先啟用通知並選擇允許。';}
+  try{swReady=await navigator.serviceWorker.register('./sw.js',{scope:'./'});if(!swReady.active){const worker=swReady.installing||swReady.waiting;await waitForPushStep(new Promise((resolve,reject)=>{const check=()=>{if(worker.state==='activated')resolve();else if(worker.state==='redundant')reject(new Error('通知服務未啟用'));};worker.addEventListener('statechange',check);check();}));}pushConfig=await pushRequest('/config');if(pushToken){try{await pushRequest('/subscription');const sub=await swReady.pushManager.getSubscription();if(!sub)storePushToken('');}catch(e){if(e.status!==401)throw e;pushMessage='通知訂閱已到期，請重新啟用。';}}if(!pushMessage.includes('到期'))pushMessage=pushToken?'通知已啟用，可直接測試。':'請先啟用通知並選擇允許。';}
   catch{pushMessage='通知服務暫時無法連線，請重新整理後再試。';}
   preparing=false;updateNotificationControls();checkPushStatus();
 }
