@@ -192,14 +192,28 @@ class ReminderSound {
     this.ready=audioStore('get').then(file=>{if(file){this.custom=file;if(this.settings.preset==='custom')this.selectSource();}else if(this.settings.preset==='custom'){this.settings.preset='bell';this.save();}}).catch(()=>{this.error='無法讀取裝置音效；使用內建提示音。';if(this.settings.preset==='custom'){this.settings.preset='bell';this.selectSource();}}).finally(()=>{const current=document.querySelector('#sound-settings');if(current)this.mount(current);this.sync();});
   }
   save(){try{localStorage.setItem(settingsKey,JSON.stringify(this.settings));}catch{this.error='瀏覽器無法保存響鈴設定。';}}
-  selectSource(){this.stop();if(this.url)URL.revokeObjectURL(this.url);this.url=null;const track=music[this.settings.preset];if(!track)this.url=URL.createObjectURL(this.settings.preset==='custom'&&this.custom?this.custom:tone(this.settings.preset));this.audio.src=track?.url||this.url;this.audio.volume=this.settings.volume;}
+  selectSource(){this.stop();if(this.url)URL.revokeObjectURL(this.url);this.url=null;const track=music[this.settings.preset];if(!track)this.url=URL.createObjectURL(this.settings.preset==='custom'&&this.custom?this.custom:tone(this.settings.preset));this.audio.src=track?.url||this.url;this.applyVolume();}
+  applyVolume(){
+    const volume=Math.min(2,Math.max(0,Number(this.settings.volume)||0));
+    this.audio.volume=this.gain?1:Math.min(1,volume);
+    if(this.gain)this.gain.gain.value=volume;
+    const label=document.querySelector('#sound-volume-label');if(label)label.textContent=`${Math.round(volume*100)}%`;
+  }
+  prepareAudio(){
+    if(!this.context){
+      this.context=new AudioContext();this.gain=this.context.createGain();
+      this.limiter=this.context.createDynamicsCompressor();this.limiter.threshold.value=-1;this.limiter.knee.value=0;this.limiter.ratio.value=20;this.limiter.attack.value=0.003;this.limiter.release.value=0.1;
+      this.source=this.context.createMediaElementSource(this.audio);this.source.connect(this.gain);this.gain.connect(this.limiter);this.limiter.connect(this.context.destination);
+    }
+    this.applyVolume();return this.context.resume();
+  }
   shouldPlay(){return this.desired&&this.settings.enabled&&this.unlocked&&Date.now()>=this.mutedUntil;}
   stop(){clearTimeout(this.timer);clearTimeout(this.previewTimer);this.timer=null;this.serial++;this.audio.pause();this.audio.currentTime=0;this.playing=false;this.previewing=false;}
   start(preview=false,previewLimit=0){
     if(this.playing||(!preview&&!this.shouldPlay()))return;
-    this.playing=true;this.previewing=preview;this.audio.loop=!preview&&this.settings.mode==='loop';this.audio.volume=this.settings.volume;
+    this.playing=true;this.previewing=preview;this.audio.loop=!preview&&this.settings.mode==='loop';
     const serial=++this.serial;
-    this.audio.play().then(()=>{if(serial!==this.serial)return;this.unlocked=true;this.error='';this.refresh();}).catch(error=>{if(serial!==this.serial)return;this.playing=false;this.previewing=false;if(error.name==='NotAllowedError'){this.unlocked=false;this.error='瀏覽器需要一次點擊，請按「啟用響鈴」。';}else if(error.name!=='AbortError'){this.error='無法播放音效，請改用內建提示音。';}this.refresh();});
+    Promise.resolve().then(()=>this.prepareAudio()).then(()=>{if(serial===this.serial)return this.audio.play();}).then(()=>{if(serial!==this.serial)return;this.unlocked=true;this.error='';this.refresh();}).catch(error=>{if(serial!==this.serial)return;this.playing=false;this.previewing=false;if(error.name==='NotAllowedError'){this.unlocked=false;this.error='瀏覽器需要一次點擊，請按「啟用響鈴」。';}else if(error.name!=='AbortError'){this.error='無法播放音效，請改用內建提示音。';}this.refresh();});
     // Only the automatic enable check is bounded; manual previews play to the end.
     if(preview&&previewLimit)this.previewTimer=setTimeout(()=>{this.stop();this.sync();},previewLimit);
     this.refresh();
@@ -218,18 +232,20 @@ class ReminderSound {
   mount(container){
     container.innerHTML=`<h3>待承接申請響鈴</h3><p id="sound-status" role="status"></p><div class="button-row"><button type="button" id="sound-enable" class="secondary"></button><button type="button" id="sound-preview" class="secondary">試聽／停止</button><button type="button" id="sound-mute" class="secondary">暫停響鈴 1 分鐘</button></div><div class="sound-options"><label>提示音<select id="sound-preset"><option value="bell">雙聲提示音</option><option value="chime">柔和提示音</option>${this.custom?'<option value="custom">自訂音效</option>':''}</select></label><label>播放方式<select id="sound-mode"><option value="loop">持續循環</option><option value="interval">間隔播放</option></select></label><label>每段播放後間隔<select id="sound-interval"><option value="5">5 秒</option><option value="10">10 秒</option><option value="30">30 秒</option></select></label><label>音量<input id="sound-volume" type="range" min="0" max="1" step="0.05"></label><label>自訂音效（本裝置，最多 10 MB）<input id="sound-file" type="file" accept="audio/*"></label></div><p id="sound-filename" class="muted"></p><button type="button" id="sound-default" class="quiet">刪除自訂音效並恢復預設</button><p class="muted">有符合支援條件的待承接申請才響鈴；多筆申請共用一個聲音。頁面仍開著時，縮小或切到背景也允許響鈴。關閉、休眠或瀏覽器暫停頁面後無法持續播放；手機背景提醒仍需系統通知。</p>`;
     const $=s=>container.querySelector(s);
+    $('#sound-volume').max='2';$('#sound-volume').insertAdjacentHTML('afterend','<output id="sound-volume-label"></output><small>100% 為原上限，200% 為兩倍增益。</small>');
     $('#sound-preset option[value="chime"]').insertAdjacentHTML('afterend',Object.entries(music).map(([id,track])=>`<option value="${id}">${track.label}</option>`).join(''));
     $('#sound-preset').value=this.settings.preset;$('#sound-mode').value=this.settings.mode;$('#sound-interval').value=this.settings.interval;$('#sound-volume').value=this.settings.volume;
     $('#sound-enable').onclick=()=>{if(this.settings.enabled&&this.unlocked){this.settings.enabled=false;this.save();this.stop();this.refresh();}else this.enable();};
     $('#sound-preview').onclick=()=>{if(this.previewing){this.stop();this.sync();}else{this.stop();this.start(true);}};
     $('#sound-mute').onclick=()=>{this.mutedUntil=Date.now()+60000;this.stop();this.sync();};
     for(const [id,key] of [['preset','preset'],['mode','mode'],['interval','interval']])$('#sound-'+id).onchange=event=>{this.settings[key]=key==='interval'?Number(event.target.value):event.target.value;this.save();if(key==='preset')this.selectSource();else this.stop();this.sync();};
-    $('#sound-volume').oninput=event=>{this.settings.volume=Number(event.target.value);this.audio.volume=this.settings.volume;this.save();};
+    $('#sound-volume').oninput=event=>{this.settings.volume=Number(event.target.value);this.applyVolume();this.save();};
     $('#sound-file').onchange=async event=>{try{await this.upload(event.target.files[0]);const current=document.querySelector('#sound-settings');if(current)this.mount(current);}catch(error){this.error=error.message;this.refresh();}};
     $('#sound-default').onclick=async()=>{try{await audioStore('delete');this.custom=null;this.settings={...defaults};this.save();this.selectSource();this.error='';this.sync();const current=document.querySelector('#sound-settings');if(current)this.mount(current);}catch{this.error='無法刪除裝置音效，請再試一次。';this.refresh();}};
     this.refresh();
   }
   refresh(){
+    this.applyVolume();
     const status=document.querySelector('#sound-status');if(!status)return;
     status.textContent=this.error||(this.previewing?'正在試聽；可按「停止試聽」結束。':Date.now()<this.mutedUntil?'已暫停響鈴，1 分鐘後自動恢復。':!this.settings.enabled?'響鈴已關閉。':!this.unlocked?'請啟用響鈴，讓本頁能播放提示音。':this.shouldPlay()?'有待承接申請，正在提醒。':'響鈴已準備，沒有符合條件的待承接申請時保持安靜。');
     document.querySelector('#sound-preview').textContent=this.previewing?'停止試聽':'試聽整首';
