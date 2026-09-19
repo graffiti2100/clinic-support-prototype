@@ -154,6 +154,9 @@ body.pip{padding:8px;font-size:clamp(12px,4vw,14px);height:100dvh;display:flex;f
 .roster .exchange-button{margin-left:auto;padding:9px 12px;font-size:12px;min-height:44px;white-space:nowrap}
 .pip .line-controls{font-size:12px;margin-top:8px;padding-top:8px}
 .pip .line-controls button{font-size:12px;padding:8px;min-height:40px}
+#app-update[hidden]{display:none}
+#app-update{max-width:1184px;margin:16px auto;flex-wrap:wrap}
+footer{flex-wrap:wrap;gap:12px}
 
 .studio{position:sticky;top:0;z-index:20;min-height:76px;display:flex;align-items:center;gap:24px;padding:12px max(20px,calc((100vw - 1280px)/2));background:#184c43;color:#fff}.studio-brand{min-width:max-content}.studio-brand strong{font-size:18px}.studio-brand small{display:block;margin-top:5px;color:#c2d8d0}.studio .context{flex:1;display:flex;flex-direction:column;gap:4px;margin:0;padding:0;color:#fff}.studio .context strong{color:#fff}.studio .context span{color:#c2d8d0;font-size:12px}.demo-settings{position:relative}.demo-settings summary{list-style:none;cursor:pointer;border:1px solid #8fb5a9;border-radius:9px;padding:10px 14px;white-space:nowrap;font-size:13px;font-weight:650}.demo-settings summary::-webkit-details-marker{display:none}.demo-settings[open] summary{background:#fff;color:#184c43}.controls{position:absolute;right:0;top:calc(100% + 12px);width:min(760px,calc(100vw - 32px));display:grid;grid-template-columns:2fr 1.3fr 1.2fr auto;gap:12px;align-items:end;padding:18px;background:#fff;color:#263e39;border:1px solid #cbd8d1;border-radius:14px;box-shadow:0 16px 45px #102d2680}.controls label,.controls label:first-child{min-width:0}.controls button{margin:0}.controls #notification-tools{grid-column:1/-1}.controls select{margin-top:6px}.controls .notification-buttons{display:flex;gap:8px;flex-wrap:wrap}.controls .notification-buttons button{margin:0}.controls #push-status{margin:8px 0 0}.context+#stage{margin-top:0}#stage{padding:24px;overflow-x:auto}#screen{max-width:1200px;margin:auto;background:#f5f7f5;min-height:650px;border:1px solid #d0d9d3;border-radius:15px;overflow:hidden;box-shadow:0 12px 30px #203f3710}#screen.phone{width:390px;max-width:100%;min-height:740px}.demo-main{max-width:1240px;padding:24px 28px 50px;margin:auto;min-height:570px}.screen-summary{font-size:13px;color:#47675b}.connection{margin-left:auto;white-space:nowrap;font-size:12px;color:#17665b}.connection.offline{color:#a4511f}.brand small{display:inline;font-size:10px;letter-spacing:0;color:#71877a;margin-left:4px}.outline{background:#fff;border-color:#ccd9d2;color:#36584c}.room-links button{display:inline-flex;gap:50px;border:1px solid var(--line);padding:16px;margin:0 14px 10px 0;border-radius:8px}.entry-grid button{text-align:left;color:inherit;font-weight:400}.entry-grid button h2{color:#263e39}.my-status{padding:20px}.status-dot.covering{background:#347caa}.status-dot.busy{background:#c58631}.status-dot.available{background:#278368}.service-card .handoff-actions{max-width:55%}.handoff-actions p{margin:0 0 8px;font-size:13px}.handoff-actions button{font-size:13px;padding:9px 12px;min-height:42px;margin:3px}.handoff-demo{display:block;background:#edf1ee;padding:12px;border-radius:8px;margin:0 0 18px;font-size:12px}.handoff-demo select{margin-top:8px}.settings>.outline{margin-top:10px}.demo-dates{display:flex}.page-footer{border-top:1px solid var(--line);margin-top:32px;padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:11px;color:#829087}.page-footer button{min-width:140px}.studio-footer{text-align:center;font-size:12px;color:#6b7c72;padding:0 20px 24px}#message{z-index:40}.phone .topbar{padding:12px 16px;gap:8px 14px;min-height:64px;flex-wrap:wrap}.phone .brand{font-size:18px}.phone .brand-mark{width:30px;height:30px}.phone .screen-summary{order:3;width:100%;font-size:12px}.phone .demo-main{padding:18px 16px 32px}.phone .work-grid{grid-template-columns:1fr;gap:24px}.phone .my-status{padding:16px;margin-bottom:20px}.phone .status-row{gap:8px}.phone .call-card{padding:16px;gap:12px;flex-wrap:nowrap}.phone .call-card button{width:auto;font-size:15px;min-width:70px;min-height:48px;padding:12px}.phone .room-number{font-size:25px}.phone .elapsed{font-size:25px}.phone .call-info{text-align:left;margin-left:0}.phone .period-grid{grid-template-columns:1fr}.phone .period{padding:20px}.phone .pie{width:125px}.phone .period-chart{gap:18px}.phone .doctor-card+.personnel .roster-grid{grid-template-columns:1fr}.phone .demo-dates{display:grid;grid-template-columns:1fr 1fr;gap:12px}.phone .demo-dates button{grid-column:1/-1}.phone .activity{padding:16px}.phone .page-footer{flex-wrap:wrap}
 @media(max-width:700px){.studio{position:relative;flex-wrap:wrap;padding:12px 16px;gap:10px}.studio-brand{flex:1}.studio .context{order:3;flex-basis:100%}.studio .context span{display:none}.demo-settings{position:static}.controls{right:16px;left:16px;top:68px;width:auto;grid-template-columns:1fr 1fr}.controls label:first-child{grid-column:1/-1}.controls #reset{width:100%}#stage{padding:12px 8px 20px}.demo-main{padding:18px 16px 32px}}
@@ -268,7 +271,15 @@ class ReminderSound {
     }catch(error){this.useNativePlayer(error);return Promise.resolve();}
   }
   shouldPlay(){return this.desired&&this.settings.enabled&&this.unlocked&&!this.interrupted&&Date.now()>=this.mutedUntil;}
-  stop(rewind=true){clearTimeout(this.timer);clearTimeout(this.previewTimer);clearTimeout(this.startTimer);this.timer=null;this.serial++;this.playing=false;this.starting=false;this.audio.pause();this.audio.muted=false;this.silentUnlock=false;if(rewind)this.audio.currentTime=0;this.previewing=false;}
+  stop(rewind=true){
+    if(!this.playing&&!this.starting&&!this.previewing&&!this.timer&&!this.previewTimer&&!this.startTimer&&this.audio.paused&&(!rewind||this.audio.currentTime===0))return;
+    clearTimeout(this.timer);clearTimeout(this.previewTimer);clearTimeout(this.startTimer);this.timer=null;this.previewTimer=null;this.startTimer=null;
+    this.serial++;this.playing=false;this.starting=false;
+    if(!this.audio.paused)this.audio.pause();
+    this.audio.muted=false;this.silentUnlock=false;
+    if(rewind&&this.audio.currentTime!==0)this.audio.currentTime=0;
+    this.previewing=false;
+  }
   start(preview=false,previewLimit=0,silent=false){
     if(this.playing||(!preview&&!this.shouldPlay()))return;
     this.playing=true;this.starting=true;this.interrupted=false;this.previewing=preview;this.audio.loop=!preview&&this.settings.mode==='loop';
@@ -295,7 +306,7 @@ class ReminderSound {
     },8000);
     const result=Promise.all([engine,Promise.resolve(playback).catch(error=>{throw {error,stage:'播放'};})]).then(()=>{
       if(serial!==this.serial)return;
-      clearTimeout(this.startTimer);this.starting=false;this.unlocked=!(silent&&this.nativePlayback);this.error='';
+      clearTimeout(this.startTimer);this.startTimer=null;this.starting=false;this.unlocked=!(silent&&this.nativePlayback);this.error='';
       if(silent){this.stop();this.sync();}
       else if(preview&&previewLimit)this.previewTimer=setTimeout(()=>{this.stop();this.sync();},previewLimit);
       this.refresh();
