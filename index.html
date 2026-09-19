@@ -306,7 +306,7 @@ class ReminderSound {
     this.refresh();
     return result;
   }
-  enable(){this.settings.enabled=true;this.save();this.stop();this.unlocked=false;return this.start(true,10000);}
+  enable(){this.settings.enabled=true;this.save();this.stop();this.unlocked=false;return this.start(true,1000);}
   unlock(){this.stop();this.unlocked=false;return this.start(true,0,true);}
   setDesired(value){const newDemand=value&&!this.desired;this.desired=value;if(newDemand&&this.interrupted&&!document.hidden)this.recover();this.sync();}
   sync(){if(this.interrupted){if(!this.desired||!this.settings.enabled||Date.now()<this.mutedUntil){this.stop();this.interrupted=false;this.error='';}this.refresh();return;}if(!this.shouldPlay()){if(!this.previewing)this.stop();}else if(!this.playing&&!this.timer)this.start();this.refresh();}
