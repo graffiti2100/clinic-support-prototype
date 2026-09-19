@@ -335,6 +335,7 @@ class ReminderSound {
   }
   refresh(){
     this.applyVolume();
+    this.onchange?.();
     const status=document.querySelector('#sound-status');if(!status)return;
     status.textContent=this.error||(this.previewing?'正在試聽；可按「停止試聽」結束。':Date.now()<this.mutedUntil?'已暫停響鈴，1 分鐘後自動恢復。':!this.settings.enabled?'響鈴已關閉。':!this.unlocked?'請啟用響鈴，讓本頁能播放提示音。':this.shouldPlay()?'有待承接申請，正在提醒。':'響鈴已準備，沒有符合條件的待承接申請時保持安靜。');
     document.querySelector('#sound-preview').textContent=this.previewing?'停止試聽':'試聽整首';
@@ -672,7 +673,7 @@ function coverageLabel(){return '人員已到場';}
 function syncDemoSound(){
  const people=state.nurses.filter(n=>n.logged),primary=people.filter(n=>n.line==='PRIMARY'&&n.status==='AVAILABLE'),secondary=people.filter(n=>n.line==='SECONDARY'&&n.status==='AVAILABLE');
  const escalated=state.rooms.some(r=>r.status==='REQUESTING'&&waitSeconds(r)>=30);
- const targets=primary.length?[...primary,...(escalated?people.filter(n=>n.line==='SECONDARY'&&n.status!=='COVERING'):[])]:secondary.length?secondary:people.filter(n=>n.status==='BUSY');
+ const targets=escalated?people.filter(n=>n.status!=='COVERING'):primary.length?primary:secondary.length?secondary:people.filter(n=>n.status==='BUSY');
  if(!me()||view!=='nurse')window.demoSound?.silence();else window.demoSound?.setDesired(state.rooms.some(r=>r.status==='REQUESTING')&&targets.some(n=>n.id===state.me));
 }
 function demoLineControls(responseOnly=false){
